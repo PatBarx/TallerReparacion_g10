@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 15-11-2022 a las 21:36:26
+-- Tiempo de generación: 17-11-2022 a las 22:57:32
 -- Versión del servidor: 10.4.24-MariaDB
 -- Versión de PHP: 8.1.6
 
@@ -32,7 +32,8 @@ CREATE TABLE `bicicleta` (
   `marca` varchar(50) DEFAULT NULL,
   `tipo` varchar(50) DEFAULT NULL,
   `color` varchar(50) DEFAULT NULL,
-  `clienteDni` int(11) DEFAULT NULL
+  `clienteDni` int(11) DEFAULT NULL,
+  `estado` tinyint(4) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -45,7 +46,8 @@ CREATE TABLE `cliente` (
   `dni` int(11) NOT NULL,
   `nombre` varchar(50) DEFAULT NULL,
   `domicilio` varchar(50) DEFAULT NULL,
-  `telefono` int(11) DEFAULT NULL
+  `telefono` int(11) DEFAULT NULL,
+  `estado` tinyint(4) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -86,19 +88,21 @@ CREATE TABLE `reparacion` (
 CREATE TABLE `repuesto` (
   `serie` int(11) NOT NULL,
   `descripcion` varchar(50) DEFAULT NULL,
-  `costo` float DEFAULT NULL
+  `costo` float DEFAULT NULL,
+  `estado` tinyint(4) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `servicios`
+-- Estructura de tabla para la tabla `servicio`
 --
 
-CREATE TABLE `servicios` (
+CREATE TABLE `servicio` (
   `codigo` int(11) NOT NULL,
   `descripcion` varchar(50) DEFAULT NULL,
-  `costo` float DEFAULT NULL
+  `costo` float DEFAULT NULL,
+  `estado` tinyint(4) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -142,9 +146,9 @@ ALTER TABLE `repuesto`
   ADD PRIMARY KEY (`serie`);
 
 --
--- Indices de la tabla `servicios`
+-- Indices de la tabla `servicio`
 --
-ALTER TABLE `servicios`
+ALTER TABLE `servicio`
   ADD PRIMARY KEY (`codigo`);
 
 --
@@ -169,8 +173,7 @@ ALTER TABLE `item_reparacion`
 --
 ALTER TABLE `reparacion`
   ADD CONSTRAINT `reparacion_ibfk_1` FOREIGN KEY (`bicicletaSerie`) REFERENCES `bicicleta` (`serie`),
-  ADD CONSTRAINT `reparacion_ibfk_2` FOREIGN KEY (`servicioCodigo`) REFERENCES `servicios` (`codigo`),
-  ADD CONSTRAINT `reparacion_ibfk_3` FOREIGN KEY (`clienteDni`) REFERENCES `cliente` (`dni`);
+  ADD CONSTRAINT `reparacion_ibfk_2` FOREIGN KEY (`servicioCodigo`) REFERENCES `servicio` (`codigo`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
