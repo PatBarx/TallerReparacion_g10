@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 17-11-2022 a las 22:57:32
+-- Tiempo de generación: 17-11-2022 a las 23:19:17
 -- Versión del servidor: 10.4.24-MariaDB
 -- Versión de PHP: 8.1.6
 
@@ -152,6 +152,22 @@ ALTER TABLE `servicio`
   ADD PRIMARY KEY (`codigo`);
 
 --
+-- AUTO_INCREMENT de las tablas volcadas
+--
+
+--
+-- AUTO_INCREMENT de la tabla `reparacion`
+--
+ALTER TABLE `reparacion`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `servicio`
+--
+ALTER TABLE `servicio`
+  MODIFY `codigo` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- Restricciones para tablas volcadas
 --
 
@@ -165,8 +181,8 @@ ALTER TABLE `bicicleta`
 -- Filtros para la tabla `item_reparacion`
 --
 ALTER TABLE `item_reparacion`
-  ADD CONSTRAINT `item_reparacion_ibfk_1` FOREIGN KEY (`reparacionId`) REFERENCES `reparacion` (`id`),
-  ADD CONSTRAINT `item_reparacion_ibfk_2` FOREIGN KEY (`repuestoSerie`) REFERENCES `repuesto` (`serie`);
+  ADD CONSTRAINT `item_reparacion_ibfk_2` FOREIGN KEY (`repuestoSerie`) REFERENCES `repuesto` (`serie`),
+  ADD CONSTRAINT `item_reparacion_ibfk_3` FOREIGN KEY (`reparacionId`) REFERENCES `reparacion` (`id`);
 
 --
 -- Filtros para la tabla `reparacion`
