@@ -1,52 +1,50 @@
-
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package entidades;
 
+import entidades.*;
 
+/**
+ *
+ * @author Usuario
+ */
 public class Bicicleta {
-  private int id;
-   private int numeroSerie;
-   private String marca;
-   private String Tipo;
-   private String color;
-   private Cliente clienteDni;
-   private boolean estado;
+    private int nroSerie;
+    private String marca;
+    private String tipo;
+    private String color;
+    private String dniDuenio;
+    private boolean estado; 
+
+    public Bicicleta(int nroSerie, String marca, String tipo, String color, String dniDuenio, boolean estado) {
+        this.nroSerie = nroSerie;
+        this.marca = marca;
+        this.tipo = tipo;
+        this.color = color;
+        this.dniDuenio = dniDuenio;
+        this.estado = estado;
+    }
+
+    public Bicicleta(String marca, String tipo, String color, String dniDuenio, boolean estado) {
+        this.marca = marca;
+        this.tipo = tipo;
+        this.color = color;
+        this.dniDuenio = dniDuenio;
+        this.estado = estado;
+    }
 
     public Bicicleta() {
     }
 
-    public Bicicleta(int numeroSerie, String marca, String Tipo, String color, Cliente clienteDni, boolean estado) {
-        this.numeroSerie = numeroSerie;
-        this.marca = marca;
-        this.Tipo = Tipo;
-        this.color = color;
-        this.clienteDni = clienteDni;
-        this.estado = estado;
+    public int getNroSerie() {
+        return nroSerie;
     }
 
-    public Bicicleta(int id, int numeroSerie, String marca, String Tipo, String color, Cliente clienteDni, boolean estado) {
-        this.id = id;
-        this.numeroSerie = numeroSerie;
-        this.marca = marca;
-        this.Tipo = Tipo;
-        this.color = color;
-        this.clienteDni = clienteDni;
-        this.estado = estado;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public int getNumeroSerie() {
-        return numeroSerie;
-    }
-
-    public void setNumeroSerie(int numeroSerie) {
-        this.numeroSerie = numeroSerie;
+    public void setNroSerie(int nroSerie) {
+        this.nroSerie = nroSerie;
     }
 
     public String getMarca() {
@@ -58,11 +56,11 @@ public class Bicicleta {
     }
 
     public String getTipo() {
-        return Tipo;
+        return tipo;
     }
 
-    public void setTipo(String Tipo) {
-        this.Tipo = Tipo;
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
     }
 
     public String getColor() {
@@ -73,12 +71,12 @@ public class Bicicleta {
         this.color = color;
     }
 
-    public Cliente getClienteDni() {
-        return clienteDni;
+    public String getDniDuenio() {
+        return dniDuenio;
     }
 
-    public void setClienteDni(Cliente clienteDni) {
-        this.clienteDni = clienteDni;
+    public void setDniDuenio(String dniDuenio) {
+        this.dniDuenio = dniDuenio;
     }
 
     public boolean isEstado() {
@@ -90,9 +88,34 @@ public class Bicicleta {
     }
 
     @Override
-    public String toString() {
-        return "Bicicleta{" + "id=" + id + ", numeroSerie=" + numeroSerie + ", marca=" + marca + ", Tipo=" + Tipo + ", color=" + color + ", clienteDni=" + clienteDni + ", estado=" + estado + '}';
+    public int hashCode() {
+        int hash = 7;
+        hash = 17 * hash + this.nroSerie;
+        return hash;
     }
 
-     
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Bicicleta other = (Bicicleta) obj;
+        if (this.nroSerie != other.nroSerie) {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public String toString() {
+        return "Bicicleta{" + "nroSerie=" + nroSerie + ", marca=" + marca + ", tipo=" + tipo + ", color=" + color + ", dniDuenio=" + dniDuenio + ", estado=" + estado + '}';
+    }
+    
+
 }
