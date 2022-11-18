@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 17-11-2022 a las 23:19:17
+-- Tiempo de generación: 18-11-2022 a las 23:20:36
 -- Versión del servidor: 10.4.24-MariaDB
 -- Versión de PHP: 8.1.6
 
@@ -76,7 +76,7 @@ CREATE TABLE `reparacion` (
   `bicicletaSerie` int(11) DEFAULT NULL,
   `fecha_entrada` date DEFAULT NULL,
   `costoTotal` float DEFAULT NULL,
-  `estado` tinyint(1) DEFAULT NULL
+  `estado` int(1) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
