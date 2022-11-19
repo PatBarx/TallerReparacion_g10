@@ -16,10 +16,10 @@ public class Bicicleta {
     private String marca;
     private String tipo;
     private String color;
-    private String dniDuenio;
+    private int dniDuenio;
     private boolean estado; 
 
-    public Bicicleta(int nroSerie, String marca, String tipo, String color, String dniDuenio, boolean estado) {
+    public Bicicleta(int nroSerie, String marca, String tipo, String color, int dniDuenio, boolean estado) {
         this.nroSerie = nroSerie;
         this.marca = marca;
         this.tipo = tipo;
@@ -28,7 +28,7 @@ public class Bicicleta {
         this.estado = estado;
     }
 
-    public Bicicleta(String marca, String tipo, String color, String dniDuenio, boolean estado) {
+    public Bicicleta(String marca, String tipo, String color, int dniDuenio, boolean estado) {
         this.marca = marca;
         this.tipo = tipo;
         this.color = color;
@@ -71,11 +71,11 @@ public class Bicicleta {
         this.color = color;
     }
 
-    public String getDniDuenio() {
+    public int getDniDuenio() {
         return dniDuenio;
     }
 
-    public void setDniDuenio(String dniDuenio) {
+    public void setDniDuenio(int dniDuenio) {
         this.dniDuenio = dniDuenio;
     }
 
