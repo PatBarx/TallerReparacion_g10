@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 18-11-2022 a las 23:20:36
+-- Tiempo de generación: 20-11-2022 a las 01:10:13
 -- Versión del servidor: 10.4.24-MariaDB
 -- Versión de PHP: 8.1.6
 
@@ -53,10 +53,10 @@ CREATE TABLE `cliente` (
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `item_reparacion`
+-- Estructura de tabla para la tabla `itemrep`
 --
 
-CREATE TABLE `item_reparacion` (
+CREATE TABLE `itemrep` (
   `reparacionId` int(11) DEFAULT NULL,
   `repuestoSerie` int(11) DEFAULT NULL,
   `cantidad` int(11) DEFAULT NULL,
@@ -76,7 +76,7 @@ CREATE TABLE `reparacion` (
   `bicicletaSerie` int(11) DEFAULT NULL,
   `fecha_entrada` date DEFAULT NULL,
   `costoTotal` float DEFAULT NULL,
-  `estado` int(1) DEFAULT NULL
+  `estado` tinyint(1) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -123,9 +123,9 @@ ALTER TABLE `cliente`
   ADD PRIMARY KEY (`dni`);
 
 --
--- Indices de la tabla `item_reparacion`
+-- Indices de la tabla `itemrep`
 --
-ALTER TABLE `item_reparacion`
+ALTER TABLE `itemrep`
   ADD UNIQUE KEY `reparacionId_2` (`reparacionId`,`repuestoSerie`),
   ADD KEY `reparacionId` (`reparacionId`),
   ADD KEY `repuestoSerie` (`repuestoSerie`);
@@ -178,11 +178,11 @@ ALTER TABLE `bicicleta`
   ADD CONSTRAINT `bicicleta_ibfk_1` FOREIGN KEY (`clienteDni`) REFERENCES `cliente` (`dni`);
 
 --
--- Filtros para la tabla `item_reparacion`
+-- Filtros para la tabla `itemrep`
 --
-ALTER TABLE `item_reparacion`
-  ADD CONSTRAINT `item_reparacion_ibfk_2` FOREIGN KEY (`repuestoSerie`) REFERENCES `repuesto` (`serie`),
-  ADD CONSTRAINT `item_reparacion_ibfk_3` FOREIGN KEY (`reparacionId`) REFERENCES `reparacion` (`id`);
+ALTER TABLE `itemrep`
+  ADD CONSTRAINT `itemrep_ibfk_2` FOREIGN KEY (`repuestoSerie`) REFERENCES `repuesto` (`serie`),
+  ADD CONSTRAINT `itemrep_ibfk_3` FOREIGN KEY (`reparacionId`) REFERENCES `reparacion` (`id`);
 
 --
 -- Filtros para la tabla `reparacion`
