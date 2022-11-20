@@ -16,23 +16,23 @@ public class Bicicleta {
     private String marca;
     private String tipo;
     private String color;
-    private int dniDuenio;
+    private Cliente clienteDni;
     private boolean estado; 
 
-    public Bicicleta(int nroSerie, String marca, String tipo, String color, int dniDuenio, boolean estado) {
+    public Bicicleta(int nroSerie, String marca, String tipo, String color, Cliente clienteDni, boolean estado) {
         this.nroSerie = nroSerie;
         this.marca = marca;
         this.tipo = tipo;
         this.color = color;
-        this.dniDuenio = dniDuenio;
+        this.clienteDni = clienteDni;
         this.estado = estado;
     }
 
-    public Bicicleta(String marca, String tipo, String color, int dniDuenio, boolean estado) {
+    public Bicicleta(String marca, String tipo, String color, Cliente clienteDni, boolean estado) {
         this.marca = marca;
         this.tipo = tipo;
         this.color = color;
-        this.dniDuenio = dniDuenio;
+        this.clienteDni = clienteDni;
         this.estado = estado;
     }
 
@@ -71,12 +71,12 @@ public class Bicicleta {
         this.color = color;
     }
 
-    public int getDniDuenio() {
-        return dniDuenio;
+    public Cliente getclienteDni() {
+        return clienteDni;
     }
 
-    public void setDniDuenio(int dniDuenio) {
-        this.dniDuenio = dniDuenio;
+    public void setclienteDni(Cliente clienteDni) {
+        this.clienteDni = clienteDni;
     }
 
     public boolean isEstado() {
@@ -114,7 +114,7 @@ public class Bicicleta {
 
     @Override
     public String toString() {
-        return "Bicicleta{" + "nroSerie=" + nroSerie + ", marca=" + marca + ", tipo=" + tipo + ", color=" + color + ", dniDuenio=" + dniDuenio + ", estado=" + estado + '}';
+        return "Bicicleta{" + "nroSerie=" + nroSerie + ", marca=" + marca + ", tipo=" + tipo + ", color=" + color + ", clienteDni=" + clienteDni + ", estado=" + estado + '}';
     }
     
 
