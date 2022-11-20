@@ -21,7 +21,7 @@ public class ServicioData {
     }
     public void altaServicio(Servicio serv){
     //Query: INSERT INTO `servicio`(`codigo`, `descripcion`, `costo`, `estado`) VALUES ('?','?',?,'?')
-        String query = "INSERT INTO servicio (descripcion, costo, estado) VALUES ('?',?,'?')";
+        String query = "INSERT INTO servicio (descripcion, costo, estado) VALUES (?,?,?)";
         try {
             PreparedStatement ps = con.prepareStatement(query,Statement.RETURN_GENERATED_KEYS);
             ps.setString(1, serv.getDescripcion());
@@ -41,7 +41,7 @@ public class ServicioData {
             }            
             ps.close();             
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "AlumnoData Error: " + e);
+            JOptionPane.showMessageDialog(null, "ServicioData Error: " + e);
         }
     }
     public void bajaServicio(int id){

@@ -4,8 +4,8 @@ package entidades;
 public class Repuesto {
     private int serie;
     private String descripcion;
-    float costo;
-    boolean estado;
+    private float costo;
+    private boolean estado;
 
     public Repuesto() {
     }
