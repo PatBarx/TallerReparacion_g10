@@ -40,9 +40,9 @@ public class ClienteData {
             //ps.executeUpdate();
             
            if (ps.executeUpdate()!=0) {
-            JOptionPane.showMessageDialog(null, "AlumnoData Info : Carga Exitosa");
+            JOptionPane.showMessageDialog(null, "clienteData : Carga Exitosa");
           } else {
-          JOptionPane.showMessageDialog(null, "AlumnoData Error: No se pudo obtener ID");
+          JOptionPane.showMessageDialog(null, "clienteData Error: No se pudo obtener ID");
           }
             ps.close();
         } catch (SQLException excep) {
@@ -51,8 +51,7 @@ public class ClienteData {
     }
     
 
-    public Cliente buscarCliente(int dni){   //SELECT 1 ALUMNO
-               //SELECT 1 ALUMNO
+    public Cliente buscarCliente(int dni){   
         Cliente alu= null;
         String sql="SELECT * FROM cliente WHERE dni=?";
         PreparedStatement ps;
@@ -93,9 +92,9 @@ public class ClienteData {
            System.out.println(ps.executeUpdate()+"gd");
          if (ps.executeUpdate()!=0) {
              
-            JOptionPane.showMessageDialog(null, "AlumnoData Info : Actualizacion Exitosa");
+            JOptionPane.showMessageDialog(null, "clienteData Info : Actualizacion Exitosa");
           } else {
-          JOptionPane.showMessageDialog(null, "AlumnoData Error: No se pudo Actualizar");
+          JOptionPane.showMessageDialog(null, "clienteData Error: No se pudo Actualizar");
           }
           
             ps.close();
@@ -105,7 +104,7 @@ public class ClienteData {
         }       
     }
     
-         public ArrayList<Cliente> listarCliente(){    //SELECT * Alumnos
+         public ArrayList<Cliente> listarCliente(){   
           ArrayList<Cliente>clientes =new ArrayList();
     
     try{
@@ -129,7 +128,7 @@ public class ClienteData {
     pst.close();
      }catch(SQLException e){
 
-JOptionPane.showMessageDialog(null, "error al obtner alumno");
+JOptionPane.showMessageDialog(null, "error al obtner el cliente");
 }
   return  clientes;
     }  
@@ -144,18 +143,18 @@ JOptionPane.showMessageDialog(null, "error al obtner alumno");
             pts.setInt(1, dni);
 
             if (pts.executeUpdate() != 0) {
-                JOptionPane.showMessageDialog(null, "MateriaData Info: Materia Borrada");
+                JOptionPane.showMessageDialog(null, "ClienteData Info: cliente Borrado");
                 borrado = true;
             }
 
             else {
-                JOptionPane.showMessageDialog(null, "MateriaData Info: No se pudo Borrar");
+                JOptionPane.showMessageDialog(null, "ClienteData Info: No se pudo Borrar");
             }
             pts.close();
             
         } catch (SQLException e) {
             System.out.println(e);
-            JOptionPane.showMessageDialog(null, "error al borrar materia");
+            JOptionPane.showMessageDialog(null, "error al borrar cliente");
 
         }
 
