@@ -129,43 +129,7 @@ JOptionPane.showMessageDialog(null, "error al obtner alumno");
 }
   return  clientes;
     }  
-             public ArrayList<Bicicleta> listarBicicleta(Cliente cli) {    //SELECT * Alumnos
-        ArrayList<Bicicleta> mater = new ArrayList();
-         String sql = " SELECT * FROM bicicleta,cliente WHERE "
-                + "bicicleta.estado=1 and bicicleta.dniDuenio=cliente.dni  and cliente.dni=? ";
-
-        try {
-            PreparedStatement pst = con.prepareStatement(sql);
-            pst.setInt(1, cli.getDni());
-            ResultSet rs = pst.executeQuery();
-            
-
-            Bicicleta mate;
-
-            while (rs.next()) {
-
-                mate = new Bicicleta();
-                // int nroSerie;
-   // private String marca;
-    //private String tipo;
-   // private String color;
-   // private String dniDuenio;
-                mate.setNroSerie(rs.getInt("nroSerie"));
-                mate.setMarca(rs.getString("marca"));
-                mate.setTipo(rs.getString("tipo"));
-                mate.setColor(rs.getString("color"));
-                mate.setDniDuenio(rs.getInt("clienteDni"));
-                mate.setEstado(rs.getBoolean("estado"));
-
-                mater.add(mate);
-            }
-            pst.close();
-        } catch (SQLException e) {
-
-            JOptionPane.showMessageDialog(null, "error al obtner alumno");
-        }
-        return mater;
-    }
+      
                  public boolean borrarliente(int dni) {   //UPDATE SET / DELETE
 
         boolean borrado = false;
