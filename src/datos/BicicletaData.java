@@ -2,6 +2,7 @@
 package datos;
 
 import entidades.Bicicleta;
+import entidades.Cliente;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -14,10 +15,22 @@ import javax.swing.JOptionPane;
 public class BicicletaData {
      
     private Connection con = null;
+    private Cliente clie;
+    private ClienteData clieDa;
+            
+            
+   // public BicicletaData() {
+        //this.con = Conexion.conectar();
+   // }
 
-    public BicicletaData() {
-        this.con = Conexion.conectar();
+    public BicicletaData(Cliente clie, ClienteData clieDa) {
+       this.con = Conexion.conectar() ;
+        this.clie = clie;
+        this.clieDa = clieDa;
     }
+
+ 
+    
     public void altaBicicleta(Bicicleta bici){
 //INSERT INTO `bicicleta`(`serie`, `marca`, `tipo`, `color`, `clienteDni`,`estado`) VALUES ('?','?','?','?','?');
 //INSERT INTO `bicicleta`(`serie`, `marca`, `tipo`, `color`, `clienteDni`, `estado`) VALUES ('1','venzo','montain','verde','23456789','1');
@@ -28,7 +41,7 @@ public class BicicletaData {
             ps.setString(2,bici.getMarca());
             ps.setString(3, bici.getTipo());
             ps.setString(4, bici.getColor());
-            ps.setInt(5, bici.getDniDuenio());
+            ps.setInt(5, bici.getclienteDni().getDni());
             ps.setBoolean(6,bici.isEstado());
             
             
@@ -69,7 +82,7 @@ public class BicicletaData {
             ps.setString(2, bici.getMarca());
             ps.setString(3, bici.getTipo());
             ps.setString(4, bici.getColor());
-            ps.setInt(5, bici.getDniDuenio());
+            ps.setInt(5, bici.getclienteDni().getDni());
             ps.setBoolean(6,bici.isEstado());
             ps.setInt(7, bici.getNroSerie());
             
@@ -90,15 +103,19 @@ public class BicicletaData {
         //SELECT * FROM `bicicleta` WHERE estado=1;
         String query = "SELECT * FROM bicicleta WHERE estado = 1"; 
         try {
+           
             PreparedStatement ps = con.prepareStatement(query);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
+                
                 Bicicleta bici = new Bicicleta();
+                
                 bici.setNroSerie(rs.getInt("serie"));
                 bici.setMarca(rs.getString("marca"));
                 bici.setTipo(rs.getString("tipo"));
                 bici.setColor(rs.getString("color"));
-                bici.setDniDuenio(rs.getInt("clienteDni"));
+                clie = clieDa.buscarCliente(rs.getInt("clienteDni"));
+                bici.setclienteDni(clie);
                 bici.setEstado(rs.getBoolean("estado"));
                 misBicis.add(bici);
                 ps.close();    
@@ -123,7 +140,8 @@ public class BicicletaData {
                bici.setMarca(rs.getString("marca"));
                bici.setTipo(rs.getString("tipo"));
                bici.setColor(rs.getString("color"));
-               bici.setDniDuenio(rs.getInt("clienteDni"));
+               clie = clieDa.buscarCliente(rs.getInt("clienteDni"));
+               bici.setclienteDni(clie);
                bici.setEstado(rs.getBoolean("estado"));
                
             } else {

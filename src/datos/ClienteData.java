@@ -21,7 +21,11 @@ import javax.swing.JOptionPane;
  * @author Usuario
  */
 public class ClienteData {
-   private Connection con = Conexion.conectar();
+    private Connection con = null;//Conexion.conectar();
+
+    public ClienteData() {
+    this.con = Conexion.conectar() ;    
+    }
        public void guardarCliente(Cliente alu) {  //INSERT INTO
         String query = "INSERT INTO cliente(dni,nombre,domicilio,telefono,estado) VALUES(?,?,?,?,?)"; //"?" Comodines para reutilizar query
 
