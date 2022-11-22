@@ -1,37 +1,39 @@
 package entidades;
 
 import java.sql.Date;
+import java.util.ArrayList;
 
-/**
- * @author Grupo10
- */
+
 class Reparacion {
     private int id;
     private Servicio servCod;
     private Cliente cliDNI;
     private Bicicleta biciSerie;
     private Date fechaEntrada;
+    private ArrayList itemRep;
     private float costoTotal;
     private int estado; //(pendiente 1- resuelto 0 -Entregada 2 - anulada3)
 
     public Reparacion() {
     }
 
-    public Reparacion(Servicio servCod, Cliente cliDNI, Bicicleta biciSerie, Date fechaEntrada, float costoTotal, int estado) {
+    public Reparacion(Servicio servCod, Cliente cliDNI, Bicicleta biciSerie, Date fechaEntrada, ArrayList itemRep, float costoTotal, int estado) {
         this.servCod = servCod;
         this.cliDNI = cliDNI;
         this.biciSerie = biciSerie;
         this.fechaEntrada = fechaEntrada;
+        this.itemRep = itemRep;
         this.costoTotal = costoTotal;
         this.estado = estado;
     }
 
-    public Reparacion(int id, Servicio servCod, Cliente cliDNI, Bicicleta biciSerie, Date fechaEntrada, float costoTotal, int estado) {
+    public Reparacion(int id, Servicio servCod, Cliente cliDNI, Bicicleta biciSerie, Date fechaEntrada, ArrayList itemRep, float costoTotal, int estado) {
         this.id = id;
         this.servCod = servCod;
         this.cliDNI = cliDNI;
         this.biciSerie = biciSerie;
         this.fechaEntrada = fechaEntrada;
+        this.itemRep = itemRep;
         this.costoTotal = costoTotal;
         this.estado = estado;
     }
@@ -74,6 +76,14 @@ class Reparacion {
 
     public void setFechaEntrada(Date fechaEntrada) {
         this.fechaEntrada = fechaEntrada;
+    }
+
+    public ArrayList getItemRep() {
+        return itemRep;
+    }
+
+    public void setItemRep(ArrayList itemRep) {
+        this.itemRep = itemRep;
     }
 
     public float getCostoTotal() {
