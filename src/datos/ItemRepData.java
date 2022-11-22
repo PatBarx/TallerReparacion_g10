@@ -4,6 +4,8 @@ import entidades.ItemRep;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -37,6 +39,29 @@ public class ItemRepData {
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "item Error : " + e);
             System.out.println(e);
+        }
+    }
+          
+    public void actualizaItemRep(ItemRep itR) { //SEGURO HAY QUE CAMBIAR LOS MENSAJES PORQUE SINO VA A ESTRESAR
+        String query = "UPDATE itemrep SET cantidad=?, costo=?  WHERE reparacionId=? and repuestoSerie = ?";
+        PreparedStatement ps = null;
+        try {
+            ps = con.prepareStatement(query);
+            ps.setInt(1, itR.getCantidad());
+            ps.setFloat(2, itR.getCosto());
+            ps.setInt(3, itR.getReparID().getId());
+            ps.setInt(4, itR.getRepuID().getSerie());
+            ps.executeUpdate();
+            JOptionPane.showMessageDialog(null, "Itemrep fue actualizado");
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Itemrep NO fue actualizada");
+            Logger.getLogger(ReparacionData.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                ps.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(ReparacionData.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
     }
     
