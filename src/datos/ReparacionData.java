@@ -24,9 +24,9 @@ public class ReparacionData {
         PreparedStatement ps = null;
         try {
             ps = con.prepareStatement(query);
-            ps.setInt(1, rep.getServCod().getCodigo());
-            ps.setInt(2, rep.getCliDNI().getDni());
-            ps.setInt(3, rep.getBiciSerie().getNroSerie());
+            ps.setInt(1, rep.getServicio().getCodigo());
+            ps.setInt(2, rep.getCliente().getDni());
+            ps.setInt(3, rep.getBici().getNroSerie());
             ps.setDate(4, Date.valueOf(rep.getFechaEntrada()));
             ps.setFloat(5, rep.getCostoTotal());
             ps.setInt(6, rep.getId());

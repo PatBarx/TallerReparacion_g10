@@ -7,9 +7,9 @@ import java.util.ArrayList;
 
 public class Reparacion {
     private int id;
-    private Servicio servCod;
-    private Cliente cliDNI;
-    private Bicicleta biciSerie;
+    private Servicio servicio;  //servCod;
+    private Cliente cliente;    //cliDNI;
+    private Bicicleta bici;     //biciSerie;
     private LocalDate fechaEntrada;
     private ArrayList itemRep;
     private float costoTotal;
@@ -18,21 +18,21 @@ public class Reparacion {
     public Reparacion() {
     }
 
-    public Reparacion(Servicio servCod, Cliente cliDNI, Bicicleta biciSerie, LocalDate fechaEntrada, ArrayList itemRep, float costoTotal, int estado) {
-        this.servCod = servCod;
-        this.cliDNI = cliDNI;
-        this.biciSerie = biciSerie;
+    public Reparacion(Servicio servicio, Cliente cliente, Bicicleta bici, LocalDate fechaEntrada, ArrayList itemRep, float costoTotal, int estado) {
+        this.servicio = servicio;
+        this.cliente = cliente;
+        this.bici = bici;
         this.fechaEntrada = fechaEntrada;
         this.itemRep = itemRep;
         this.costoTotal = costoTotal;
         this.estado = estado;
     }
 
-    public Reparacion(int id, Servicio servCod, Cliente cliDNI, Bicicleta biciSerie, LocalDate fechaEntrada, ArrayList itemRep, float costoTotal, int estado) {
+    public Reparacion(int id, Servicio servicio, Cliente cliente, Bicicleta bici, LocalDate fechaEntrada, ArrayList itemRep, float costoTotal, int estado) {
         this.id = id;
-        this.servCod = servCod;
-        this.cliDNI = cliDNI;
-        this.biciSerie = biciSerie;
+        this.servicio = servicio;
+        this.cliente = cliente;
+        this.bici = bici;
         this.fechaEntrada = fechaEntrada;
         this.itemRep = itemRep;
         this.costoTotal = costoTotal;
@@ -47,28 +47,28 @@ public class Reparacion {
         this.id = id;
     }
 
-    public Servicio getServCod() {
-        return servCod;
+    public Servicio getServicio() {
+        return servicio;
     }
 
-    public void setServCod(Servicio servCod) {
-        this.servCod = servCod;
+    public void setServicio(Servicio servicio) {
+        this.servicio = servicio;
     }
 
-    public Cliente getCliDNI() {
-        return cliDNI;
+    public Cliente getCliente() {
+        return cliente;
     }
 
-    public void setCliDNI(Cliente cliDNI) {
-        this.cliDNI = cliDNI;
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
     }
 
-    public Bicicleta getBiciSerie() {
-        return biciSerie;
+    public Bicicleta getBici() {
+        return bici;
     }
 
-    public void setBiciSerie(Bicicleta biciSerie) {
-        this.biciSerie = biciSerie;
+    public void setBici(Bicicleta biciSerie) {
+        this.bici = biciSerie;
     }
 
     public LocalDate getFechaEntrada() {
@@ -130,7 +130,7 @@ public class Reparacion {
 
     @Override
     public String toString() {
-        return "Reparacion: " + "id=" + id + ", servCod=" + servCod + ", cliDNI=" + cliDNI + ", biciSerie=" + biciSerie + ", fechaEntrada=" + fechaEntrada + ", costoTotal=" + costoTotal + ", estado=" + estado + '}';
+        return "Reparacion: " + "id=" + id + ", servicio=" + servicio + ", cliente=" + cliente + ", biciSerie=" + bici + ", fechaEntrada=" + fechaEntrada + ", costoTotal=" + costoTotal + ", estado=" + estado + '}';
     }
     
     

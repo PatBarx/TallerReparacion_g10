@@ -41,7 +41,7 @@ public class BicicletaData {
             ps.setString(2,bici.getMarca());
             ps.setString(3, bici.getTipo());
             ps.setString(4, bici.getColor());
-            ps.setInt(5, bici.getclienteDni().getDni());
+            ps.setInt(5, bici.getCliente().getDni());
             ps.setBoolean(6,bici.isEstado());
             
             
@@ -82,7 +82,7 @@ public class BicicletaData {
             ps.setString(2, bici.getMarca());
             ps.setString(3, bici.getTipo());
             ps.setString(4, bici.getColor());
-            ps.setInt(5, bici.getclienteDni().getDni());
+            ps.setInt(5, bici.getCliente().getDni());
             ps.setBoolean(6,bici.isEstado());
             ps.setInt(7, bici.getNroSerie());
             
@@ -115,7 +115,7 @@ public class BicicletaData {
                 bici.setTipo(rs.getString("tipo"));
                 bici.setColor(rs.getString("color"));
                 clie = clieDa.buscarCliente(rs.getInt("clienteDni"));
-                bici.setclienteDni(clie);
+                bici.setCliente(clie);
                 bici.setEstado(rs.getBoolean("estado"));
                 misBicis.add(bici);
                 ps.close();    
@@ -141,7 +141,7 @@ public class BicicletaData {
                bici.setTipo(rs.getString("tipo"));
                bici.setColor(rs.getString("color"));
                clie = clieDa.buscarCliente(rs.getInt("clienteDni"));
-               bici.setclienteDni(clie);
+               bici.setCliente(clie);
                bici.setEstado(rs.getBoolean("estado"));
                
             } else {

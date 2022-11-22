@@ -22,8 +22,8 @@ public class ItemRepData {
             
         try {
             PreparedStatement ps = con.prepareStatement(query);
-            ps.setInt(1, it.getReparID().getId());
-            ps.setInt(2, it.getRepuID().getSerie());
+            ps.setInt(1, it.getReparacion().getId());
+            ps.setInt(2, it.getRepuesto().getSerie());
             ps.setInt(3, it.getCantidad());
             ps.setFloat(4,it.getCosto());
 
@@ -49,8 +49,8 @@ public class ItemRepData {
             ps = con.prepareStatement(query);
             ps.setInt(1, itR.getCantidad());
             ps.setFloat(2, itR.getCosto());
-            ps.setInt(3, itR.getReparID().getId());
-            ps.setInt(4, itR.getRepuID().getSerie());
+            ps.setInt(3, itR.getReparacion().getId());
+            ps.setInt(4, itR.getRepuesto().getSerie());
             ps.executeUpdate();
             JOptionPane.showMessageDialog(null, "Itemrep fue actualizado");
         } catch (SQLException ex) {

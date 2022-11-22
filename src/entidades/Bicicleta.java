@@ -1,22 +1,13 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package entidades;
-
-
-
 /**
- *
- * @author Usuario
+ * @author Grupo 10
  */
 public class Bicicleta {
     private int nroSerie;
     private String marca;
     private String tipo;
     private String color;
-    private Cliente clienteDni;
+    private Cliente cliente;    //clienteDni;
     private boolean estado; 
 
     public Bicicleta(int nroSerie, String marca, String tipo, String color, Cliente clienteDni, boolean estado) {
@@ -24,7 +15,7 @@ public class Bicicleta {
         this.marca = marca;
         this.tipo = tipo;
         this.color = color;
-        this.clienteDni = clienteDni;
+        this.cliente = cliente;
         this.estado = estado;
     }
 
@@ -32,7 +23,7 @@ public class Bicicleta {
         this.marca = marca;
         this.tipo = tipo;
         this.color = color;
-        this.clienteDni = clienteDni;
+        this.cliente = cliente;
         this.estado = estado;
     }
 
@@ -71,12 +62,12 @@ public class Bicicleta {
         this.color = color;
     }
 
-    public Cliente getclienteDni() {
-        return clienteDni;
+    public Cliente getCliente() {
+        return cliente;
     }
 
-    public void setclienteDni(Cliente clienteDni) {
-        this.clienteDni = clienteDni;
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
     }
 
     public boolean isEstado() {
@@ -114,7 +105,7 @@ public class Bicicleta {
 
     @Override
     public String toString() {
-        return "Bicicleta{" + "nroSerie=" + nroSerie + ", marca=" + marca + ", tipo=" + tipo + ", color=" + color + ", clienteDni=" + clienteDni + ", estado=" + estado + '}';
+        return "Bicicleta{" + "nroSerie=" + nroSerie + ", marca=" + marca + ", tipo=" + tipo + ", color=" + color + ", cliente=" + cliente + ", estado=" + estado + '}';
     }
     
 

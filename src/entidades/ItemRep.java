@@ -4,8 +4,8 @@ package entidades;
  */
 public class ItemRep {
     //private int id; (Borrar)
-    private Reparacion reparID;
-    private Repuesto repuID;
+    private Reparacion reparacion;
+    private Repuesto repuesto;
     private int cantidad;
     private float costo;
 
@@ -13,32 +13,32 @@ public class ItemRep {
     }
 
     public ItemRep(Repuesto repuID, int cantidad, float costo) {
-        this.repuID = repuID;
+        this.repuesto = repuID;
         this.cantidad = cantidad;
         this.costo = costo;
     }
 
-    public ItemRep(Reparacion reparID, Repuesto repuID, int cantidad, float costo) {
-        this.reparID = reparID;
-        this.repuID = repuID;
+    public ItemRep(Reparacion reparacion, Repuesto repuesto, int cantidad, float costo) {
+        this.reparacion = reparacion;
+        this.repuesto = repuesto;
         this.cantidad = cantidad;
         this.costo = costo;
     }
 
-    public Reparacion getReparID() {
-        return reparID;
+    public Reparacion getReparacion() {
+        return reparacion;
     }
 
-    public void setReparID(Reparacion reparID) {
-        this.reparID = reparID;
+    public void setReparacion(Reparacion reparacion) {
+        this.reparacion = reparacion;
     }
 
-    public Repuesto getRepuID() {
-        return repuID;
+    public Repuesto getRepuesto() {
+        return repuesto;
     }
 
-    public void setRepuID(Repuesto repuID) {
-        this.repuID = repuID;
+    public void setRepuesto(Repuesto repuesto) {
+        this.repuesto = repuesto;
     }
 
     public int getCantidad() {
@@ -59,7 +59,7 @@ public class ItemRep {
 
     @Override
     public String toString() {
-        return "ItemRep: " + "reparID=" + reparID + ", repuID=" + repuID + ", cantidad=" + cantidad + ", costo=" + costo + '}';
+        return "ItemRep: " + "reparID=" + reparacion + ", repuID=" + repuesto + ", cantidad=" + cantidad + ", costo=" + costo + '}';
     }
     
     
