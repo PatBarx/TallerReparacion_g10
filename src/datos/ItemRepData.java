@@ -25,7 +25,7 @@ public class ItemRepData {
             ps.setInt(1, it.getReparID().getId());
             ps.setInt(2, it.getRepuID().getSerie());
             ps.setInt(3, it.getCantidad());
-            ps.setFloat(4,it.getCosto()*it.getCantidad());
+            ps.setFloat(4,it.getCosto());
 
            
             
