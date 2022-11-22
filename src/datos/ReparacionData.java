@@ -43,6 +43,29 @@ public class ReparacionData {
             }
         }
     }
+               public boolean AnularReparacion(int id) {   //UPDATE SET / DELETE
+        boolean borrado = false;
+        String sql = "UPDATE reparacion SET estado = 3 WHERE id = ?";
+        try {
+            PreparedStatement pts = con.prepareStatement(sql);
+            pts.setInt(1, id);
+
+            if (pts.executeUpdate() != 0) {
+                JOptionPane.showMessageDialog(null, "reparacion borrada");
+                borrado = true;
+            }
+
+            else {
+                JOptionPane.showMessageDialog(null, " No se pudo Borrar");
+            }
+            pts.close();
+            
+        } catch (SQLException e) {
+            System.out.println(e);
+            JOptionPane.showMessageDialog(null, "error al borrar reparacion");
+        }
+        return borrado;
+    }
     
 //void altaReparacion(Reparacion repa) //PATO
 //void bajaReparacion(int id) //DANI
