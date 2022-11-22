@@ -24,15 +24,15 @@ public class ClienteData {
 
     private Connection con = Conexion.conectar();
 
-    public void guardarCliente(Cliente alu) {  //INSERT INTO
+    public void guardarCliente(Cliente cl) {  //INSERT INTO
         String query = "INSERT INTO cliente(dni,nombre,domicilio,telefono,estado) VALUES(?,?,?,?,?)"; //"?" Comodines para reutilizar query
 
         try {
             PreparedStatement ps = con.prepareStatement(query);
-            ps.setInt(1, alu.getDni());
-            ps.setString(2, alu.getNombre());
-            ps.setString(3, alu.getDomicilio());
-            ps.setInt(4, alu.getTel());
+            ps.setInt(1, cl.getDni());
+            ps.setString(2, cl.getNombre());
+            ps.setString(3, cl.getDomicilio());
+            ps.setInt(4, cl.getTel());
             ps.setBoolean(5, true);
 
             //ps.executeUpdate();
@@ -49,7 +49,7 @@ public class ClienteData {
 
     public Cliente buscarCliente(int dni) {   //SELECT
         //SELECT 1 
-        Cliente alu = null;
+        Cliente cl = null;
         String sql = "SELECT * FROM cliente WHERE dni=?";
 
         try {
@@ -57,33 +57,33 @@ public class ClienteData {
             ps.setInt(1, dni);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
-                alu = new Cliente();
-                alu.setDni(rs.getInt("dni"));
-                alu.setNombre(rs.getString("nombre"));
-                alu.setDomicilio(rs.getString("domicilio"));
-                alu.setTel(rs.getInt("telefono"));
-                alu.setEstado(rs.getBoolean("estado"));
+                cl = new Cliente();
+                cl.setDni(rs.getInt("dni"));
+                cl.setNombre(rs.getString("nombre"));
+                cl.setDomicilio(rs.getString("domicilio"));
+                cl.setTel(rs.getInt("telefono"));
+                cl.setEstado(rs.getBoolean("estado"));
 
             }
 
         } catch (SQLException ex) {
             Logger.getLogger(ClienteData.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return alu;
+        return cl;
     }
 
-    public void actualizarCliente(Cliente alu) { //UPDATE SET
+    public void actualizarCliente(Cliente cl) { //UPDATE SET
         //UPDATE SET
         String query = "UPDATE cliente SET  nombre=?, domicilio=?, telefono=?, estado=?  WHERE dni=?";
         //System.out.println(query);
         try {
             PreparedStatement ps = con.prepareStatement(query);
 
-            ps.setString(1, alu.getNombre());
-            ps.setString(2, alu.getDomicilio());
-            ps.setInt(3, alu.getTel());
-            ps.setBoolean(4, alu.isEstado());
-            ps.setInt(5, alu.getDni());
+            ps.setString(1, cl.getNombre());
+            ps.setString(2, cl.getDomicilio());
+            ps.setInt(3, cl.getTel());
+            ps.setBoolean(4, cl.isEstado());
+            ps.setInt(5, cl.getDni());
             //JOptionPane.showMessageDialog(null, ps.executeUpdate()+"gd");
             System.out.println(ps.executeUpdate() + "gd");
             if (ps.executeUpdate() != 0) {
@@ -108,18 +108,18 @@ public class ClienteData {
             PreparedStatement pst = con.prepareStatement(sql);
             ResultSet resultSet = pst.executeQuery();
 
-            Cliente alu;
+            Cliente cl;
 
             while (resultSet.next()) {
 
-                alu = new Cliente();
-                alu.setDni(resultSet.getInt("dni"));
-                alu.setNombre(resultSet.getString("nombre"));
-                alu.setDomicilio(resultSet.getString("domicilio"));
-                alu.setTel(resultSet.getInt("telefono"));
-                alu.setEstado(resultSet.getBoolean("estado"));
+                cl = new Cliente();
+                cl.setDni(resultSet.getInt("dni"));
+                cl.setNombre(resultSet.getString("nombre"));
+                cl.setDomicilio(resultSet.getString("domicilio"));
+                cl.setTel(resultSet.getInt("telefono"));
+                cl.setEstado(resultSet.getBoolean("estado"));
 
-                clientes.add(alu);
+                clientes.add(cl);
             }
             pst.close();
         } catch (SQLException e) {
