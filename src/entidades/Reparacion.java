@@ -1,15 +1,16 @@
 package entidades;
 
 import java.sql.Date;
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 
-class Reparacion {
+public class Reparacion {
     private int id;
     private Servicio servCod;
     private Cliente cliDNI;
     private Bicicleta biciSerie;
-    private Date fechaEntrada;
+    private LocalDate fechaEntrada;
     private ArrayList itemRep;
     private float costoTotal;
     private int estado; //(pendiente 1- resuelto 0 -Entregada 2 - anulada3)
@@ -17,7 +18,7 @@ class Reparacion {
     public Reparacion() {
     }
 
-    public Reparacion(Servicio servCod, Cliente cliDNI, Bicicleta biciSerie, Date fechaEntrada, ArrayList itemRep, float costoTotal, int estado) {
+    public Reparacion(Servicio servCod, Cliente cliDNI, Bicicleta biciSerie, LocalDate fechaEntrada, ArrayList itemRep, float costoTotal, int estado) {
         this.servCod = servCod;
         this.cliDNI = cliDNI;
         this.biciSerie = biciSerie;
@@ -27,7 +28,7 @@ class Reparacion {
         this.estado = estado;
     }
 
-    public Reparacion(int id, Servicio servCod, Cliente cliDNI, Bicicleta biciSerie, Date fechaEntrada, ArrayList itemRep, float costoTotal, int estado) {
+    public Reparacion(int id, Servicio servCod, Cliente cliDNI, Bicicleta biciSerie, LocalDate fechaEntrada, ArrayList itemRep, float costoTotal, int estado) {
         this.id = id;
         this.servCod = servCod;
         this.cliDNI = cliDNI;
@@ -70,11 +71,11 @@ class Reparacion {
         this.biciSerie = biciSerie;
     }
 
-    public Date getFechaEntrada() {
+    public LocalDate getFechaEntrada() {
         return fechaEntrada;
     }
 
-    public void setFechaEntrada(Date fechaEntrada) {
+    public void setFechaEntrada(LocalDate fechaEntrada) {
         this.fechaEntrada = fechaEntrada;
     }
 

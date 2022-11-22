@@ -1,6 +1,13 @@
 package datos;
 
+import entidades.Reparacion;
 import java.sql.Connection;
+import java.sql.Date;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  * @author Grupo10
@@ -10,6 +17,31 @@ public class ReparacionData {
 
     public ReparacionData() {
         this.con = Conexion.conectar();
+    }
+    
+        public void actualizaInscripcion(Reparacion rep) {
+        String query = "UPDATE reparacion SET `servicioCodigo=?,clienteDni=?,bicicletaSerie=?,fecha_entrada=?,costoTotal=?,estado=?  WHERE id=?";
+        PreparedStatement ps = null;
+        try {
+            ps = con.prepareStatement(query);
+            ps.setInt(1, rep.getServCod().getCodigo());
+            ps.setInt(2, rep.getCliDNI().getDni());
+            ps.setInt(3, rep.getBiciSerie().getNroSerie());
+            ps.setDate(4, Date.valueOf(rep.getFechaEntrada()));
+            ps.setFloat(5, rep.getCostoTotal());
+            ps.setInt(6, rep.getId());
+            ps.executeUpdate();
+            JOptionPane.showMessageDialog(null, "La reparacion fue actualizada");
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "La reparacion NO fue actualizada");
+            Logger.getLogger(ReparacionData.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                ps.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(ReparacionData.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
     }
     
 //void altaReparacion(Reparacion repa) //PATO
