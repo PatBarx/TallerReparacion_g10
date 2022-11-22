@@ -21,12 +21,10 @@ import javax.swing.JOptionPane;
  * @author Usuario
  */
 public class ClienteData {
-    private Connection con = null;//Conexion.conectar();
 
-    public ClienteData() {
-    this.con = Conexion.conectar() ;    
-    }
-       public void guardarCliente(Cliente alu) {  //INSERT INTO
+    private Connection con = Conexion.conectar();
+
+    public void guardarCliente(Cliente alu) {  //INSERT INTO
         String query = "INSERT INTO cliente(dni,nombre,domicilio,telefono,estado) VALUES(?,?,?,?,?)"; //"?" Comodines para reutilizar query
 
         try {
@@ -36,104 +34,102 @@ public class ClienteData {
             ps.setString(3, alu.getDomicilio());
             ps.setInt(4, alu.getTel());
             ps.setBoolean(5, true);
-          
+
             //ps.executeUpdate();
-            
-           if (ps.executeUpdate()!=0) {
-            JOptionPane.showMessageDialog(null, "clienteData : Carga Exitosa");
-          } else {
-          JOptionPane.showMessageDialog(null, "clienteData Error: No se pudo obtener ID");
-          }
+            if (ps.executeUpdate() != 0) {
+                JOptionPane.showMessageDialog(null, " Carga Exitosa");
+            } else {
+                JOptionPane.showMessageDialog(null, " No se pudo obtener ID");
+            }
             ps.close();
         } catch (SQLException excep) {
             System.out.println(excep);
         }
     }
-    
 
-    public Cliente buscarCliente(int dni){   
-        Cliente alu= null;
-        String sql="SELECT * FROM cliente WHERE dni=?";
-        PreparedStatement ps;
-       try { 
-        ps=con.prepareStatement(sql);
-        ps.setInt(1, dni);
-        ResultSet rs=ps.executeQuery();
-        while(rs.next()){
-            alu=new Cliente();
-            alu.setDni(rs.getInt("dni"));
-            alu.setNombre(rs.getString("nombre"));
-            alu.setDomicilio(rs.getString("domicilio"));
-            alu.setTel(rs.getInt("telefono"));
-            alu.setEstado(rs.getBoolean("estado"));
-           
-                 
-        }
-        
-    } catch (SQLException ex) {
+    public Cliente buscarCliente(int dni) {   //SELECT
+        //SELECT 1 
+        Cliente alu = null;
+        String sql = "SELECT * FROM cliente WHERE dni=?";
+
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, dni);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                alu = new Cliente();
+                alu.setDni(rs.getInt("dni"));
+                alu.setNombre(rs.getString("nombre"));
+                alu.setDomicilio(rs.getString("domicilio"));
+                alu.setTel(rs.getInt("telefono"));
+                alu.setEstado(rs.getBoolean("estado"));
+
+            }
+
+        } catch (SQLException ex) {
             Logger.getLogger(ClienteData.class.getName()).log(Level.SEVERE, null, ex);
         }
-       return alu;      
+        return alu;
     }
-        public void actualizarCliente(Cliente alu){ //UPDATE SET
-            //UPDATE SET
-        String query="UPDATE cliente SET  nombre=?, domicilio=?, telefono=?, estado=?  WHERE dni=?";
+
+    public void actualizarCliente(Cliente alu) { //UPDATE SET
+        //UPDATE SET
+        String query = "UPDATE cliente SET  nombre=?, domicilio=?, telefono=?, estado=?  WHERE dni=?";
         //System.out.println(query);
         try {
-        PreparedStatement ps = con.prepareStatement(query);
-        
-         
-         ps.setString(1, alu.getNombre());
-         ps.setString(2, alu.getDomicilio());
-         ps.setInt(3,alu.getTel());
-         ps.setBoolean(4,alu.isEstado());
-         ps.setInt(5,alu.getDni());
-           //JOptionPane.showMessageDialog(null, ps.executeUpdate()+"gd");
-           System.out.println(ps.executeUpdate()+"gd");
-         if (ps.executeUpdate()!=0) {
-             
-            JOptionPane.showMessageDialog(null, "clienteData Info : Actualizacion Exitosa");
-          } else {
-          JOptionPane.showMessageDialog(null, "clienteData Error: No se pudo Actualizar");
-          }
-          
+            PreparedStatement ps = con.prepareStatement(query);
+
+            ps.setString(1, alu.getNombre());
+            ps.setString(2, alu.getDomicilio());
+            ps.setInt(3, alu.getTel());
+            ps.setBoolean(4, alu.isEstado());
+            ps.setInt(5, alu.getDni());
+            //JOptionPane.showMessageDialog(null, ps.executeUpdate()+"gd");
+            System.out.println(ps.executeUpdate() + "gd");
+            if (ps.executeUpdate() != 0) {
+
+                JOptionPane.showMessageDialog(null, "ClienteData Info : Actualizacion Exitosa");
+            } else {
+                JOptionPane.showMessageDialog(null, "ClienteData Error: No se pudo Actualizar");
+            }
+
             ps.close();
         } catch (SQLException ex) {
-             JOptionPane.showMessageDialog(null, ex);
+            JOptionPane.showMessageDialog(null, ex);
             Logger.getLogger(ClienteData.class.getName()).log(Level.SEVERE, null, ex);
-        }       
+        }
     }
-    
-         public ArrayList<Cliente> listarCliente(){   
-          ArrayList<Cliente>clientes =new ArrayList();
-    
-    try{
-    String sql = " SELECT *  FROM cliente;";
-    PreparedStatement pst = con.prepareStatement(sql);
-    ResultSet resultSet = pst.executeQuery();
-    
-    Cliente alu;
-    
-    while(resultSet.next()){
-        
-        alu=new Cliente();
-        alu.setDni(resultSet.getInt("dni"));
-        alu.setNombre(resultSet.getString("nombre"));
-        alu.setDomicilio(resultSet.getString("domicilio"));
-        alu.setTel(resultSet.getInt("telefono"));
-        alu.setEstado(resultSet.getBoolean("estado"));
-        
-        clientes.add(alu);
-    }
-    pst.close();
-     }catch(SQLException e){
 
-JOptionPane.showMessageDialog(null, "error al obtner el cliente");
-}
-  return  clientes;
-    }  
-      
-                 public boolean borrarliente(int dni) {   //UPDATE SET / DELETE
+    public ArrayList<Cliente> listarCliente() {    //SELECT *
+        ArrayList<Cliente> clientes = new ArrayList();
+
+        try {
+            String sql = " SELECT *  FROM cliente where estado=1";
+            PreparedStatement pst = con.prepareStatement(sql);
+            ResultSet resultSet = pst.executeQuery();
+
+            Cliente alu;
+
+            while (resultSet.next()) {
+
+                alu = new Cliente();
+                alu.setDni(resultSet.getInt("dni"));
+                alu.setNombre(resultSet.getString("nombre"));
+                alu.setDomicilio(resultSet.getString("domicilio"));
+                alu.setTel(resultSet.getInt("telefono"));
+                alu.setEstado(resultSet.getBoolean("estado"));
+
+                clientes.add(alu);
+            }
+            pst.close();
+        } catch (SQLException e) {
+
+            JOptionPane.showMessageDialog(null, "error al obtner Cliente");
+        }
+        return clientes;
+    }
+
+    public boolean borrarCliente(int dni) {   //UPDATE SET / DELETE
 
         boolean borrado = false;
 
@@ -143,15 +139,13 @@ JOptionPane.showMessageDialog(null, "error al obtner el cliente");
             pts.setInt(1, dni);
 
             if (pts.executeUpdate() != 0) {
-                JOptionPane.showMessageDialog(null, "ClienteData Info: cliente Borrado");
+                JOptionPane.showMessageDialog(null, "cliente Borrado");
                 borrado = true;
-            }
-
-            else {
-                JOptionPane.showMessageDialog(null, "ClienteData Info: No se pudo Borrar");
+            } else {
+                JOptionPane.showMessageDialog(null, " No se pudo Borrar");
             }
             pts.close();
-            
+
         } catch (SQLException e) {
             System.out.println(e);
             JOptionPane.showMessageDialog(null, "error al borrar cliente");
