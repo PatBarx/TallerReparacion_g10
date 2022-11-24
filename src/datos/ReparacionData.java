@@ -1,12 +1,16 @@
 package datos;
 
+import entidades.Bicicleta;
+import entidades.Cliente;
 import entidades.Reparacion;
+import entidades.Servicio;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -97,6 +101,78 @@ public class ReparacionData {
         }
         return borrado;
     }
+                 public ArrayList<Reparacion> listarBicisPendientes(){
+         ServicioData ser=new ServicioData();
+        
+        ClienteData clieDa=new ClienteData();
+         BicicletaData bic=new BicicletaData();
+        ArrayList<Reparacion>reparaciones = new ArrayList();
+       
+        //SELECT * FROM `bicicleta` WHERE estado=1;
+        String query = "SELECT * FROM reparacion WHERE reparacion.estado = 1 or reparacion.estado=0"; 
+        try {
+           
+            PreparedStatement ps = con.prepareStatement(query);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                
+                Reparacion rep=new Reparacion();
+                
+                rep.setId(rs.getInt("id"));
+                Servicio se=ser.buscarServicio(rs.getInt("servicioCodigo"));
+                rep.setServicio(se);
+                Cliente clie = clieDa.buscarCliente(rs.getInt("clienteDni"));
+                rep.setCliente(clie);
+                Bicicleta bi = bic.buscaBicicleta(rs.getInt("bicicletaSerie"));
+                rep.setBici(bi);
+                rep.setFechaEntrada(rs.getDate("fecha_entrada").toLocalDate());
+                rep.setCostoTotal(rs.getFloat("costoTotal"));
+                rep.setEstado(rs.getInt("estado"));
+                reparaciones.add(rep);
+                
+                ps.close();    
+            }            
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "ReparacionData Error:\n" + e);
+        }
+        return reparaciones;        
+    }
+            public ArrayList<Reparacion> listarBicisTerminadas(){
+         ServicioData ser=new ServicioData();
+         BicicletaData bic=new BicicletaData();
+        ClienteData clieDa=new ClienteData();
+        ArrayList<Reparacion>reparaciones = new ArrayList();
+       
+        //SELECT * FROM `bicicleta` WHERE estado=1;
+        String query = "SELECT * FROM reparacion WHERE reparacion.estado = 2"; 
+        try {
+           
+            PreparedStatement ps = con.prepareStatement(query);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                
+                Reparacion rep=new Reparacion();
+                
+                rep.setId(rs.getInt("id"));
+                Servicio se=ser.buscarServicio(rs.getInt("servicioCodigo"));
+                rep.setServicio(se);
+                Cliente clie = clieDa.buscarCliente(rs.getInt("clienteDni"));
+                rep.setCliente(clie);
+                Bicicleta bi = bic.buscaBicicleta(rs.getInt("bicicletaSerie"));
+                rep.setBici(bi);
+                rep.setFechaEntrada(rs.getDate("fecha_entrada").toLocalDate());
+                rep.setCostoTotal(rs.getFloat("costoTotal"));
+                rep.setEstado(rs.getInt("estado"));
+                reparaciones.add(rep);
+                
+                ps.close();    
+            }            
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "ReparacionData Error:\n" + e);
+        }
+        return reparaciones;        
+    }
+               
     
 //LISTO!!! void altaReparacion(Reparacion repa) //PATO 
 //LISTO!!! void bajaReparacion(int id) //DANI

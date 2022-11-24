@@ -15,18 +15,16 @@ import javax.swing.JOptionPane;
 public class BicicletaData {
      
     private Connection con = null;
-    private Cliente clie;
-    private ClienteData clieDa;
+  
             
             
    // public BicicletaData() {
         //this.con = Conexion.conectar();
    // }
 
-    public BicicletaData(Cliente clie, ClienteData clieDa) {
+    public BicicletaData() {
        this.con = Conexion.conectar() ;
-        this.clie = clie;
-        this.clieDa = clieDa;
+       
     }
 
  
@@ -106,6 +104,8 @@ public class BicicletaData {
            
             PreparedStatement ps = con.prepareStatement(query);
             ResultSet rs = ps.executeQuery();
+            ClienteData clieDa=new ClienteData();
+            Cliente clie=new Cliente();
             while (rs.next()) {
                 
                 Bicicleta bici = new Bicicleta();
@@ -127,9 +127,12 @@ public class BicicletaData {
     }
     public Bicicleta buscaBicicleta(int id) {   
         //Creo un obj, instancio un query..
+        ClienteData clieDa=new ClienteData();
+            Cliente clie=new Cliente();
         Bicicleta bici = new Bicicleta();
      
         String query =  "SELECT * FROM bicicleta WHERE estado=1 AND serie = ? ";
+        
         //Try: Ps/ ps.set(id xparametro).. / rs.. /if(next) ../ Set obj / ps.Close...
         try {
             PreparedStatement ps = con.prepareStatement(query);
