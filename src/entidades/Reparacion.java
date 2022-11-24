@@ -28,7 +28,7 @@ public class Reparacion {
         this.estado = estado;
     }
 
-    public Reparacion(int id, Servicio servicio, Cliente cliente, Bicicleta bici, LocalDate fechaEntrada, ArrayList itemRep, float costoTotal, int estado) {
+    public Reparacion(int id, Servicio servicio, Cliente cliente, Bicicleta bici, LocalDate fechaEntrada, ArrayList<ItemRep> itemRep, float costoTotal, int estado) {
         this.id = id;
         this.servicio = servicio;
         this.cliente = cliente;
