@@ -2,6 +2,7 @@ package datos;
 
 import entidades.Bicicleta;
 import entidades.Cliente;
+import entidades.ItemRep;
 import entidades.Reparacion;
 import entidades.Servicio;
 import java.sql.Connection;
@@ -172,6 +173,15 @@ public class ReparacionData {
         }
         return reparaciones;        
     }
+            
+    public float calcularCostoReparacion(Reparacion rep) { //(Servicio costo, ItemRep costo ){
+        float total = 0;
+        for (ItemRep item : rep.getItemRep()) {
+            total += item.getCosto();
+        }
+        return rep.getServicio().getCosto() + total;
+    }
+
                
     
 //LISTO!!! void altaReparacion(Reparacion repa) //PATO 

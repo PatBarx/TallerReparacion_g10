@@ -11,7 +11,7 @@ public class Reparacion {
     private Cliente cliente;    //cliDNI;
     private Bicicleta bici;     //biciSerie;
     private LocalDate fechaEntrada;
-    private ArrayList itemRep;
+    private ArrayList<ItemRep> itemRep;
     private float costoTotal;
     private int estado; //(pendiente 1- resuelto 0 -Entregada 2 - anulada3)
 
@@ -79,11 +79,11 @@ public class Reparacion {
         this.fechaEntrada = fechaEntrada;
     }
 
-    public ArrayList getItemRep() {
+    public ArrayList<ItemRep> getItemRep() {
         return itemRep;
     }
 
-    public void setItemRep(ArrayList itemRep) {
+    public void setItemRep(ArrayList<ItemRep> itemRep) {
         this.itemRep = itemRep;
     }
 
