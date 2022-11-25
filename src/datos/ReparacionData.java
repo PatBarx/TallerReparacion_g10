@@ -227,7 +227,54 @@ public class ReparacionData {
         }
         return liBicis;
     }
-               
+    //////////////////////////////////////////////////////////////////////////            
+                         public Reparacion buscarReparacion(int id) {   
+        //Creo un obj, instancio un query..
+        Reparacion repa = new Reparacion();
+
+        
+//     UPDATE `reparacion` SET `id`='[value-1]',`servicioCodigo`='[value-2]',
+//     `clienteDni`='[value-3]',`bicicletaSerie`='[value-4]',`fecha_entrada`='[value-5]
+//     ',`costoTotal`='[value-6]',`estado`='[value-7]' WHERE 1  
+        
+        String query =  "SELECT * FROM reparacion WHERE id = ?";
+        //Try: Ps/ ps.set(id xparametro).. / rs.. /if(next) ../ Set obj / ps.Close...
+        
+        ServicioData serData=new ServicioData();
+        ClienteData clieData =new ClienteData();
+        Cliente clie =null;
+        BicicletaData biciData =new BicicletaData();
+        Bicicleta bici = null;
+        Servicio serv =null;
+        
+        
+        try {
+            PreparedStatement ps = con.prepareStatement(query);
+            ps.setInt(1, id);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) { 
+               repa.setId(rs.getInt("id"));
+               serv= serData.buscarServicio(id);
+               repa.setServicio(serv);
+               clie=clieData.buscarCliente(rs.getInt("clienteDni"));
+               repa.setCliente(clie);
+               bici= biciData.buscaBicicleta(rs.getInt("bicicletaSerie"));
+               repa.setBici(bici);
+               repa.setFechaEntrada(rs.getDate("fecha_entrada").toLocalDate());
+              
+               repa.setCostoTotal(rs.getFloat("costoTotal"));
+               repa.setEstado(rs.getInt("estado"));
+            } else {
+                JOptionPane.showMessageDialog(null, "ReparacionData Error:\n No se encuentra el Reparacion/activo");
+                return null;
+            }
+            ps.close();    
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "ReparacionData Error:\n" + e);
+            return null;
+        }    
+        return repa;
+    }               
     
 //LISTO!!! void altaReparacion(Reparacion repa) //PATO 
 //LISTO!!! void bajaReparacion(int id) //DANI
