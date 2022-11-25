@@ -173,14 +173,14 @@ public class ReparacionData {
         }
         return reparaciones;        
     }
-            
-    public float calcularCostoReparacion(Reparacion rep) { //(Servicio costo, ItemRep costo ){
+   //RETOCAR MAU         
+    /*public float calcularCostoReparacion(Reparacion rep) { //(Servicio costo, ItemRep costo ){
         float total = 0;
         for (ItemRep item : rep.getItemRep()) {
             total += item.getCosto();
         }
         return rep.getServicio().getCosto() + total;
-    }
+    }*/
     public ArrayList buscarBciCliente(int dniCli){      //Búsqueda de bicicletas por dueño
            ArrayList<Bicicleta> liBicis = new ArrayList();
            BicicletaData biDat = new BicicletaData();        

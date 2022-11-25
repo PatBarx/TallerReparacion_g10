@@ -11,30 +11,30 @@ public class Reparacion {
     private Cliente cliente;    //cliDNI;
     private Bicicleta bici;     //biciSerie;
     private LocalDate fechaEntrada;
-    private ArrayList<ItemRep> itemRep;
+    //private ArrayList<ItemRep> itemRep;
     private float costoTotal;
     private int estado; //(pendiente 1- resuelto 0 -Entregada 2 - anulada3)
 
     public Reparacion() {
     }
 
-    public Reparacion(Servicio servicio, Cliente cliente, Bicicleta bici, LocalDate fechaEntrada, ArrayList<ItemRep> itemRep, float costoTotal, int estado) {
+    public Reparacion(Servicio servicio, Cliente cliente, Bicicleta bici, LocalDate fechaEntrada, float costoTotal, int estado) {
         this.servicio = servicio;
         this.cliente = cliente;
         this.bici = bici;
         this.fechaEntrada = fechaEntrada;
-        this.itemRep = itemRep;
+        //this.itemRep = itemRep;
         this.costoTotal = costoTotal;
         this.estado = estado;
     }
 
-    public Reparacion(int id, Servicio servicio, Cliente cliente, Bicicleta bici, LocalDate fechaEntrada, ArrayList<ItemRep> itemRep, float costoTotal, int estado) {
+    public Reparacion(int id, Servicio servicio, Cliente cliente, Bicicleta bici, LocalDate fechaEntrada, float costoTotal, int estado) {
         this.id = id;
         this.servicio = servicio;
         this.cliente = cliente;
         this.bici = bici;
         this.fechaEntrada = fechaEntrada;
-        this.itemRep = itemRep;
+        //this.itemRep = itemRep;
         this.costoTotal = costoTotal;
         this.estado = estado;
     }
@@ -79,13 +79,13 @@ public class Reparacion {
         this.fechaEntrada = fechaEntrada;
     }
 
-    public ArrayList<ItemRep> getItemRep() {
-        return itemRep;
-    }
+//    public ArrayList<ItemRep> getItemRep() {
+//        return itemRep;
+//    }
 
-    public void setItemRep(ArrayList<ItemRep> itemRep) {
-        this.itemRep = itemRep;
-    }
+//    public void setItemRep(ArrayList<ItemRep> itemRep) {
+//        this.itemRep = itemRep;
+//    }
 
     public float getCostoTotal() {
         return costoTotal;
