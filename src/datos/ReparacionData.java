@@ -11,6 +11,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -181,29 +182,51 @@ public class ReparacionData {
         }
         return rep.getServicio().getCosto() + total;
     }*/
-    public ArrayList buscarBciCliente(int dniCli){      //Búsqueda de bicicletas por dueño
-           ArrayList<Bicicleta> liBicis = new ArrayList();
-           BicicletaData biDat = new BicicletaData();        
+    public ArrayList buscarBciCliente(int dniCli) {      //Búsqueda de bicicletas por dueño
+        ArrayList<Bicicleta> liBicis = new ArrayList();
+        BicicletaData biDat = new BicicletaData();
 
-           String query = "SELECT bicicleta.* FROM reparacion \n" +
-               "Left Join bicicleta ON bicicleta.serie = reparacion.bicicletaSerie \n" +
-               "WHERE reparacion.clienteDni = ? GROUP BY reparacion.bicicletaSerie";
-           try {
-               PreparedStatement ps = con.prepareStatement(query);
-               ps.setInt(1, dniCli);            
-               ResultSet rs = ps.executeQuery();
+        String query = "SELECT bicicleta.* FROM reparacion \n"
+                + "Left Join bicicleta ON bicicleta.serie = reparacion.bicicletaSerie \n"
+                + "WHERE reparacion.clienteDni = ? GROUP BY reparacion.bicicletaSerie";
+        try {
+            PreparedStatement ps = con.prepareStatement(query);
+            ps.setInt(1, dniCli);
+            ResultSet rs = ps.executeQuery();
 
-               while(rs.next()){                
-               Bicicleta bici= biDat.buscaBicicleta(rs.getInt("serie"));
+            while (rs.next()) {
+                Bicicleta bici = biDat.buscaBicicleta(rs.getInt("serie"));
 
-               liBicis.add(bici);
-               }
-               ps.close();
-           } catch (SQLException e) {
-               JOptionPane.showMessageDialog(null, "ReparacionData Error: " + e);
-           }            
-           return liBicis;
-       }
+                liBicis.add(bici);
+            }
+            ps.close();
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "ReparacionData Error: " + e);
+        }
+        return liBicis;
+    }
+    public ArrayList buscarBiciFechEnt(LocalDate fechaEnt) {    //Búsqueda de bicicletas por fecha de entrada
+        ArrayList<Bicicleta> liBicis = new ArrayList();
+        BicicletaData biDat = new BicicletaData();
+
+        String query = "SELECT bicicleta.* FROM reparacion LEFT JOIN bicicleta ON bicicleta.serie = reparacion.bicicletaSerie "
+                + "WHERE reparacion.fecha_entrada = ?  GROUP BY reparacion.bicicletaSerie";
+        try {
+            PreparedStatement ps = con.prepareStatement(query);
+            ps.setDate(1, Date.valueOf(fechaEnt));
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                Bicicleta bici = biDat.buscaBicicleta(rs.getInt("serie"));
+
+                liBicis.add(bici);
+            }
+            ps.close();
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "ReparacionData Error: " + e);
+        }
+        return liBicis;
+    }
                
     
 //LISTO!!! void altaReparacion(Reparacion repa) //PATO 
