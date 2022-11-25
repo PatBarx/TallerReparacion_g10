@@ -1,9 +1,12 @@
 package datos;
 
 import entidades.ItemRep;
+import entidades.Reparacion;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -83,6 +86,65 @@ public class ItemRepData {
                 Logger.getLogger(ReparacionData.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
+    }
+    
+        
+    public ItemRep buscarItemRep(Reparacion reparacion, int repuesto) {
+        RepuestoData rd = new RepuestoData();
+        ItemRep itemRep = null;
+        String query = "SELECT * FROM itemrep WHERE reparacionId=? and repuestoSerie = ?";
+        PreparedStatement ps = null;
+        try {
+            ps = con.prepareStatement(query);
+            ps.setInt(1, reparacion.getId());
+            ps.setInt(2, repuesto);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                itemRep = new ItemRep();
+                itemRep.setCantidad(rs.getInt("cantidad"));
+                itemRep.setReparacion(reparacion);
+                itemRep.setRepuesto(rd.buscarRepuesto(rs.getInt("repuestoSerie")));
+                itemRep.setCosto(rs.getFloat("costo"));
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(ItemRepData.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                ps.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(ItemRepData.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+
+        return itemRep;
+    }
+
+    public ArrayList<ItemRep> listarItemRepPorReparacion(Reparacion rep) {
+        RepuestoData rd = new RepuestoData();
+        ArrayList<ItemRep> listaItemRep = new ArrayList();
+        String query = "SELECT * FROM itemrep WHERE reparacionId=?";
+        PreparedStatement ps = null;
+        try {
+            ps = con.prepareStatement(query);
+            ps.setInt(1, rep.getId());
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                ItemRep itemRep = new ItemRep();
+                itemRep.setCosto(rs.getFloat("costo"));
+                itemRep.setCantidad(rs.getInt("cantidad"));
+                itemRep.setReparacion(rep);
+                itemRep.setRepuesto(rd.buscarRepuesto(rs.getInt("repuesto")));
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(ItemRepData.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                ps.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(ItemRepData.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        return listaItemRep;
     }
     
 //LISTO!!!void altaItemRep(ItemRep item) //DANI
