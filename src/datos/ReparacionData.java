@@ -181,18 +181,40 @@ public class ReparacionData {
         }
         return rep.getServicio().getCosto() + total;
     }
+    public ArrayList buscarBciCliente(int dniCli){      //Búsqueda de bicicletas por dueño
+           ArrayList<Bicicleta> liBicis = new ArrayList();
+           BicicletaData biDat = new BicicletaData();        
 
+           String query = "SELECT bicicleta.* FROM reparacion \n" +
+               "Left Join bicicleta ON bicicleta.serie = reparacion.bicicletaSerie \n" +
+               "WHERE reparacion.clienteDni = ? GROUP BY reparacion.bicicletaSerie";
+           try {
+               PreparedStatement ps = con.prepareStatement(query);
+               ps.setInt(1, dniCli);            
+               ResultSet rs = ps.executeQuery();
+
+               while(rs.next()){                
+               Bicicleta bici= biDat.buscaBicicleta(rs.getInt("serie"));
+
+               liBicis.add(bici);
+               }
+               ps.close();
+           } catch (SQLException e) {
+               JOptionPane.showMessageDialog(null, "ReparacionData Error: " + e);
+           }            
+           return liBicis;
+       }
                
     
 //LISTO!!! void altaReparacion(Reparacion repa) //PATO 
 //LISTO!!! void bajaReparacion(int id) //DANI
 //LISTO!!! void modificarReparacion(Reparacion repa) //MAuro
 //Reparacion buscarReparacion(int id) //ADRIAN
-//listar el costo total por reparación.     //(trae el costo del servicio + la suma de los costos de los items (repuestos) para pegarlos en el costo del encabezado)
-//listar las bicicletas pendientes de reparación, 
-//listar los ya reparadas, 
-//buscarBciCliente                  //Búsqueda de bicicletas por dueño
-//Bicicleta buscarBiciServ(Servicio serv, Reparacion?) //Búsqueda de bicicletas por servicio
-//buscarBiciFechEnt                 //Búsqueda de bicicletas por fecha de entrada.
-//float calcuarCostoItems()
+//LISTO!!! listar el costo total por reparación. //MAU    //(trae el costo del servicio + la suma de los costos de los items (repuestos) para pegarlos en el costo del encabezado)
+//LISTO!!! listar las bicicletas pendientes de reparación, //Dani
+//LISTO!!! listar los ya reparadas, //Dani
+//LISTO!!! buscarBciCliente() //Pato                    //Búsqueda de bicicletas por dueño
+//Bicicleta buscarBiciServ(Servicio serv) //ADRIAN      //Búsqueda de bicicletas por servicio
+//buscarBiciFechEnt  //Pato               //Búsqueda de bicicletas por fecha de entrada.
+//float calcuarCostoItems() //MAU
 }

@@ -13,11 +13,11 @@ public class TallerReparacion_FinalG10 {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-              Cliente clie =new Cliente(22777777,"juan","españa_1669",2345678,false);  
+        Cliente clie =new Cliente(22777777,"juan","españa_1669",2345678,false);  
         ClienteData clieDa =new ClienteData();
-      Bicicleta bici = new Bicicleta(12,"benzo","mountain","celeste",clie,true); 
+        Bicicleta bici = new Bicicleta(12,"benzo","mountain","celeste",clie,true); 
         
-      BicicletaData biDa= new BicicletaData(clie,clieDa);
+        BicicletaData biDa= new BicicletaData();
       
   // biDa.altaBicicleta(bici);
      // biDa.bajaBicicleta(12);

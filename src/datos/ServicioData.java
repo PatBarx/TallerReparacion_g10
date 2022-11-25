@@ -91,7 +91,7 @@ public class ServicioData {
                 serv.setCodigo(rs.getInt("codigo"));
                 serv.setDescripcion(rs.getString("descripcion"));
                 serv.setCosto(rs.getFloat("costo"));
-                serv.setEstado(rs.getBoolean("activo"));                
+                serv.setEstado(rs.getBoolean("estado"));                
                 arrServ.add(serv);
                 ps.close();    
             }            
@@ -113,7 +113,7 @@ public class ServicioData {
                 serv.setCodigo(rs.getInt("codigo"));
                 serv.setDescripcion(rs.getString("descripcion"));
                 serv.setCosto(rs.getFloat("costo"));
-                serv.setEstado(rs.getBoolean("activo")); 
+                serv.setEstado(rs.getBoolean("estado")); 
             } else {
                 JOptionPane.showMessageDialog(null, "ServicioData Error:\n No se encuentra el servicio/activo");
                 return null;
