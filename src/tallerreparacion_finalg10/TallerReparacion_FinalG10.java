@@ -81,6 +81,55 @@ public class TallerReparacion_FinalG10 {
         System.out.println(repBuscado);
         ****************************************************************************************************
          */
+        
+        /*
+        /////////        SERVICIO  PRUEBAS      /////////
+    
+    //Atributos (String descripcion, float costo, boolean estado)        
+        ServicioData serData = new ServicioData();
+        System.out.println("-   SERVICIO   -");
+        Servicio serv1 = new Servicio("Emparchar", 100, true);  
+    //ALTA SERVICIO:
+        //serData.altaServicio(serv1);
+        System.out.println("- ALTA SERVICIO -\n");
+        System.out.println("-COD: \t"+ serv1.getCodigo()
+                    +"\t| -Descripcion: " + serv1.getDescripcion()
+                    +"\n-COSTO: "+ serv1.getCosto()
+                    + "\t| -Estado: "+ serv1.isEstado()
+                    + "\n");
+        System.out.println("----------------------------------------");
+    //BAJA SERVICIO:
+        System.out.println("- BAJA SERVICIO -\n");
+        //serData.bajaServicio(7);
+        System.out.println("----------------------------------------");
+    //BUSCAR SERVICIO:    
+        System.out.println("- BUSCAR SERVICIO -\n");
+                //x Codigo de ID, AI.Mostrado en Alta
+        System.out.println(serData.buscarServicio(7));
+        System.out.println("----------------------------------------");       
+    //MODIFICAR SERVICIO:    
+        System.out.println("- MODIFICAR SERVICIO -\n");
+        //serv1 = serData.buscarServicio(7);
+        //serv1.setDescripcion("Inflado");
+        //serData.modificarServicio(serv1);
+        System.out.println("-COD: \t"+ serv1.getCodigo()
+                    +"\t| -Descripcion: " + serv1.getDescripcion()
+                    +"\n-COSTO: "+ serv1.getCosto()
+                    + "\t| -Estado: "+ serv1.isEstado()
+                    + "\n");
+        System.out.println("----------------------------------------");
+    //LISTAR SERVICIOS ArrayList<Servicio> listarServicios()  
+        System.out.println("- LISTAR SERVICIOS -\n");
+        ArrayList<Servicio> listaServ = serData.listarServicios();
+        //(int codigo, String descripcion, float costo, boolean estado)
+        for (Servicio servicio : listaServ) {
+            System.out.println("-COD: \t"+ servicio.getCodigo()
+                    +"\t| -Descripcion: " + servicio.getDescripcion()
+                    +"\n-COSTO: "+ servicio.getCosto()
+                    + "\t| -Estado: "+ servicio.isEstado()
+                    + "\n");
+        }
+        */
 
 
     }
