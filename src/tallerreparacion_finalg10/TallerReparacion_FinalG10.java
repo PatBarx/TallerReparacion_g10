@@ -10,21 +10,22 @@ import java.util.ArrayList;
  * @author Grupo10
  */
 public class TallerReparacion_FinalG10 {
+
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-     //   Cliente clie =new Cliente(44,"anselmo marino","25 de mayo",134,true);  
-     //   ClienteData clieDa =new ClienteData();
-     //   Bicicleta bici = new Bicicleta(12,"benzo","mountain","celeste",clie,true); 
-        
-     //   BicicletaData biDa= new BicicletaData();
+       // Cliente clie = new Cliente(1234344, "anselmo marino", "25 de mayo", 134, true);
+        //ClienteData clieDa = new ClienteData();
+       // Bicicleta bici = new Bicicleta(12, "benzo", "mountain", "celeste", clie, true);
+        //clieDa.guardarCliente(clie);
+        //BicicletaData biDa = new BicicletaData();
 
-  // biDa.altaBicicleta(bici);
-     // biDa.bajaBicicleta(12);
-   // biDa.modificarBicicleta(bici);
-    // System.out.println(biDa.listarBicicletas()); 
- //   System.out.println(biDa.buscaBicicleta(12));
+        //biDa.altaBicicleta(bici);
+        // biDa.bajaBicicleta(12);
+        // biDa.modificarBicicleta(bici);
+        // System.out.println(biDa.listarBicicletas()); 
+        //   System.out.println(biDa.buscaBicicleta(12));
         System.out.println("pruebas de cliente en el main, guardar,buscar,borrar,modificar-------------------------------------------------------");
         //guardar cliente
 // clieDa.guardarCliente(clie);
@@ -83,8 +84,7 @@ public class TallerReparacion_FinalG10 {
         System.out.println(repBuscado);
         ****************************************************************************************************
          */
-        
-        /*
+ /*
         /////////        SERVICIO  PRUEBAS      /////////
     
     //Atributos (String descripcion, float costo, boolean estado)        
@@ -131,9 +131,7 @@ public class TallerReparacion_FinalG10 {
                     + "\t| -Estado: "+ servicio.isEstado()
                     + "\n");
         }
-        */
-
-
+         */
     }
-    
+
 }

@@ -32,7 +32,7 @@ public class BicicletaData {
     public void altaBicicleta(Bicicleta bici){
 //INSERT INTO `bicicleta`(`serie`, `marca`, `tipo`, `color`, `clienteDni`,`estado`) VALUES ('?','?','?','?','?');
 //INSERT INTO `bicicleta`(`serie`, `marca`, `tipo`, `color`, `clienteDni`, `estado`) VALUES ('1','venzo','montain','verde','23456789','1');
-        String query = "INSERT INTO bicicleta (serie, marca, tipo, color, clienteDni, estado) VALUES (?, ?, ?, ?, ?, ?)";
+        String query = "INSERT INTO bicicleta (serie, marca, tipo, color, clienteDni, estado) VALUES ('?', '?', '?', '?', '?', '?')";
         try {
             PreparedStatement ps = con.prepareStatement(query,Statement.RETURN_GENERATED_KEYS);
             ps.setInt(1, bici.getNroSerie());
