@@ -33,7 +33,7 @@ public class RepuestoData {
                 JOptionPane.showMessageDialog(null, "Error al guardar el respuesto");
             }
         }catch (SQLException ex){
-            Logger.getLogger(RepuestoData.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null, "Error al guardar el respuesto, serie duplicada?");
         }finally{
              try {
                 ps.close();
