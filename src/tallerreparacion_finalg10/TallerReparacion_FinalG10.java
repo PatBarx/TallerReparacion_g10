@@ -25,7 +25,8 @@ public class TallerReparacion_FinalG10 {
    // biDa.modificarBicicleta(bici);
     // System.out.println(biDa.listarBicicletas()); 
  //   System.out.println(biDa.buscaBicicleta(12));
- //guardar cliente
+        System.out.println("pruebas de cliente en el main, guardar,buscar,borrar,modificar-------------------------------------------------------");
+        //guardar cliente
 // clieDa.guardarCliente(clie);
 //buscar cliente po id
 // System.out.println(clieDa.buscarCliente(22777777));
@@ -39,7 +40,8 @@ public class TallerReparacion_FinalG10 {
             System.out.println(cliente);
             
         }*/
-        
+        System.out.println("aca terminan las pruebas de cliente----------------------------------------------------------------------------------");
+
         /*  CLASE RESPUESTO TESTING ******************************************************************
         Repuesto rp1 = new Repuesto(123,"Repuesto 1", 200, true);
         Repuesto rp2 = new Repuesto(456,"Repuesto 2", 300, true);
