@@ -15,17 +15,25 @@ public class TallerReparacion_FinalG10 {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-       // Cliente clie = new Cliente(1234344, "anselmo marino", "25 de mayo", 134, true);
-        //ClienteData clieDa = new ClienteData();
-       // Bicicleta bici = new Bicicleta(12, "benzo", "mountain", "celeste", clie, true);
-        //clieDa.guardarCliente(clie);
-        //BicicletaData biDa = new BicicletaData();
+        
+        
+///////////////////pruebas bicicleta y bicicleta Data/////////////// 
 
+      //  Cliente clie =new Cliente(66,"anselmo marino","25 de mayo",134,true);  
+       // ClienteData clieDa = new ClienteData();
+
+        //Cliente clie1 = new Cliente(598,"luciano","9 de julio",234,true);
+        //clieDa.guardarCliente(clie1);
+        // clieDa.guardarCliente(clie);
+        //  BicicletaData biDa= new BicicletaData();
+        // Bicicleta bici = new Bicicleta(698,"banzo","mountain","verde",clie1,true); 
         //biDa.altaBicicleta(bici);
-        // biDa.bajaBicicleta(12);
+        //biDa.bajaBicicleta(44);
         // biDa.modificarBicicleta(bici);
-        // System.out.println(biDa.listarBicicletas()); 
-        //   System.out.println(biDa.buscaBicicleta(12));
+        //System.out.println(biDa.listarBicicletas()); 
+        // System.out.println(biDa.buscaBicicleta(67));
+        //////////////////////////////////////////////////////////////////
+        ////////////////////////////////////////////////////////////////////////
         System.out.println("pruebas de cliente en el main, guardar,buscar,borrar,modificar-------------------------------------------------------");
         //guardar cliente
 // clieDa.guardarCliente(clie);

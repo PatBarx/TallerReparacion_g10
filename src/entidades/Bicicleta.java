@@ -10,7 +10,7 @@ public class Bicicleta {
     private Cliente cliente;    //clienteDni;
     private boolean estado; 
 
-    public Bicicleta(int nroSerie, String marca, String tipo, String color, Cliente clienteDni, boolean estado) {
+    public Bicicleta(int nroSerie, String marca, String tipo, String color, Cliente cliente, boolean estado) {
         this.nroSerie = nroSerie;
         this.marca = marca;
         this.tipo = tipo;
@@ -19,7 +19,7 @@ public class Bicicleta {
         this.estado = estado;
     }
 
-    public Bicicleta(String marca, String tipo, String color, Cliente clienteDni, boolean estado) {
+    public Bicicleta(String marca, String tipo, String color, Cliente cliente, boolean estado) {
         this.marca = marca;
         this.tipo = tipo;
         this.color = color;
@@ -77,6 +77,7 @@ public class Bicicleta {
     public void setEstado(boolean estado) {
         this.estado = estado;
     }
+
 
     @Override
     public int hashCode() {
