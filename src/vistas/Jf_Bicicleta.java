@@ -10,12 +10,15 @@ package vistas;
  * @author Pat
  */
 public class Jf_Bicicleta extends javax.swing.JFrame {
-
+private final java.awt.Frame padre;
+private boolean esNuevo;
     /**
      * Creates new form Jif_Cliente
      */
-    public Jf_Bicicleta() {
+    public Jf_Bicicleta(java.awt.Frame padre, boolean esNuevo) {
         initComponents();
+        this.padre = padre;
+        this.esNuevo = esNuevo;
     }
 
     /**
@@ -38,12 +41,19 @@ public class Jf_Bicicleta extends javax.swing.JFrame {
         btn_salir = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jTf_serie.setFont(new java.awt.Font("Dialog", 0, 16)); // NOI18N
-        jTf_serie.setForeground(new java.awt.Color(0, 0, 0));
         jTf_serie.setBorder(null);
         jTf_serie.addComponentListener(new java.awt.event.ComponentAdapter() {
             public void componentShown(java.awt.event.ComponentEvent evt) {
@@ -53,7 +63,6 @@ public class Jf_Bicicleta extends javax.swing.JFrame {
         jPanel1.add(jTf_serie, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 130, 270, 20));
 
         jTf_marca.setFont(new java.awt.Font("Dialog", 0, 16)); // NOI18N
-        jTf_marca.setForeground(new java.awt.Color(0, 0, 0));
         jTf_marca.setBorder(null);
         jTf_marca.addComponentListener(new java.awt.event.ComponentAdapter() {
             public void componentShown(java.awt.event.ComponentEvent evt) {
@@ -63,7 +72,6 @@ public class Jf_Bicicleta extends javax.swing.JFrame {
         jPanel1.add(jTf_marca, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 210, 270, 20));
 
         jTf_tipo.setFont(new java.awt.Font("Dialog", 0, 16)); // NOI18N
-        jTf_tipo.setForeground(new java.awt.Color(0, 0, 0));
         jTf_tipo.setBorder(null);
         jTf_tipo.addComponentListener(new java.awt.event.ComponentAdapter() {
             public void componentShown(java.awt.event.ComponentEvent evt) {
@@ -73,7 +81,6 @@ public class Jf_Bicicleta extends javax.swing.JFrame {
         jPanel1.add(jTf_tipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 290, 270, 20));
 
         jTf_color.setFont(new java.awt.Font("Dialog", 0, 16)); // NOI18N
-        jTf_color.setForeground(new java.awt.Color(0, 0, 0));
         jTf_color.setBorder(null);
         jTf_color.addComponentListener(new java.awt.event.ComponentAdapter() {
             public void componentShown(java.awt.event.ComponentEvent evt) {
@@ -82,7 +89,6 @@ public class Jf_Bicicleta extends javax.swing.JFrame {
         });
         jPanel1.add(jTf_color, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 370, 270, 20));
 
-        jCbox_Dni.setBackground(new java.awt.Color(255, 255, 255));
         jCbox_Dni.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         jCbox_Dni.setBorder(null);
         jPanel1.add(jCbox_Dni, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 440, 290, 30));
@@ -120,6 +126,14 @@ public class Jf_Bicicleta extends javax.swing.JFrame {
     private void jTf_colorComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_jTf_colorComponentShown
         // TODO add your handling code here:
     }//GEN-LAST:event_jTf_colorComponentShown
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+this.padre.setEnabled(false);        // TODO add your handling code here:
+    }//GEN-LAST:event_formWindowOpened
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+this.padre.setEnabled(true);        // TODO add your handling code here:
+    }//GEN-LAST:event_formWindowClosing
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

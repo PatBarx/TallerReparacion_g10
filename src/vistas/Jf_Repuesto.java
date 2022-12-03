@@ -11,11 +11,16 @@ package vistas;
  */
 public class Jf_Repuesto extends javax.swing.JFrame {
 
+    private final java.awt.Frame padre;
+    private boolean esNuevo;
+
     /**
      * Creates new form Jif_Cliente
      */
-    public Jf_Repuesto() {
+    public Jf_Repuesto(java.awt.Frame padre, boolean esNuevo) {
         initComponents();
+        this.padre = padre;
+        this.esNuevo = esNuevo;
     }
 
     /**
@@ -37,12 +42,19 @@ public class Jf_Repuesto extends javax.swing.JFrame {
         btn_salir = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jTf_serie.setFont(new java.awt.Font("Dialog", 0, 16)); // NOI18N
-        jTf_serie.setForeground(new java.awt.Color(0, 0, 0));
         jTf_serie.setBorder(null);
         jTf_serie.addComponentListener(new java.awt.event.ComponentAdapter() {
             public void componentShown(java.awt.event.ComponentEvent evt) {
@@ -52,7 +64,6 @@ public class Jf_Repuesto extends javax.swing.JFrame {
         jPanel1.add(jTf_serie, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 130, 270, 20));
 
         jTf_descrip.setFont(new java.awt.Font("Dialog", 0, 16)); // NOI18N
-        jTf_descrip.setForeground(new java.awt.Color(0, 0, 0));
         jTf_descrip.setBorder(null);
         jTf_descrip.addComponentListener(new java.awt.event.ComponentAdapter() {
             public void componentShown(java.awt.event.ComponentEvent evt) {
@@ -62,7 +73,6 @@ public class Jf_Repuesto extends javax.swing.JFrame {
         jPanel1.add(jTf_descrip, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 210, 270, 20));
 
         jTf_costo.setFont(new java.awt.Font("Dialog", 0, 16)); // NOI18N
-        jTf_costo.setForeground(new java.awt.Color(0, 0, 0));
         jTf_costo.setBorder(null);
         jTf_costo.addComponentListener(new java.awt.event.ComponentAdapter() {
             public void componentShown(java.awt.event.ComponentEvent evt) {
@@ -101,6 +111,14 @@ public class Jf_Repuesto extends javax.swing.JFrame {
     private void jTf_costoComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_jTf_costoComponentShown
         // TODO add your handling code here:
     }//GEN-LAST:event_jTf_costoComponentShown
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        this.padre.setEnabled(false);        // TODO add your handling code here:
+    }//GEN-LAST:event_formWindowOpened
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        this.padre.setEnabled(true);        // TODO add your handling code here:
+    }//GEN-LAST:event_formWindowClosing
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
