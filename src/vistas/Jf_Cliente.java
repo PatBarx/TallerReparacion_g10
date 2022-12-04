@@ -169,7 +169,7 @@ public class Jf_Cliente extends javax.swing.JFrame {
        al.setDomicilio(domicilio);
        al.setTel(tel);
        al.setEstado(true);
-       
+       alDa.actualizarCliente(al);
        }
        // TODO add your handling code here:
     }//GEN-LAST:event_btn_guardarActionPerformed
