@@ -5,6 +5,8 @@
  */
 package vistas;
 
+import datos.ClienteData;
+import entidades.Cliente;
 import javax.swing.JOptionPane;
 
 /**
@@ -93,6 +95,11 @@ public class Jf_Cliente extends javax.swing.JFrame {
         jPanel1.add(jTf_domicilio, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 370, 270, 20));
 
         btn_guardar.setText("GUARDAR");
+        btn_guardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_guardarActionPerformed(evt);
+            }
+        });
         jPanel1.add(btn_guardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 520, 130, 40));
 
         btn_cambiar.setText("CAMBIAR");
@@ -133,6 +140,39 @@ public class Jf_Cliente extends javax.swing.JFrame {
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
         this.padre.setEnabled(true);        // TODO add your handling code here:
     }//GEN-LAST:event_formWindowClosing
+
+    private void btn_guardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_guardarActionPerformed
+       ClienteData alDa=new ClienteData();
+       Cliente al=new Cliente();
+       if(esNuevo){
+       
+       int dni=Integer.parseInt(jTf_dni.getText()); 
+        String nombre= jTf_nombre.getText();
+       String domicilio= jTf_domicilio.getText();
+       int tel=Integer.parseInt(jTf_telefono.getText());
+        //boolean estado=jrbEstado.isSelected();
+    
+       al.setNombre(nombre);
+       al.setDomicilio(domicilio);
+       al.setDni(dni);
+       al.setTel(tel);
+       al.setEstado(true);
+      alDa.guardarCliente(al); 
+       }  else{
+            int dni=Integer.parseInt(jTf_dni.getText());
+            String nombre= jTf_nombre.getText();
+       String domicilio= jTf_domicilio.getText();
+        int tel=Integer.parseInt(jTf_telefono.getText());
+        // boolean estado=jrbEstado.isSelected();  
+       al.setDni(dni);
+       al.setNombre(nombre);
+       al.setDomicilio(domicilio);
+       al.setTel(tel);
+       al.setEstado(true);
+       
+       }
+       // TODO add your handling code here:
+    }//GEN-LAST:event_btn_guardarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
