@@ -572,7 +572,11 @@ tab_panelPrincipal.setSelectedIndex(5);        // TODO add your handling code he
     }//GEN-LAST:event_btn_bicicleta_bajaActionPerformed
 
     private void btn_bicicleta_modificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_bicicleta_modificarActionPerformed
-        // TODO add your handling code here:
+            Bicicleta bicicleta = biciDa.buscaBicicleta((Integer)tModeloBicicleta.getValueAt(jTable_Bicicleta.getSelectedRow(), 0));
+        Jf_Bicicleta jfBicicleta =new Jf_Bicicleta(this,bicicleta);
+        jfBicicleta.setAlwaysOnTop(true);
+        jfBicicleta.show(true);
+        jfBicicleta.setVisible(true);
     }//GEN-LAST:event_btn_bicicleta_modificarActionPerformed
 
     private void btn_servicio_bajaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_servicio_bajaActionPerformed

@@ -6,7 +6,10 @@
 package vistas;
 
 import datos.BicicletaData;
+import datos.ClienteData;
 import entidades.Bicicleta;
+import entidades.Cliente;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -24,6 +27,7 @@ private final java.awt.Frame padre;
         this.padre = padre;
         this.bicicleta = bicicleta;
         this.biciDa = new BicicletaData();
+         llenarCombos();
     }
 
     /**
@@ -94,18 +98,26 @@ private final java.awt.Frame padre;
         jPanel1.add(jTf_color, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 370, 270, 20));
 
         jCbox_Dni.setBackground(new java.awt.Color(255, 255, 255));
-        jCbox_Dni.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jCbox_Dni.setBorder(null);
         jPanel1.add(jCbox_Dni, new org.netbeans.lib.awtextra.AbsoluteConstraints(116, 441, 293, 35));
 
         btn_guardar1.setBackground(new java.awt.Color(82, 148, 202));
         btn_guardar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/Btn-xGuarda.png"))); // NOI18N
         btn_guardar1.setBorder(null);
+        btn_guardar1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_guardar1ActionPerformed(evt);
+            }
+        });
         jPanel1.add(btn_guardar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 520, 140, 50));
 
         btn_salir.setBackground(new java.awt.Color(82, 148, 202));
         btn_salir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/Btn-xSalir.png"))); // NOI18N
         btn_salir.setBorder(null);
+        btn_salir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_salirActionPerformed(evt);
+            }
+        });
         jPanel1.add(btn_salir, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 520, 140, 50));
 
         jLabel1.setBackground(javax.swing.UIManager.getDefaults().getColor("CheckBoxMenuItem.selectionBackground"));
@@ -134,18 +146,88 @@ private final java.awt.Frame padre;
     }//GEN-LAST:event_jTf_colorComponentShown
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-this.padre.setEnabled(false);        // TODO add your handling code here:
+this.padre.setEnabled(false);  
+ if (bicicleta != null) {
+jTf_serie.setText(String.valueOf(bicicleta.getNroSerie()));
+jTf_marca.setText(bicicleta.getMarca());
+jTf_tipo.setText(bicicleta.getMarca());
+jTf_color.setText(bicicleta.getColor());
+jCbox_Dni.setSelectedItem(bicicleta.getCliente());
+jCbox_Dni.enable(false);
+
+
+ }
     }//GEN-LAST:event_formWindowOpened
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
-this.padre.setEnabled(true);        // TODO add your handling code here:
+this.padre.setEnabled(true);       
     }//GEN-LAST:event_formWindowClosing
 
+    private void btn_guardar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_guardar1ActionPerformed
+        if (esNumero(jTf_serie.getText()) && jTf_marca.getText().length() > 1&& jTf_tipo.getText().length() > 1&& jTf_color.getText().length() > 1) {  
+        if(bicicleta==null){
+       bicicleta= new Bicicleta();
+       bicicleta.setNroSerie(Integer.parseInt(jTf_serie.getText()));
+       bicicleta.setMarca(jTf_marca.getText());
+       bicicleta.setTipo(jTf_tipo.getText());
+       bicicleta.setColor(jTf_color.getText());
+     
+       Cliente clie =null;
+       clie= (Cliente)jCbox_Dni.getSelectedItem();
+      
+       bicicleta.setCliente(clie);
+       bicicleta.setEstado(true);
+       biciDa.altaBicicleta(bicicleta);
+       }else{
+             bicicleta.setNroSerie(Integer.parseInt(jTf_serie.getText()));
+       bicicleta.setMarca(jTf_marca.getText());
+       bicicleta.setTipo(jTf_tipo.getText());
+       bicicleta.setColor(jTf_color.getText()); 
+       biciDa.modificarBicicleta(bicicleta);
+              }}
+       else{
+       
+       JOptionPane.showMessageDialog(this, "Debe completar todos los datos correctamente");
+       
+       
+       }
+    }//GEN-LAST:event_btn_guardar1ActionPerformed
 
+    private void btn_salirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_salirActionPerformed
+ this.padre.setEnabled(true);
+        this.dispose();
+    }//GEN-LAST:event_btn_salirActionPerformed
+        public void llenarCombos(){
+            ClienteData clieDa =new ClienteData();
+    for (Cliente clie: clieDa.listarCliente()) {
+       jCbox_Dni.addItem(clie);
+        
+    }}
+            public boolean esNumero(String cadena) {
+        boolean resultado;
+        try {
+            Integer.parseInt(cadena);
+            resultado = true;
+        } catch (NumberFormatException excepcion) {
+            resultado = false;
+        }
+        return resultado;
+    }
+
+    public boolean esFloat(String cadena) {
+        boolean resultado;
+        try {
+            Float.parseFloat(cadena);
+            resultado = true;
+        } catch (NumberFormatException excepcion) {
+            resultado = false;
+        }
+        return resultado;
+    } 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_guardar1;
     private javax.swing.JButton btn_salir;
-    private javax.swing.JComboBox<String> jCbox_Dni;
+    private javax.swing.JComboBox<Cliente> jCbox_Dni;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField jTf_color;
