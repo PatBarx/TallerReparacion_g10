@@ -43,7 +43,6 @@ public class Jf_Repuesto extends javax.swing.JFrame {
         jTf_costo = new javax.swing.JTextField();
         btn_guardar = new javax.swing.JLabel();
         btn_guardar1 = new javax.swing.JButton();
-        btn_cambiar = new javax.swing.JButton();
         btn_salir = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
@@ -87,14 +86,15 @@ public class Jf_Repuesto extends javax.swing.JFrame {
         jPanel1.add(jTf_costo, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 290, 270, 20));
         jPanel1.add(btn_guardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 480, 120, 40));
 
-        btn_guardar1.setText("GUARDAR");
-        jPanel1.add(btn_guardar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 520, 130, 40));
+        btn_guardar1.setBackground(new java.awt.Color(82, 148, 202));
+        btn_guardar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/Btn-xGuarda.png"))); // NOI18N
+        btn_guardar1.setBorder(null);
+        jPanel1.add(btn_guardar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 520, 140, 50));
 
-        btn_cambiar.setText("CAMBIAR");
-        jPanel1.add(btn_cambiar, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 520, 130, 40));
-
-        btn_salir.setText("SALIR");
-        jPanel1.add(btn_salir, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 520, 130, 40));
+        btn_salir.setBackground(new java.awt.Color(82, 148, 202));
+        btn_salir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/Btn-xSalir.png"))); // NOI18N
+        btn_salir.setBorder(null);
+        jPanel1.add(btn_salir, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 520, 140, 50));
 
         jLabel1.setBackground(javax.swing.UIManager.getDefaults().getColor("CheckBoxMenuItem.selectionBackground"));
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/repueBkg.png"))); // NOI18N
@@ -127,7 +127,6 @@ public class Jf_Repuesto extends javax.swing.JFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btn_cambiar;
     private javax.swing.JLabel btn_guardar;
     private javax.swing.JButton btn_guardar1;
     private javax.swing.JButton btn_salir;
