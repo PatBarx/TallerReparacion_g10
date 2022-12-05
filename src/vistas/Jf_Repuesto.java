@@ -7,6 +7,7 @@ package vistas;
 
 import datos.RepuestoData;
 import entidades.Repuesto;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -39,7 +40,7 @@ public class Jf_Repuesto extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jTf_serie = new javax.swing.JTextField();
-        jTf_descrip = new javax.swing.JTextField();
+        jTf_descripcion = new javax.swing.JTextField();
         jTf_costo = new javax.swing.JTextField();
         btn_guardar = new javax.swing.JLabel();
         btn_guardar1 = new javax.swing.JButton();
@@ -67,14 +68,14 @@ public class Jf_Repuesto extends javax.swing.JFrame {
         });
         jPanel1.add(jTf_serie, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 130, 270, 20));
 
-        jTf_descrip.setFont(new java.awt.Font("Dialog", 0, 16)); // NOI18N
-        jTf_descrip.setBorder(null);
-        jTf_descrip.addComponentListener(new java.awt.event.ComponentAdapter() {
+        jTf_descripcion.setFont(new java.awt.Font("Dialog", 0, 16)); // NOI18N
+        jTf_descripcion.setBorder(null);
+        jTf_descripcion.addComponentListener(new java.awt.event.ComponentAdapter() {
             public void componentShown(java.awt.event.ComponentEvent evt) {
-                jTf_descripComponentShown(evt);
+                jTf_descripcionComponentShown(evt);
             }
         });
-        jPanel1.add(jTf_descrip, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 210, 270, 20));
+        jPanel1.add(jTf_descripcion, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 210, 270, 20));
 
         jTf_costo.setFont(new java.awt.Font("Dialog", 0, 16)); // NOI18N
         jTf_costo.setBorder(null);
@@ -89,11 +90,21 @@ public class Jf_Repuesto extends javax.swing.JFrame {
         btn_guardar1.setBackground(new java.awt.Color(82, 148, 202));
         btn_guardar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/Btn-xGuarda.png"))); // NOI18N
         btn_guardar1.setBorder(null);
+        btn_guardar1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_guardar1ActionPerformed(evt);
+            }
+        });
         jPanel1.add(btn_guardar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 520, 140, 50));
 
         btn_salir.setBackground(new java.awt.Color(82, 148, 202));
         btn_salir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/Btn-xSalir.png"))); // NOI18N
         btn_salir.setBorder(null);
+        btn_salir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_salirActionPerformed(evt);
+            }
+        });
         jPanel1.add(btn_salir, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 520, 140, 50));
 
         jLabel1.setBackground(javax.swing.UIManager.getDefaults().getColor("CheckBoxMenuItem.selectionBackground"));
@@ -109,22 +120,73 @@ public class Jf_Repuesto extends javax.swing.JFrame {
         jTf_serie.setOpaque(false);
     }//GEN-LAST:event_jTf_serieComponentShown
 
-    private void jTf_descripComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_jTf_descripComponentShown
+    private void jTf_descripcionComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_jTf_descripcionComponentShown
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTf_descripComponentShown
+    }//GEN-LAST:event_jTf_descripcionComponentShown
 
     private void jTf_costoComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_jTf_costoComponentShown
         // TODO add your handling code here:
     }//GEN-LAST:event_jTf_costoComponentShown
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        this.padre.setEnabled(false);        // TODO add your handling code here:
+        this.padre.setEnabled(false);
+        if (repuesto != null) {
+            jTf_serie.setText(String.valueOf(repuesto.getSerie()));
+            jTf_descripcion.setText(repuesto.getDescripcion());
+            jTf_costo.setText(String.valueOf(repuesto.getCosto()));
+            jTf_serie.enable(false);
+        }
     }//GEN-LAST:event_formWindowOpened
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
         this.padre.setEnabled(true);        // TODO add your handling code here:
     }//GEN-LAST:event_formWindowClosing
 
+    private void btn_guardar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_guardar1ActionPerformed
+            if (esNumero(jTf_serie.getText()) && esFloat(jTf_costo.getText()) && jTf_descripcion.getText().length() > 1) {
+            if (repuesto == null) {
+                repuesto = new Repuesto();
+                repuesto.setSerie(Integer.parseInt(jTf_serie.getText()));
+                repuesto.setDescripcion(jTf_descripcion.getText());
+                repuesto.setCosto(Float.parseFloat(jTf_costo.getText()));
+                repuesto.setEstado(true);
+                repuDa.altaRepuesto(repuesto);
+            } else {
+                repuesto.setDescripcion(jTf_descripcion.getText());
+                repuesto.setCosto(Float.parseFloat(jTf_costo.getText()));
+                repuDa.modificacionRepuesto(repuesto);
+            }
+        }else{
+            JOptionPane.showMessageDialog(this, "Debe completar todos los datos correctamente");
+        }
+    }//GEN-LAST:event_btn_guardar1ActionPerformed
+
+    private void btn_salirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_salirActionPerformed
+        this.padre.setEnabled(true);
+        this.dispose();       
+    }//GEN-LAST:event_btn_salirActionPerformed
+
+        public boolean esNumero(String cadena) {
+        boolean resultado;
+        try {
+            Integer.parseInt(cadena);
+            resultado = true;
+        } catch (NumberFormatException excepcion) {
+            resultado = false;
+        }
+        return resultado;
+    }
+
+    public boolean esFloat(String cadena) {
+        boolean resultado;
+        try {
+            Float.parseFloat(cadena);
+            resultado = true;
+        } catch (NumberFormatException excepcion) {
+            resultado = false;
+        }
+        return resultado;
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel btn_guardar;
@@ -133,7 +195,7 @@ public class Jf_Repuesto extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField jTf_costo;
-    private javax.swing.JTextField jTf_descrip;
+    private javax.swing.JTextField jTf_descripcion;
     private javax.swing.JTextField jTf_serie;
     // End of variables declaration//GEN-END:variables
 }

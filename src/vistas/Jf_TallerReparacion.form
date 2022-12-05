@@ -284,9 +284,6 @@
             </Component>
             <Component class="javax.swing.JButton" name="btn_cliente_baja">
               <Properties>
-                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
-                </Property>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/recursos/Btn-Baja.png"/>
                 </Property>
@@ -308,9 +305,6 @@
             </Component>
             <Component class="javax.swing.JButton" name="btn_cliente_alta">
               <Properties>
-                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
-                </Property>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/recursos/Btn-Alta.png"/>
                 </Property>
@@ -332,9 +326,6 @@
             </Component>
             <Component class="javax.swing.JButton" name="btn_cliente_modificar">
               <Properties>
-                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
-                </Property>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/recursos/Btn-Actua.png"/>
                 </Property>
@@ -479,9 +470,6 @@
             </Component>
             <Component class="javax.swing.JButton" name="btn_bicicleta_alta">
               <Properties>
-                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
-                </Property>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/recursos/Btn-Alta.png"/>
                 </Property>
@@ -500,9 +488,6 @@
             </Component>
             <Component class="javax.swing.JButton" name="btn_bicicleta_baja">
               <Properties>
-                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
-                </Property>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/recursos/Btn-Baja.png"/>
                 </Property>
@@ -521,9 +506,6 @@
             </Component>
             <Component class="javax.swing.JButton" name="btn_bicicleta_modificar">
               <Properties>
-                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
-                </Property>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/recursos/Btn-Actua.png"/>
                 </Property>
@@ -604,9 +586,6 @@
           <SubComponents>
             <Component class="javax.swing.JButton" name="btn_servicio_alta">
               <Properties>
-                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
-                </Property>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/recursos/Btn-Alta.png"/>
                 </Property>
@@ -625,9 +604,6 @@
             </Component>
             <Component class="javax.swing.JButton" name="btn_servicio_baja">
               <Properties>
-                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
-                </Property>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/recursos/Btn-Baja.png"/>
                 </Property>
@@ -646,9 +622,6 @@
             </Component>
             <Component class="javax.swing.JButton" name="btn_servicio_modificar">
               <Properties>
-                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
-                </Property>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/recursos/Btn-Actua.png"/>
                 </Property>
@@ -758,9 +731,6 @@
           <SubComponents>
             <Component class="javax.swing.JButton" name="btn_repuesto_alta">
               <Properties>
-                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
-                </Property>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/recursos/Btn-Alta.png"/>
                 </Property>
@@ -782,9 +752,6 @@
             </Component>
             <Component class="javax.swing.JButton" name="btn_repuesto_modificar">
               <Properties>
-                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
-                </Property>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/recursos/Btn-Actua.png"/>
                 </Property>
@@ -805,9 +772,6 @@
             </Component>
             <Component class="javax.swing.JButton" name="btn_repuesto_baja">
               <Properties>
-                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
-                </Property>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/recursos/Btn-Baja.png"/>
                 </Property>
@@ -919,9 +883,6 @@
           <SubComponents>
             <Component class="javax.swing.JButton" name="btn_reparacion_alta">
               <Properties>
-                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
-                </Property>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/recursos/Btn-Alta.png"/>
                 </Property>
@@ -940,9 +901,6 @@
             </Component>
             <Component class="javax.swing.JButton" name="btn_reparacion_modificar">
               <Properties>
-                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
-                </Property>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/recursos/Btn-Actua.png"/>
                 </Property>
