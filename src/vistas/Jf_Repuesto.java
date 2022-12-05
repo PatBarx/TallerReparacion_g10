@@ -5,6 +5,9 @@
  */
 package vistas;
 
+import datos.RepuestoData;
+import entidades.Repuesto;
+
 /**
  *
  * @author Pat
@@ -12,15 +15,17 @@ package vistas;
 public class Jf_Repuesto extends javax.swing.JFrame {
 
     private final java.awt.Frame padre;
-    private boolean esNuevo;
+    private Repuesto repuesto;
+    private RepuestoData repuDa;
 
     /**
      * Creates new form Jif_Cliente
      */
-    public Jf_Repuesto(java.awt.Frame padre, boolean esNuevo) {
+    public Jf_Repuesto(java.awt.Frame padre, Repuesto repuesto) {
         initComponents();
         this.padre = padre;
-        this.esNuevo = esNuevo;
+        this.repuesto = repuesto;
+        this.repuDa = new RepuestoData();
     }
 
     /**

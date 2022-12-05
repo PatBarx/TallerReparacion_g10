@@ -16,15 +16,17 @@ import javax.swing.JOptionPane;
 public class Jf_Cliente extends javax.swing.JFrame {
 
     private final java.awt.Frame padre;
-    private boolean esNuevo;
+    private Cliente cliente;
+    private ClienteData cliDa;
 
     /**
      * Creates new form Jif_Cliente
      */
-    public Jf_Cliente(java.awt.Frame padre, boolean esNuevo) {
+    public Jf_Cliente(java.awt.Frame padre, Cliente cliente) {
         initComponents();
         this.padre = padre;
-        this.esNuevo = esNuevo;
+        this.cliente = cliente;
+        this.cliDa = new ClienteData();
     }
 
     /**
@@ -135,6 +137,12 @@ public class Jf_Cliente extends javax.swing.JFrame {
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         this.padre.setEnabled(false);        // TODO add your handling code here:
+        if (cliente != null) {
+            jTf_dni.setText(String.valueOf(cliente.getDni()));
+            jTf_nombre.setText(cliente.getNombre());
+            jTf_domicilio.setText(cliente.getDomicilio());
+            jTf_telefono.setText(String.valueOf(cliente.getTel()));
+        }
     }//GEN-LAST:event_formWindowOpened
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
@@ -142,36 +150,35 @@ public class Jf_Cliente extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowClosing
 
     private void btn_guardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_guardarActionPerformed
-       ClienteData alDa=new ClienteData();
-       Cliente al=new Cliente();
-       if(esNuevo){
-       
-       int dni=Integer.parseInt(jTf_dni.getText()); 
-        String nombre= jTf_nombre.getText();
-       String domicilio= jTf_domicilio.getText();
-       int tel=Integer.parseInt(jTf_telefono.getText());
-        //boolean estado=jrbEstado.isSelected();
-    
-       al.setNombre(nombre);
-       al.setDomicilio(domicilio);
-       al.setDni(dni);
-       al.setTel(tel);
-       al.setEstado(true);
-      alDa.guardarCliente(al); 
-       }  else{
-            int dni=Integer.parseInt(jTf_dni.getText());
-            String nombre= jTf_nombre.getText();
-       String domicilio= jTf_domicilio.getText();
-        int tel=Integer.parseInt(jTf_telefono.getText());
-        // boolean estado=jrbEstado.isSelected();  
-       al.setDni(dni);
-       al.setNombre(nombre);
-       al.setDomicilio(domicilio);
-       al.setTel(tel);
-       al.setEstado(true);
-       alDa.actualizarCliente(al);
-       }
-       // TODO add your handling code here:
+        //ClienteData alDa=new ClienteData();
+        //Cliente al=new Cliente();
+        if (cliente == null) {
+            cliente = new Cliente();
+            int dni = Integer.parseInt(jTf_dni.getText());
+            String nombre = jTf_nombre.getText();
+            String domicilio = jTf_domicilio.getText();
+            int tel = Integer.parseInt(jTf_telefono.getText());
+            cliente.setNombre(nombre);
+            cliente.setDomicilio(domicilio);
+            cliente.setDni(dni);
+            cliente.setTel(tel);
+            cliente.setEstado(true);
+            cliDa.guardarCliente(cliente);
+        } else {
+            int dni = Integer.parseInt(jTf_dni.getText());
+            String nombre = jTf_nombre.getText();
+            String domicilio = jTf_domicilio.getText();
+            int tel = Integer.parseInt(jTf_telefono.getText());
+            // boolean estado=jrbEstado.isSelected(); //NO ACTUALIZAMOS EL ESTADO ACA, HAY QUE SACAR DEL METODO MODIFICAR  
+            cliente.setDni(dni);
+            cliente.setNombre(nombre);
+            cliente.setDomicilio(domicilio);
+            cliente.setTel(tel);
+            cliente.setEstado(true);
+            cliDa.actualizarCliente(cliente);
+        }
+        
+        // TODO add your handling code here:
     }//GEN-LAST:event_btn_guardarActionPerformed
 
 

@@ -5,20 +5,25 @@
  */
 package vistas;
 
+import datos.BicicletaData;
+import entidades.Bicicleta;
+
 /**
  *
  * @author Pat
  */
 public class Jf_Bicicleta extends javax.swing.JFrame {
 private final java.awt.Frame padre;
-private boolean esNuevo;
+    private Bicicleta   bicicleta;
+    private BicicletaData biciDa;
     /**
      * Creates new form Jif_Cliente
      */
-    public Jf_Bicicleta(java.awt.Frame padre, boolean esNuevo) {
+    public Jf_Bicicleta(java.awt.Frame padre, Bicicleta bicicleta) {
         initComponents();
         this.padre = padre;
-        this.esNuevo = esNuevo;
+        this.bicicleta = bicicleta;
+        this.biciDa = new BicicletaData();
     }
 
     /**

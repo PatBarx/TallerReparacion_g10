@@ -5,6 +5,9 @@
  */
 package vistas;
 
+import datos.ServicioData;
+import entidades.Servicio;
+
 /**
  *
  * @author Pat
@@ -12,15 +15,18 @@ package vistas;
 public class Jf_Servicio extends javax.swing.JFrame {
 
     private final java.awt.Frame padre;
-    private boolean esNuevo;
+    private Servicio servicio;
+    private ServicioData serDa;
+
 
     /**
      * Creates new form Jif_Cliente
      */
-    public Jf_Servicio(java.awt.Frame padre, boolean esNuevo) {
+    public Jf_Servicio(java.awt.Frame padre, Servicio servicio) {
         initComponents();
         this.padre = padre;
-        this.esNuevo = esNuevo;
+        this.servicio = servicio;
+        this.serDa = new ServicioData();
     }
 
     /**
