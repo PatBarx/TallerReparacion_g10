@@ -13,14 +13,29 @@ import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
 
 public class Jf_TallerReparacion extends javax.swing.JFrame {
-    private DefaultTableModel tModeloCliente = new DefaultTableModel(new String[]{"Dni", "Nombre", "Domicilio", "Teléfono"}, 0);;
+    private DefaultTableModel tModeloCliente = new DefaultTableModel(new String[]{"Dni", "Nombre", "Domicilio", "Teléfono"}, 0);
+    private DefaultTableModel tModeloBicicleta = new DefaultTableModel(new String[]{"Serie", "Marca", "Tipo", "Color","Cliente"}, 0);
+    private DefaultTableModel tModeloRepuesto = new DefaultTableModel(new String[]{"Serie", "Descripcion", "Costo"}, 0);
+    private DefaultTableModel tModeloServicio = new DefaultTableModel(new String[]{"Codigo", "Descripcion", "Costo"}, 0);
+    private DefaultTableModel tModeloReparacion = new DefaultTableModel(new String[]{"Numero", "Servicio", "Cliente", "Bicicleta","Fecha","Precio"}, 0);
     private ClienteData cliDa = new ClienteData();
+    private BicicletaData biciDa = new BicicletaData();
+    private RepuestoData repuDa = new RepuestoData();
+    private ServicioData servDa = new ServicioData();
+    private ReparacionData repaDa = new ReparacionData();
     private ArrayList<Cliente> listaCliente;
+    private ArrayList<Bicicleta> listaBicicleta;
+    private ArrayList<Repuesto> listaRepuesto;
+    private ArrayList<Servicio> listaServicio;
+    private ArrayList<Reparacion> listaReparacion;
 
     public Jf_TallerReparacion() {
         initComponents();
-        
         cargarTablaCliente();
+        cargarTablaBicicleta();
+        cargarTablaRepuesto();
+        cargarTablaServicio();
+        cargarTablaReparacion();
 
     }
 
@@ -46,18 +61,26 @@ public class Jf_TallerReparacion extends javax.swing.JFrame {
         btn_bicicleta_alta = new javax.swing.JButton();
         btn_bicicleta_baja = new javax.swing.JButton();
         btn_bicicleta_modificar = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTable_Bicicleta = new javax.swing.JTable();
         tab_servicio = new javax.swing.JPanel();
         btn_servicio_alta = new javax.swing.JButton();
         btn_servicio_baja = new javax.swing.JButton();
         btn_servicio_modificar = new javax.swing.JButton();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        jTable_Servicio = new javax.swing.JTable();
         tab_repuesto = new javax.swing.JPanel();
         btn_repuesto_alta = new javax.swing.JButton();
         btn_repuesto_modificar = new javax.swing.JButton();
         btn_repuesto_baja = new javax.swing.JButton();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        jTable_Repuesto = new javax.swing.JTable();
         tab_reparacion = new javax.swing.JPanel();
         btn_reparacion_alta = new javax.swing.JButton();
         btn_reparacion_modificar = new javax.swing.JButton();
         btn_reparacion_borrar = new javax.swing.JButton();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        jTable_Reparacion = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -186,6 +209,21 @@ public class Jf_TallerReparacion extends javax.swing.JFrame {
         });
         tab_bici.add(btn_bicicleta_modificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 10, -1, -1));
 
+        jTable_Bicicleta.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane2.setViewportView(jTable_Bicicleta);
+
+        tab_bici.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 40, 790, -1));
+
         tab_panelPrincipal.addTab("BICICLETA", tab_bici);
 
         tab_servicio.setBackground(new java.awt.Color(120, 162, 199));
@@ -214,6 +252,21 @@ public class Jf_TallerReparacion extends javax.swing.JFrame {
             }
         });
         tab_servicio.add(btn_servicio_modificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 10, -1, -1));
+
+        jTable_Servicio.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane3.setViewportView(jTable_Servicio);
+
+        tab_servicio.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 40, 790, -1));
 
         tab_panelPrincipal.addTab("SERVICIO", tab_servicio);
 
@@ -244,6 +297,21 @@ public class Jf_TallerReparacion extends javax.swing.JFrame {
         });
         tab_repuesto.add(btn_repuesto_baja, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 10, -1, -1));
 
+        jTable_Repuesto.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane4.setViewportView(jTable_Repuesto);
+
+        tab_repuesto.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 40, 790, -1));
+
         tab_panelPrincipal.addTab("REPUESTO", tab_repuesto);
 
         tab_reparacion.setBackground(new java.awt.Color(120, 162, 199));
@@ -272,6 +340,21 @@ public class Jf_TallerReparacion extends javax.swing.JFrame {
             }
         });
         tab_reparacion.add(btn_reparacion_borrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 20, -1, -1));
+
+        jTable_Reparacion.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane5.setViewportView(jTable_Reparacion);
+
+        tab_reparacion.add(jScrollPane5, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 40, 790, -1));
 
         tab_panelPrincipal.addTab("-REPARACION-", tab_reparacion);
 
@@ -338,7 +421,6 @@ tab_panelPrincipal.setSelectedIndex(5);        // TODO add your handling code he
     }//GEN-LAST:event_btn_cliente_altaActionPerformed
 
     private void btn_cliente_modificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cliente_modificarActionPerformed
-        
         Cliente cliente = cliDa.buscarCliente((Integer) tModeloCliente.getValueAt(jTable_Cliente.getSelectedRow(), 0)); //REMPLAZAR POR EL DNI DEL CLIENTE EN LA TABLA MOSTRADA
         Jf_Cliente jfCliente = new Jf_Cliente(this,cliente);
         jfCliente.setAlwaysOnTop(true);
@@ -380,7 +462,11 @@ tab_panelPrincipal.setSelectedIndex(5);        // TODO add your handling code he
     }//GEN-LAST:event_btn_reparacion_borrarActionPerformed
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
-cargarTablaCliente();        // TODO add your handling code here:
+        cargarTablaCliente();
+        cargarTablaBicicleta();
+        cargarTablaRepuesto();
+        cargarTablaServicio();
+        cargarTablaReparacion();     // TODO add your handling code here:
     }//GEN-LAST:event_formWindowActivated
 
     /**
@@ -408,6 +494,8 @@ cargarTablaCliente();        // TODO add your handling code here:
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(Jf_TallerReparacion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
@@ -442,7 +530,15 @@ cargarTablaCliente();        // TODO add your handling code here:
     private javax.swing.JButton byn_Repuesto;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JScrollPane jScrollPane5;
+    private javax.swing.JTable jTable_Bicicleta;
     private javax.swing.JTable jTable_Cliente;
+    private javax.swing.JTable jTable_Reparacion;
+    private javax.swing.JTable jTable_Repuesto;
+    private javax.swing.JTable jTable_Servicio;
     private javax.swing.JPanel tab_Cliente;
     private javax.swing.JPanel tab_bici;
     private javax.swing.JPanel tab_inicio;
@@ -459,5 +555,42 @@ cargarTablaCliente();        // TODO add your handling code here:
             tModeloCliente.addRow(new Object[]{cliente.getDni(),cliente.getNombre(),cliente.getDomicilio(),cliente.getTel()});
         }
         jTable_Cliente.setModel(tModeloCliente);
+    }
+
+    private void cargarTablaBicicleta() {
+        tModeloBicicleta.setNumRows(0);
+        listaBicicleta = biciDa.listarBicicletas();
+        for (Bicicleta bicicleta : listaBicicleta) {
+            tModeloBicicleta.addRow(new Object[]{bicicleta.getNroSerie(),bicicleta.getMarca(),bicicleta.getTipo(),bicicleta.getColor(),bicicleta.getCliente()});
+        }
+        jTable_Bicicleta.setModel(tModeloBicicleta);
+    }
+
+    private void cargarTablaRepuesto() {
+       tModeloRepuesto.setNumRows(0);
+        listaRepuesto = repuDa.listaRepuesto();
+        for (Repuesto repuesto : listaRepuesto) {
+            tModeloRepuesto.addRow(new Object[]{repuesto.getSerie(),repuesto.getDescripcion(),repuesto.getCosto()});
+        }
+        jTable_Repuesto.setModel(tModeloRepuesto);
+    }
+
+    private void cargarTablaServicio() {
+               tModeloServicio.setNumRows(0);
+        listaServicio = servDa.listarServicios();
+        for (Servicio servicio : listaServicio) {
+            tModeloServicio.addRow(new Object[]{servicio.getCodigo(),servicio.getDescripcion(),servicio.getCosto()});
+        }
+        jTable_Servicio.setModel(tModeloServicio);
+    }
+
+    private void cargarTablaReparacion() {
+         tModeloReparacion.setNumRows(0);
+        listaReparacion = repaDa.listarBicisPendientes();
+        for (Reparacion reparacion : listaReparacion) {
+//(new String[]{"Numero", "Servicio", "Cliente", "Bicicleta","Fecha","Precio"}, 0);
+            tModeloReparacion.addRow(new Object[]{reparacion.getId(),reparacion.getServicio(), reparacion.getCliente(), reparacion.getBici(), reparacion.getFechaEntrada(), reparacion.getCostoTotal()});
+        }
+        jTable_Reparacion.setModel(tModeloReparacion);
     }
 }
