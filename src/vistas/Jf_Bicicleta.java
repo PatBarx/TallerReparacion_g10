@@ -96,7 +96,7 @@ private final java.awt.Frame padre;
         jCbox_Dni.setBackground(new java.awt.Color(255, 255, 255));
         jCbox_Dni.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         jCbox_Dni.setBorder(null);
-        jPanel1.add(jCbox_Dni, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 440, 290, 30));
+        jPanel1.add(jCbox_Dni, new org.netbeans.lib.awtextra.AbsoluteConstraints(116, 441, 293, 35));
 
         btn_guardar1.setBackground(new java.awt.Color(82, 148, 202));
         btn_guardar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/Btn-xGuarda.png"))); // NOI18N

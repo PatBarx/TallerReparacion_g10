@@ -54,33 +54,24 @@ public class Jf_TallerReparacion extends javax.swing.JFrame {
         tab_inicio = new javax.swing.JPanel();
         BKGLateral_lbl = new javax.swing.JLabel();
         tab_Cliente = new javax.swing.JPanel();
+        jRadBut_xNom = new javax.swing.JRadioButton();
+        jRadBut_xDni = new javax.swing.JRadioButton();
+        panelBuscar = new javax.swing.JLabel();
         btn_cliente_baja = new javax.swing.JButton();
         btn_cliente_alta = new javax.swing.JButton();
         btn_cliente_modificar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable_Cliente = new javax.swing.JTable();
         BKGLateral_lbl1 = new javax.swing.JLabel();
+        marcoNrj = new javax.swing.JLabel();
         tab_bici = new javax.swing.JPanel();
+        BKGLateral_lbl2 = new javax.swing.JLabel();
+        marcoNrj1 = new javax.swing.JLabel();
         btn_bicicleta_alta = new javax.swing.JButton();
         btn_bicicleta_baja = new javax.swing.JButton();
         btn_bicicleta_modificar = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable_Bicicleta = new javax.swing.JTable();
-        BKGLateral_lbl2 = new javax.swing.JLabel();
-        tab_repuesto = new javax.swing.JPanel();
-        btn_repuesto_alta = new javax.swing.JButton();
-        btn_repuesto_modificar = new javax.swing.JButton();
-        btn_repuesto_baja = new javax.swing.JButton();
-        jScrollPane4 = new javax.swing.JScrollPane();
-        jTable_Repuesto = new javax.swing.JTable();
-        BKGLateral_lbl3 = new javax.swing.JLabel();
-        tab_reparacion = new javax.swing.JPanel();
-        btn_reparacion_alta = new javax.swing.JButton();
-        btn_reparacion_modificar = new javax.swing.JButton();
-        btn_reparacion_borrar = new javax.swing.JButton();
-        jScrollPane5 = new javax.swing.JScrollPane();
-        jTable_Reparacion = new javax.swing.JTable();
-        BKGLateral_lbl4 = new javax.swing.JLabel();
         tab_servicio = new javax.swing.JPanel();
         btn_servicio_alta = new javax.swing.JButton();
         btn_servicio_baja = new javax.swing.JButton();
@@ -88,6 +79,22 @@ public class Jf_TallerReparacion extends javax.swing.JFrame {
         jScrollPane3 = new javax.swing.JScrollPane();
         jTable_Servicio = new javax.swing.JTable();
         BKGLateral_lbl5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        tab_repuesto = new javax.swing.JPanel();
+        btn_repuesto_alta = new javax.swing.JButton();
+        btn_repuesto_modificar = new javax.swing.JButton();
+        btn_repuesto_baja = new javax.swing.JButton();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        jTable_Repuesto = new javax.swing.JTable();
+        BKGLateral_lbl3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        tab_reparacion = new javax.swing.JPanel();
+        btn_reparacion_alta = new javax.swing.JButton();
+        btn_reparacion_modificar = new javax.swing.JButton();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        jTable_Reparacion = new javax.swing.JTable();
+        BKGLateral_lbl4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -171,29 +178,54 @@ public class Jf_TallerReparacion extends javax.swing.JFrame {
         tab_Cliente.setBackground(new java.awt.Color(255, 255, 255));
         tab_Cliente.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        btn_cliente_baja.setText("BAJA");
+        jRadBut_xNom.setBackground(new java.awt.Color(82, 148, 202));
+        jRadBut_xNom.setAutoscrolls(true);
+        jRadBut_xNom.setBorder(null);
+        tab_Cliente.add(jRadBut_xNom, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, 20, 30));
+
+        jRadBut_xDni.setBackground(new java.awt.Color(82, 148, 202));
+        jRadBut_xDni.setAutoscrolls(true);
+        jRadBut_xDni.setBorder(null);
+        tab_Cliente.add(jRadBut_xDni, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, 20, 30));
+
+        panelBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/sectorBus-clie.png"))); // NOI18N
+        tab_Cliente.add(panelBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 0, 190, 520));
+
+        btn_cliente_baja.setBackground(new java.awt.Color(255, 255, 255));
+        btn_cliente_baja.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/Btn-Baja.png"))); // NOI18N
+        btn_cliente_baja.setBorder(null);
+        btn_cliente_baja.setPreferredSize(new java.awt.Dimension(150, 58));
         btn_cliente_baja.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_cliente_bajaActionPerformed(evt);
             }
         });
-        tab_Cliente.add(btn_cliente_baja, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 20, -1, -1));
+        tab_Cliente.add(btn_cliente_baja, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 20, 150, 56));
 
-        btn_cliente_alta.setText("ALTA");
+        btn_cliente_alta.setBackground(new java.awt.Color(255, 255, 255));
+        btn_cliente_alta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/Btn-Alta.png"))); // NOI18N
+        btn_cliente_alta.setBorder(null);
+        btn_cliente_alta.setPreferredSize(new java.awt.Dimension(150, 58));
         btn_cliente_alta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_cliente_altaActionPerformed(evt);
             }
         });
-        tab_Cliente.add(btn_cliente_alta, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 20, -1, -1));
+        tab_Cliente.add(btn_cliente_alta, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 20, 150, 56));
 
-        btn_cliente_modificar.setText("MODIFICAR");
+        btn_cliente_modificar.setBackground(new java.awt.Color(255, 255, 255));
+        btn_cliente_modificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/Btn-Actua.png"))); // NOI18N
+        btn_cliente_modificar.setBorder(null);
+        btn_cliente_modificar.setPreferredSize(new java.awt.Dimension(150, 58));
         btn_cliente_modificar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_cliente_modificarActionPerformed(evt);
             }
         });
-        tab_Cliente.add(btn_cliente_modificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 20, -1, -1));
+        tab_Cliente.add(btn_cliente_modificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 20, 150, 56));
+
+        jScrollPane1.setBackground(new java.awt.Color(255, 255, 255));
+        jScrollPane1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 140, 0)));
 
         jTable_Cliente.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -206,43 +238,64 @@ public class Jf_TallerReparacion extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        jTable_Cliente.setRowHeight(22);
         jScrollPane1.setViewportView(jTable_Cliente);
 
-        tab_Cliente.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 80, 790, -1));
+        tab_Cliente.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 90, 750, 420));
 
         BKGLateral_lbl1.setBackground(new java.awt.Color(82, 148, 202));
         BKGLateral_lbl1.setForeground(new java.awt.Color(82, 148, 202));
         BKGLateral_lbl1.setOpaque(true);
         tab_Cliente.add(BKGLateral_lbl1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -180, 180, 710));
 
+        marcoNrj.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 140, 0), 2));
+        tab_Cliente.add(marcoNrj, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 10, 800, 510));
+
         tab_panelPrincipal.addTab("CLIENTE", tab_Cliente);
 
         tab_bici.setBackground(new java.awt.Color(255, 255, 255));
         tab_bici.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        btn_bicicleta_alta.setText("ALTA");
+        BKGLateral_lbl2.setBackground(new java.awt.Color(82, 148, 202));
+        BKGLateral_lbl2.setForeground(new java.awt.Color(82, 148, 202));
+        BKGLateral_lbl2.setOpaque(true);
+        tab_bici.add(BKGLateral_lbl2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -180, 180, 710));
+
+        marcoNrj1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 140, 0), 2));
+        tab_bici.add(marcoNrj1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 10, 800, 510));
+
+        btn_bicicleta_alta.setBackground(new java.awt.Color(255, 255, 255));
+        btn_bicicleta_alta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/Btn-Alta.png"))); // NOI18N
+        btn_bicicleta_alta.setBorder(null);
         btn_bicicleta_alta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_bicicleta_altaActionPerformed(evt);
             }
         });
-        tab_bici.add(btn_bicicleta_alta, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 10, -1, -1));
+        tab_bici.add(btn_bicicleta_alta, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 20, 150, 56));
 
-        btn_bicicleta_baja.setText("BAJA");
+        btn_bicicleta_baja.setBackground(new java.awt.Color(255, 255, 255));
+        btn_bicicleta_baja.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/Btn-Baja.png"))); // NOI18N
+        btn_bicicleta_baja.setBorder(null);
         btn_bicicleta_baja.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_bicicleta_bajaActionPerformed(evt);
             }
         });
-        tab_bici.add(btn_bicicleta_baja, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 10, -1, -1));
+        tab_bici.add(btn_bicicleta_baja, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 20, 150, 56));
 
-        btn_bicicleta_modificar.setText("MODIFICAR");
+        btn_bicicleta_modificar.setBackground(new java.awt.Color(255, 255, 255));
+        btn_bicicleta_modificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/Btn-Actua.png"))); // NOI18N
+        btn_bicicleta_modificar.setBorder(null);
         btn_bicicleta_modificar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_bicicleta_modificarActionPerformed(evt);
             }
         });
-        tab_bici.add(btn_bicicleta_modificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 10, -1, -1));
+        tab_bici.add(btn_bicicleta_modificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 20, 150, 56));
+
+        jScrollPane2.setBackground(new java.awt.Color(255, 255, 255));
+        jScrollPane2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 140, 0)));
 
         jTable_Bicicleta.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -255,142 +308,49 @@ public class Jf_TallerReparacion extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        jTable_Bicicleta.setRowHeight(22);
         jScrollPane2.setViewportView(jTable_Bicicleta);
 
-        tab_bici.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 60, 790, -1));
-
-        BKGLateral_lbl2.setBackground(new java.awt.Color(82, 148, 202));
-        BKGLateral_lbl2.setForeground(new java.awt.Color(82, 148, 202));
-        BKGLateral_lbl2.setOpaque(true);
-        tab_bici.add(BKGLateral_lbl2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -180, 180, 710));
+        tab_bici.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 90, 750, 420));
 
         tab_panelPrincipal.addTab("BICICLETA", tab_bici);
-
-        tab_repuesto.setBackground(new java.awt.Color(255, 255, 255));
-        tab_repuesto.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        btn_repuesto_alta.setText("ALTA");
-        btn_repuesto_alta.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_repuesto_altaActionPerformed(evt);
-            }
-        });
-        tab_repuesto.add(btn_repuesto_alta, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 10, -1, -1));
-
-        btn_repuesto_modificar.setText("MODIFICAR");
-        btn_repuesto_modificar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_repuesto_modificarActionPerformed(evt);
-            }
-        });
-        tab_repuesto.add(btn_repuesto_modificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 10, -1, -1));
-
-        btn_repuesto_baja.setText("BAJA");
-        btn_repuesto_baja.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_repuesto_bajaActionPerformed(evt);
-            }
-        });
-        tab_repuesto.add(btn_repuesto_baja, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 10, -1, -1));
-
-        jTable_Repuesto.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        jScrollPane4.setViewportView(jTable_Repuesto);
-
-        tab_repuesto.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 60, 790, -1));
-
-        BKGLateral_lbl3.setBackground(new java.awt.Color(82, 148, 202));
-        BKGLateral_lbl3.setForeground(new java.awt.Color(82, 148, 202));
-        BKGLateral_lbl3.setOpaque(true);
-        tab_repuesto.add(BKGLateral_lbl3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -180, 180, 710));
-
-        tab_panelPrincipal.addTab("REPUESTO", tab_repuesto);
-
-        tab_reparacion.setBackground(new java.awt.Color(255, 255, 255));
-        tab_reparacion.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        btn_reparacion_alta.setText("ALTA");
-        btn_reparacion_alta.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_reparacion_altaActionPerformed(evt);
-            }
-        });
-        tab_reparacion.add(btn_reparacion_alta, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 20, -1, -1));
-
-        btn_reparacion_modificar.setText("MODIFICAR");
-        btn_reparacion_modificar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_reparacion_modificarActionPerformed(evt);
-            }
-        });
-        tab_reparacion.add(btn_reparacion_modificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 20, -1, -1));
-
-        btn_reparacion_borrar.setText("BORRAR");
-        btn_reparacion_borrar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_reparacion_borrarActionPerformed(evt);
-            }
-        });
-        tab_reparacion.add(btn_reparacion_borrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 20, -1, -1));
-
-        jTable_Reparacion.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        jScrollPane5.setViewportView(jTable_Reparacion);
-
-        tab_reparacion.add(jScrollPane5, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 70, 790, -1));
-
-        BKGLateral_lbl4.setBackground(new java.awt.Color(82, 148, 202));
-        BKGLateral_lbl4.setForeground(new java.awt.Color(82, 148, 202));
-        BKGLateral_lbl4.setOpaque(true);
-        tab_reparacion.add(BKGLateral_lbl4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -180, 180, 710));
-
-        tab_panelPrincipal.addTab("-REPARACION-", tab_reparacion);
 
         tab_servicio.setBackground(new java.awt.Color(255, 255, 255));
         tab_servicio.setForeground(new java.awt.Color(255, 255, 255));
         tab_servicio.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        btn_servicio_alta.setText("ALTA");
+        btn_servicio_alta.setBackground(new java.awt.Color(255, 255, 255));
+        btn_servicio_alta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/Btn-Alta.png"))); // NOI18N
+        btn_servicio_alta.setBorder(null);
         btn_servicio_alta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_servicio_altaActionPerformed(evt);
             }
         });
-        tab_servicio.add(btn_servicio_alta, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 10, -1, -1));
+        tab_servicio.add(btn_servicio_alta, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 20, 150, 56));
 
-        btn_servicio_baja.setText("BAJA");
+        btn_servicio_baja.setBackground(new java.awt.Color(255, 255, 255));
+        btn_servicio_baja.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/Btn-Baja.png"))); // NOI18N
+        btn_servicio_baja.setBorder(null);
         btn_servicio_baja.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_servicio_bajaActionPerformed(evt);
             }
         });
-        tab_servicio.add(btn_servicio_baja, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 10, -1, -1));
+        tab_servicio.add(btn_servicio_baja, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 20, 150, 56));
 
-        btn_servicio_modificar.setText("MODIFICAR");
+        btn_servicio_modificar.setBackground(new java.awt.Color(255, 255, 255));
+        btn_servicio_modificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/Btn-Actua.png"))); // NOI18N
+        btn_servicio_modificar.setBorder(null);
         btn_servicio_modificar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_servicio_modificarActionPerformed(evt);
             }
         });
-        tab_servicio.add(btn_servicio_modificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 10, -1, -1));
+        tab_servicio.add(btn_servicio_modificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 20, 150, 56));
+
+        jScrollPane3.setBackground(new java.awt.Color(255, 255, 255));
+        jScrollPane3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 140, 0)));
 
         jTable_Servicio.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -403,16 +363,140 @@ public class Jf_TallerReparacion extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        jTable_Servicio.setRowHeight(22);
         jScrollPane3.setViewportView(jTable_Servicio);
 
-        tab_servicio.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 40, 790, -1));
+        tab_servicio.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 90, 750, 420));
 
         BKGLateral_lbl5.setBackground(new java.awt.Color(82, 148, 202));
         BKGLateral_lbl5.setForeground(new java.awt.Color(82, 148, 202));
         BKGLateral_lbl5.setOpaque(true);
         tab_servicio.add(BKGLateral_lbl5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -180, 180, 710));
 
+        jLabel6.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 140, 0), 2));
+        tab_servicio.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 10, 800, 510));
+
         tab_panelPrincipal.addTab("SERVICIO", tab_servicio);
+
+        tab_repuesto.setBackground(new java.awt.Color(255, 255, 255));
+        tab_repuesto.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        btn_repuesto_alta.setBackground(new java.awt.Color(255, 255, 255));
+        btn_repuesto_alta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/Btn-Alta.png"))); // NOI18N
+        btn_repuesto_alta.setText("ALTA");
+        btn_repuesto_alta.setBorder(null);
+        btn_repuesto_alta.setHorizontalAlignment(javax.swing.SwingConstants.LEADING);
+        btn_repuesto_alta.setVerifyInputWhenFocusTarget(false);
+        btn_repuesto_alta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_repuesto_altaActionPerformed(evt);
+            }
+        });
+        tab_repuesto.add(btn_repuesto_alta, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 20, 150, 56));
+
+        btn_repuesto_modificar.setBackground(new java.awt.Color(255, 255, 255));
+        btn_repuesto_modificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/Btn-Actua.png"))); // NOI18N
+        btn_repuesto_modificar.setText("MODIFICAR");
+        btn_repuesto_modificar.setBorder(null);
+        btn_repuesto_modificar.setHorizontalAlignment(javax.swing.SwingConstants.LEADING);
+        btn_repuesto_modificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_repuesto_modificarActionPerformed(evt);
+            }
+        });
+        tab_repuesto.add(btn_repuesto_modificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 20, 150, 56));
+
+        btn_repuesto_baja.setBackground(new java.awt.Color(255, 255, 255));
+        btn_repuesto_baja.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/Btn-Baja.png"))); // NOI18N
+        btn_repuesto_baja.setText("BAJA");
+        btn_repuesto_baja.setBorder(null);
+        btn_repuesto_baja.setHorizontalAlignment(javax.swing.SwingConstants.LEADING);
+        btn_repuesto_baja.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_repuesto_bajaActionPerformed(evt);
+            }
+        });
+        tab_repuesto.add(btn_repuesto_baja, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 20, 150, 56));
+
+        jScrollPane4.setBackground(new java.awt.Color(255, 255, 255));
+        jScrollPane4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 140, 0)));
+
+        jTable_Repuesto.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jTable_Repuesto.setRowHeight(22);
+        jScrollPane4.setViewportView(jTable_Repuesto);
+
+        tab_repuesto.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 90, 750, 420));
+
+        BKGLateral_lbl3.setBackground(new java.awt.Color(82, 148, 202));
+        BKGLateral_lbl3.setForeground(new java.awt.Color(82, 148, 202));
+        BKGLateral_lbl3.setOpaque(true);
+        tab_repuesto.add(BKGLateral_lbl3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -180, 180, 710));
+
+        jLabel4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 140, 0), 2));
+        tab_repuesto.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 10, 800, 510));
+
+        tab_panelPrincipal.addTab("REPUESTO", tab_repuesto);
+
+        tab_reparacion.setBackground(new java.awt.Color(255, 255, 255));
+        tab_reparacion.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        btn_reparacion_alta.setBackground(new java.awt.Color(255, 255, 255));
+        btn_reparacion_alta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/Btn-Alta.png"))); // NOI18N
+        btn_reparacion_alta.setBorder(null);
+        btn_reparacion_alta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_reparacion_altaActionPerformed(evt);
+            }
+        });
+        tab_reparacion.add(btn_reparacion_alta, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 20, 150, 56));
+
+        btn_reparacion_modificar.setBackground(new java.awt.Color(255, 255, 255));
+        btn_reparacion_modificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/Btn-Actua.png"))); // NOI18N
+        btn_reparacion_modificar.setBorder(null);
+        btn_reparacion_modificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_reparacion_modificarActionPerformed(evt);
+            }
+        });
+        tab_reparacion.add(btn_reparacion_modificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 20, 150, 56));
+
+        jScrollPane5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 140, 0)));
+
+        jTable_Reparacion.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jTable_Reparacion.setRowHeight(22);
+        jScrollPane5.setViewportView(jTable_Reparacion);
+
+        tab_reparacion.add(jScrollPane5, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 90, 750, 420));
+
+        BKGLateral_lbl4.setBackground(new java.awt.Color(82, 148, 202));
+        BKGLateral_lbl4.setForeground(new java.awt.Color(82, 148, 202));
+        BKGLateral_lbl4.setOpaque(true);
+        tab_reparacion.add(BKGLateral_lbl4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -180, 180, 710));
+
+        jLabel5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 140, 0), 2));
+        tab_reparacion.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 10, 800, 510));
+
+        tab_panelPrincipal.addTab("-REPARACION-", tab_reparacion);
 
         getContentPane().add(tab_panelPrincipal, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 150, 1000, 550));
 
@@ -515,10 +599,6 @@ tab_panelPrincipal.setSelectedIndex(5);        // TODO add your handling code he
         // TODO add your handling code here:
     }//GEN-LAST:event_btn_reparacion_modificarActionPerformed
 
-    private void btn_reparacion_borrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_reparacion_borrarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btn_reparacion_borrarActionPerformed
-
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
         cargarTablaCliente();
         cargarTablaBicicleta();
@@ -583,7 +663,6 @@ tab_panelPrincipal.setSelectedIndex(5);        // TODO add your handling code he
     private javax.swing.JButton btn_cliente_modificar;
     private javax.swing.JButton btn_reparacion;
     private javax.swing.JButton btn_reparacion_alta;
-    private javax.swing.JButton btn_reparacion_borrar;
     private javax.swing.JButton btn_reparacion_modificar;
     private javax.swing.JButton btn_repuesto_alta;
     private javax.swing.JButton btn_repuesto_baja;
@@ -593,7 +672,12 @@ tab_panelPrincipal.setSelectedIndex(5);        // TODO add your handling code he
     private javax.swing.JButton btn_servicio_modificar;
     private javax.swing.JButton byn_Repuesto;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JRadioButton jRadBut_xDni;
+    private javax.swing.JRadioButton jRadBut_xNom;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
@@ -604,6 +688,9 @@ tab_panelPrincipal.setSelectedIndex(5);        // TODO add your handling code he
     private javax.swing.JTable jTable_Reparacion;
     private javax.swing.JTable jTable_Repuesto;
     private javax.swing.JTable jTable_Servicio;
+    private javax.swing.JLabel marcoNrj;
+    private javax.swing.JLabel marcoNrj1;
+    private javax.swing.JLabel panelBuscar;
     private javax.swing.JPanel tab_Cliente;
     private javax.swing.JPanel tab_bici;
     private javax.swing.JPanel tab_inicio;
