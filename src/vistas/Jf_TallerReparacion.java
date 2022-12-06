@@ -600,7 +600,13 @@ tab_panelPrincipal.setSelectedIndex(5);        // TODO add your handling code he
     }//GEN-LAST:event_btn_repuesto_modificarActionPerformed
 
     private void btn_repuesto_bajaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_repuesto_bajaActionPerformed
-        // TODO add your handling code here:
+            Repuesto repuesto = repuDa.buscarRepuesto((Integer) tModeloRepuesto.getValueAt(jTable_Repuesto.getSelectedRow(), 0)); //REMPLAZAR POR EL DNI DEL CLIENTE EN LA TABLA MOSTRADA
+        if (repuesto.isEstado()) {
+            repuDa.bajaRepuesto(repuesto);
+        } else {
+            repuDa.activaRepuesto(repuesto);
+        }
+        cargarTablaRepuesto();
     }//GEN-LAST:event_btn_repuesto_bajaActionPerformed
 
     private void btn_reparacion_modificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_reparacion_modificarActionPerformed

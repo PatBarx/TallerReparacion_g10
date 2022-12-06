@@ -66,6 +66,29 @@ public class RepuestoData {
             }
         }
     }
+    
+            public void activaRepuesto(Repuesto rep) {
+         String query = "UPDATE repuesto SET estado = 1 WHERE serie = ?";
+        PreparedStatement ps = null;
+        try{
+            ps = con.prepareStatement(query);
+            ps.setInt(1, rep.getSerie());
+            int resultado = ps.executeUpdate();
+            if (resultado > 0) {
+                JOptionPane.showMessageDialog(null, "Se reactivo el repuesto");
+            } else {
+                JOptionPane.showMessageDialog(null, "No se pudo reactivar el respuesto");
+            }
+        }catch (SQLException ex){
+            Logger.getLogger(RepuestoData.class.getName()).log(Level.SEVERE, null, ex);
+        }finally{
+             try {
+                ps.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(RepuestoData.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }
 
     public void modificacionRepuesto(Repuesto rep) {
         String query = "UPDATE repuesto SET descripcion = ?, costo = ?, estado = ? WHERE serie = ?";
