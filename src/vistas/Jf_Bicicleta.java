@@ -149,11 +149,12 @@ private final java.awt.Frame padre;
 this.padre.setEnabled(false);  
  if (bicicleta != null) {
 jTf_serie.setText(String.valueOf(bicicleta.getNroSerie()));
+jTf_serie.setEnabled(false);
 jTf_marca.setText(bicicleta.getMarca());
 jTf_tipo.setText(bicicleta.getMarca());
 jTf_color.setText(bicicleta.getColor());
 jCbox_Dni.setSelectedItem(bicicleta.getCliente());
-jCbox_Dni.enable(false);
+
 
 
  }
