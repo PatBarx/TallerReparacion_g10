@@ -55,13 +55,13 @@ public class BicicletaData {
             JOptionPane.showMessageDialog(null, "BicicletaData Error : " + e);
         }
     }
-    public void bajaBicicleta(int id){
+    public void bajaBicicleta(Bicicleta bicicleta){
     
     //UPDATE `bicicleta` SET `estado`='0' WHERE serie=1;
         String query= "UPDATE bicicleta SET estado=0 WHERE serie=?";
         try {
             PreparedStatement ps = con.prepareStatement(query);
-            ps.setInt(1, id);
+            ps.setInt(1, bicicleta.getNroSerie());
         if (ps.executeUpdate()>0) {
                 JOptionPane.showMessageDialog(null, "ServicioData Info:\nBaja Exitoso" );                                
             }else {

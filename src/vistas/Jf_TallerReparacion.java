@@ -568,7 +568,14 @@ tab_panelPrincipal.setSelectedIndex(5);        // TODO add your handling code he
     }//GEN-LAST:event_btn_cliente_modificarActionPerformed
 
     private void btn_bicicleta_bajaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_bicicleta_bajaActionPerformed
-        // TODO add your handling code here:
+       Bicicleta bicicleta = biciDa.buscaBicicleta((Integer)tModeloBicicleta.getValueAt(jTable_Bicicleta.getSelectedRow(),0));
+if(bicicleta.isEstado()){
+biciDa.bajaBicicleta(bicicleta);}
+else{
+
+biciDa.altaBicicleta(bicicleta);
+}
+cargarTablaBicicleta();
     }//GEN-LAST:event_btn_bicicleta_bajaActionPerformed
 
     private void btn_bicicleta_modificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_bicicleta_modificarActionPerformed
