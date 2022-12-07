@@ -43,6 +43,11 @@ public class Jf_TallerReparacion extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonGroupServ = new javax.swing.ButtonGroup();
+        buttonGroupClie = new javax.swing.ButtonGroup();
+        buttonGroupBici = new javax.swing.ButtonGroup();
+        buttonGroupRepue = new javax.swing.ButtonGroup();
+        buttonGroupRepar = new javax.swing.ButtonGroup();
         jPanel2 = new javax.swing.JPanel();
         btn_cliente = new javax.swing.JButton();
         btn_bicicleta = new javax.swing.JButton();
@@ -61,45 +66,69 @@ public class Jf_TallerReparacion extends javax.swing.JFrame {
         tab_Cliente = new javax.swing.JPanel();
         jRadBut_xNom = new javax.swing.JRadioButton();
         jRadBut_xDni = new javax.swing.JRadioButton();
+        jTf_busqueda = new javax.swing.JTextField();
+        btn_Busca = new javax.swing.JButton();
         panelBuscar = new javax.swing.JLabel();
+        BKGLateral_lbl1 = new javax.swing.JLabel();
         btn_cliente_baja = new javax.swing.JButton();
         btn_cliente_alta = new javax.swing.JButton();
         btn_cliente_modificar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable_Cliente = new javax.swing.JTable();
-        BKGLateral_lbl1 = new javax.swing.JLabel();
         marcoNrj = new javax.swing.JLabel();
         tab_bici = new javax.swing.JPanel();
+        jRadBut_xNombre = new javax.swing.JRadioButton();
+        jRadBut_xSerie = new javax.swing.JRadioButton();
+        jTf_busqueda1 = new javax.swing.JTextField();
+        btn_Busca2 = new javax.swing.JButton();
+        panelBuscar1 = new javax.swing.JLabel();
         BKGLateral_lbl2 = new javax.swing.JLabel();
-        marcoNrj1 = new javax.swing.JLabel();
         btn_bicicleta_alta = new javax.swing.JButton();
         btn_bicicleta_baja = new javax.swing.JButton();
         btn_bicicleta_modificar = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable_Bicicleta = new javax.swing.JTable();
+        marcoNrj1 = new javax.swing.JLabel();
         tab_servicio = new javax.swing.JPanel();
+        jRadBut_xDescrip = new javax.swing.JRadioButton();
+        jRadBut_xCodigo = new javax.swing.JRadioButton();
+        jTf_busqueda2 = new javax.swing.JTextField();
+        btn_Busca3 = new javax.swing.JButton();
+        panelBuscar2 = new javax.swing.JLabel();
+        BKGLateral_lbl5 = new javax.swing.JLabel();
         btn_servicio_alta = new javax.swing.JButton();
         btn_servicio_baja = new javax.swing.JButton();
         btn_servicio_modificar = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
         jTable_Servicio = new javax.swing.JTable();
-        BKGLateral_lbl5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
+        marcoNrj2 = new javax.swing.JLabel();
         tab_repuesto = new javax.swing.JPanel();
+        jRadBut_xDescr = new javax.swing.JRadioButton();
+        jRadBut_xNserie = new javax.swing.JRadioButton();
+        btn_Busca4 = new javax.swing.JButton();
+        jTf_busqueda3 = new javax.swing.JTextField();
+        panelBuscar3 = new javax.swing.JLabel();
+        BKGLateral_lbl3 = new javax.swing.JLabel();
         btn_repuesto_alta = new javax.swing.JButton();
         btn_repuesto_modificar = new javax.swing.JButton();
         btn_repuesto_baja = new javax.swing.JButton();
         jScrollPane4 = new javax.swing.JScrollPane();
         jTable_Repuesto = new javax.swing.JTable();
-        BKGLateral_lbl3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
+        marcoNrj3 = new javax.swing.JLabel();
         tab_reparacion = new javax.swing.JPanel();
+        jRadBut_Pendiente = new javax.swing.JRadioButton();
+        jRadBut_Resuelto = new javax.swing.JRadioButton();
+        jRadBut_Anulado = new javax.swing.JRadioButton();
+        jRadBut_Entregado = new javax.swing.JRadioButton();
+        jTf_busqueda4 = new javax.swing.JTextField();
+        btn_Busca5 = new javax.swing.JButton();
+        panelBuscar4 = new javax.swing.JLabel();
+        BKGLateral_lbl4 = new javax.swing.JLabel();
         btn_reparacion_alta = new javax.swing.JButton();
         btn_reparacion_modificar = new javax.swing.JButton();
         jScrollPane5 = new javax.swing.JScrollPane();
         jTable_Reparacion = new javax.swing.JTable();
-        BKGLateral_lbl4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
+        marcoNrj4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -164,7 +193,7 @@ public class Jf_TallerReparacion extends javax.swing.JFrame {
         jPanel2.add(btn_reparacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 20, 120, 120));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/Logo-160-150.png"))); // NOI18N
-        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 160, 150));
+        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, 160, 150));
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, -10, 1010, 160));
 
@@ -208,17 +237,41 @@ public class Jf_TallerReparacion extends javax.swing.JFrame {
         tab_Cliente.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jRadBut_xNom.setBackground(new java.awt.Color(82, 148, 202));
+        buttonGroupClie.add(jRadBut_xNom);
         jRadBut_xNom.setAutoscrolls(true);
         jRadBut_xNom.setBorder(null);
-        tab_Cliente.add(jRadBut_xNom, new org.netbeans.lib.awtextra.AbsoluteConstraints(28, 120, 20, 30));
+        tab_Cliente.add(jRadBut_xNom, new org.netbeans.lib.awtextra.AbsoluteConstraints(32, 144, 20, 30));
 
         jRadBut_xDni.setBackground(new java.awt.Color(82, 148, 202));
+        buttonGroupClie.add(jRadBut_xDni);
         jRadBut_xDni.setAutoscrolls(true);
         jRadBut_xDni.setBorder(null);
-        tab_Cliente.add(jRadBut_xDni, new org.netbeans.lib.awtextra.AbsoluteConstraints(28, 90, 20, 30));
+        tab_Cliente.add(jRadBut_xDni, new org.netbeans.lib.awtextra.AbsoluteConstraints(32, 114, 20, 30));
+
+        jTf_busqueda.setBackground(new java.awt.Color(255, 255, 255));
+        jTf_busqueda.setFont(new java.awt.Font("Dialog", 0, 16)); // NOI18N
+        jTf_busqueda.setForeground(new java.awt.Color(0, 0, 0));
+        jTf_busqueda.setBorder(null);
+        jTf_busqueda.addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentShown(java.awt.event.ComponentEvent evt) {
+                jTf_busquedaComponentShown(evt);
+            }
+        });
+        tab_Cliente.add(jTf_busqueda, new org.netbeans.lib.awtextra.AbsoluteConstraints(15, 210, 145, 20));
+
+        btn_Busca.setBackground(new java.awt.Color(82, 148, 202));
+        btn_Busca.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/lupa48x48.png"))); // NOI18N
+        btn_Busca.setBorder(null);
+        btn_Busca.setOpaque(false);
+        tab_Cliente.add(btn_Busca, new org.netbeans.lib.awtextra.AbsoluteConstraints(61, 252, 60, 60));
 
         panelBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/sectorBus-clie.png"))); // NOI18N
-        tab_Cliente.add(panelBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 0, 190, 520));
+        tab_Cliente.add(panelBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 0, 190, 530));
+
+        BKGLateral_lbl1.setBackground(new java.awt.Color(82, 148, 202));
+        BKGLateral_lbl1.setForeground(new java.awt.Color(82, 148, 202));
+        BKGLateral_lbl1.setOpaque(true);
+        tab_Cliente.add(BKGLateral_lbl1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -180, 180, 710));
 
         btn_cliente_baja.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/Btn-Baja.png"))); // NOI18N
         btn_cliente_baja.setBorder(null);
@@ -269,11 +322,6 @@ public class Jf_TallerReparacion extends javax.swing.JFrame {
 
         tab_Cliente.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 90, 750, 420));
 
-        BKGLateral_lbl1.setBackground(new java.awt.Color(82, 148, 202));
-        BKGLateral_lbl1.setForeground(new java.awt.Color(82, 148, 202));
-        BKGLateral_lbl1.setOpaque(true);
-        tab_Cliente.add(BKGLateral_lbl1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -180, 180, 710));
-
         marcoNrj.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 140, 0), 2));
         tab_Cliente.add(marcoNrj, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 10, 800, 510));
 
@@ -282,13 +330,42 @@ public class Jf_TallerReparacion extends javax.swing.JFrame {
         tab_bici.setBackground(new java.awt.Color(255, 255, 255));
         tab_bici.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jRadBut_xNombre.setBackground(new java.awt.Color(82, 148, 202));
+        buttonGroupBici.add(jRadBut_xNombre);
+        jRadBut_xNombre.setAutoscrolls(true);
+        jRadBut_xNombre.setBorder(null);
+        tab_bici.add(jRadBut_xNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(32, 144, 20, 30));
+
+        jRadBut_xSerie.setBackground(new java.awt.Color(82, 148, 202));
+        buttonGroupBici.add(jRadBut_xSerie);
+        jRadBut_xSerie.setAutoscrolls(true);
+        jRadBut_xSerie.setBorder(null);
+        tab_bici.add(jRadBut_xSerie, new org.netbeans.lib.awtextra.AbsoluteConstraints(32, 114, 20, 30));
+
+        jTf_busqueda1.setBackground(new java.awt.Color(255, 255, 255));
+        jTf_busqueda1.setFont(new java.awt.Font("Dialog", 0, 16)); // NOI18N
+        jTf_busqueda1.setForeground(new java.awt.Color(0, 0, 0));
+        jTf_busqueda1.setBorder(null);
+        jTf_busqueda1.addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentShown(java.awt.event.ComponentEvent evt) {
+                jTf_busqueda1ComponentShown(evt);
+            }
+        });
+        tab_bici.add(jTf_busqueda1, new org.netbeans.lib.awtextra.AbsoluteConstraints(15, 210, 145, 20));
+
+        btn_Busca2.setBackground(new java.awt.Color(82, 148, 202));
+        btn_Busca2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/lupa48x48.png"))); // NOI18N
+        btn_Busca2.setBorder(null);
+        btn_Busca2.setOpaque(false);
+        tab_bici.add(btn_Busca2, new org.netbeans.lib.awtextra.AbsoluteConstraints(61, 252, 60, 60));
+
+        panelBuscar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/sectorBus-bici.png"))); // NOI18N
+        tab_bici.add(panelBuscar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 0, 190, 530));
+
         BKGLateral_lbl2.setBackground(new java.awt.Color(82, 148, 202));
         BKGLateral_lbl2.setForeground(new java.awt.Color(82, 148, 202));
         BKGLateral_lbl2.setOpaque(true);
         tab_bici.add(BKGLateral_lbl2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -180, 180, 710));
-
-        marcoNrj1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 140, 0), 2));
-        tab_bici.add(marcoNrj1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 10, 800, 510));
 
         btn_bicicleta_alta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/Btn-Alta.png"))); // NOI18N
         btn_bicicleta_alta.setBorder(null);
@@ -336,11 +413,51 @@ public class Jf_TallerReparacion extends javax.swing.JFrame {
 
         tab_bici.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 90, 750, 420));
 
+        marcoNrj1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 140, 0), 2));
+        tab_bici.add(marcoNrj1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 10, 800, 510));
+
         tab_panelPrincipal.addTab("BICICLETA", tab_bici);
 
         tab_servicio.setBackground(new java.awt.Color(255, 255, 255));
         tab_servicio.setForeground(new java.awt.Color(255, 255, 255));
         tab_servicio.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jRadBut_xDescrip.setBackground(new java.awt.Color(82, 148, 202));
+        buttonGroupServ.add(jRadBut_xDescrip);
+        jRadBut_xDescrip.setAutoscrolls(true);
+        jRadBut_xDescrip.setBorder(null);
+        tab_servicio.add(jRadBut_xDescrip, new org.netbeans.lib.awtextra.AbsoluteConstraints(32, 144, 20, 30));
+
+        jRadBut_xCodigo.setBackground(new java.awt.Color(82, 148, 202));
+        buttonGroupServ.add(jRadBut_xCodigo);
+        jRadBut_xCodigo.setAutoscrolls(true);
+        jRadBut_xCodigo.setBorder(null);
+        tab_servicio.add(jRadBut_xCodigo, new org.netbeans.lib.awtextra.AbsoluteConstraints(32, 114, 20, 30));
+
+        jTf_busqueda2.setBackground(new java.awt.Color(255, 255, 255));
+        jTf_busqueda2.setFont(new java.awt.Font("Dialog", 0, 16)); // NOI18N
+        jTf_busqueda2.setForeground(new java.awt.Color(0, 0, 0));
+        jTf_busqueda2.setBorder(null);
+        jTf_busqueda2.addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentShown(java.awt.event.ComponentEvent evt) {
+                jTf_busqueda2ComponentShown(evt);
+            }
+        });
+        tab_servicio.add(jTf_busqueda2, new org.netbeans.lib.awtextra.AbsoluteConstraints(15, 210, 145, 20));
+
+        btn_Busca3.setBackground(new java.awt.Color(82, 148, 202));
+        btn_Busca3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/lupa48x48.png"))); // NOI18N
+        btn_Busca3.setBorder(null);
+        btn_Busca3.setOpaque(false);
+        tab_servicio.add(btn_Busca3, new org.netbeans.lib.awtextra.AbsoluteConstraints(61, 252, 60, 60));
+
+        panelBuscar2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/sectorBus-servicio.png"))); // NOI18N
+        tab_servicio.add(panelBuscar2, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 0, 190, 530));
+
+        BKGLateral_lbl5.setBackground(new java.awt.Color(82, 148, 202));
+        BKGLateral_lbl5.setForeground(new java.awt.Color(82, 148, 202));
+        BKGLateral_lbl5.setOpaque(true);
+        tab_servicio.add(BKGLateral_lbl5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -180, 180, 710));
 
         btn_servicio_alta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/Btn-Alta.png"))); // NOI18N
         btn_servicio_alta.setBorder(null);
@@ -388,18 +505,50 @@ public class Jf_TallerReparacion extends javax.swing.JFrame {
 
         tab_servicio.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 90, 750, 420));
 
-        BKGLateral_lbl5.setBackground(new java.awt.Color(82, 148, 202));
-        BKGLateral_lbl5.setForeground(new java.awt.Color(82, 148, 202));
-        BKGLateral_lbl5.setOpaque(true);
-        tab_servicio.add(BKGLateral_lbl5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -180, 180, 710));
-
-        jLabel6.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 140, 0), 2));
-        tab_servicio.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 10, 800, 510));
+        marcoNrj2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 140, 0), 2));
+        tab_servicio.add(marcoNrj2, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 10, 800, 510));
 
         tab_panelPrincipal.addTab("SERVICIO", tab_servicio);
 
         tab_repuesto.setBackground(new java.awt.Color(255, 255, 255));
         tab_repuesto.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jRadBut_xDescr.setBackground(new java.awt.Color(82, 148, 202));
+        buttonGroupRepue.add(jRadBut_xDescr);
+        jRadBut_xDescr.setAutoscrolls(true);
+        jRadBut_xDescr.setBorder(null);
+        tab_repuesto.add(jRadBut_xDescr, new org.netbeans.lib.awtextra.AbsoluteConstraints(32, 144, 20, 30));
+
+        jRadBut_xNserie.setBackground(new java.awt.Color(82, 148, 202));
+        buttonGroupRepue.add(jRadBut_xNserie);
+        jRadBut_xNserie.setAutoscrolls(true);
+        jRadBut_xNserie.setBorder(null);
+        tab_repuesto.add(jRadBut_xNserie, new org.netbeans.lib.awtextra.AbsoluteConstraints(32, 114, 20, 30));
+
+        btn_Busca4.setBackground(new java.awt.Color(82, 148, 202));
+        btn_Busca4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/lupa48x48.png"))); // NOI18N
+        btn_Busca4.setBorder(null);
+        btn_Busca4.setOpaque(false);
+        tab_repuesto.add(btn_Busca4, new org.netbeans.lib.awtextra.AbsoluteConstraints(61, 252, 60, 60));
+
+        jTf_busqueda3.setBackground(new java.awt.Color(255, 255, 255));
+        jTf_busqueda3.setFont(new java.awt.Font("Dialog", 0, 16)); // NOI18N
+        jTf_busqueda3.setForeground(new java.awt.Color(0, 0, 0));
+        jTf_busqueda3.setBorder(null);
+        jTf_busqueda3.addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentShown(java.awt.event.ComponentEvent evt) {
+                jTf_busqueda3ComponentShown(evt);
+            }
+        });
+        tab_repuesto.add(jTf_busqueda3, new org.netbeans.lib.awtextra.AbsoluteConstraints(15, 210, 145, 20));
+
+        panelBuscar3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/sectorBus-repuesto.png"))); // NOI18N
+        tab_repuesto.add(panelBuscar3, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 0, 190, 530));
+
+        BKGLateral_lbl3.setBackground(new java.awt.Color(82, 148, 202));
+        BKGLateral_lbl3.setForeground(new java.awt.Color(82, 148, 202));
+        BKGLateral_lbl3.setOpaque(true);
+        tab_repuesto.add(BKGLateral_lbl3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -180, 180, 710));
 
         btn_repuesto_alta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/Btn-Alta.png"))); // NOI18N
         btn_repuesto_alta.setText("ALTA");
@@ -454,18 +603,62 @@ public class Jf_TallerReparacion extends javax.swing.JFrame {
 
         tab_repuesto.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 90, 750, 420));
 
-        BKGLateral_lbl3.setBackground(new java.awt.Color(82, 148, 202));
-        BKGLateral_lbl3.setForeground(new java.awt.Color(82, 148, 202));
-        BKGLateral_lbl3.setOpaque(true);
-        tab_repuesto.add(BKGLateral_lbl3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -180, 180, 710));
-
-        jLabel4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 140, 0), 2));
-        tab_repuesto.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 10, 800, 510));
+        marcoNrj3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 140, 0), 2));
+        tab_repuesto.add(marcoNrj3, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 10, 800, 510));
 
         tab_panelPrincipal.addTab("REPUESTO", tab_repuesto);
 
         tab_reparacion.setBackground(new java.awt.Color(255, 255, 255));
         tab_reparacion.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jRadBut_Pendiente.setBackground(new java.awt.Color(82, 148, 202));
+        buttonGroupRepar.add(jRadBut_Pendiente);
+        jRadBut_Pendiente.setAutoscrolls(true);
+        jRadBut_Pendiente.setBorder(null);
+        tab_reparacion.add(jRadBut_Pendiente, new org.netbeans.lib.awtextra.AbsoluteConstraints(32, 50, 20, 30));
+
+        jRadBut_Resuelto.setBackground(new java.awt.Color(82, 148, 202));
+        buttonGroupRepar.add(jRadBut_Resuelto);
+        jRadBut_Resuelto.setAutoscrolls(true);
+        jRadBut_Resuelto.setBorder(null);
+        tab_reparacion.add(jRadBut_Resuelto, new org.netbeans.lib.awtextra.AbsoluteConstraints(32, 80, 20, 30));
+
+        jRadBut_Anulado.setBackground(new java.awt.Color(82, 148, 202));
+        buttonGroupRepar.add(jRadBut_Anulado);
+        jRadBut_Anulado.setAutoscrolls(true);
+        jRadBut_Anulado.setBorder(null);
+        tab_reparacion.add(jRadBut_Anulado, new org.netbeans.lib.awtextra.AbsoluteConstraints(32, 144, 20, 30));
+
+        jRadBut_Entregado.setBackground(new java.awt.Color(82, 148, 202));
+        buttonGroupRepar.add(jRadBut_Entregado);
+        jRadBut_Entregado.setAutoscrolls(true);
+        jRadBut_Entregado.setBorder(null);
+        tab_reparacion.add(jRadBut_Entregado, new org.netbeans.lib.awtextra.AbsoluteConstraints(32, 114, 20, 30));
+
+        jTf_busqueda4.setBackground(new java.awt.Color(255, 255, 255));
+        jTf_busqueda4.setFont(new java.awt.Font("Dialog", 0, 16)); // NOI18N
+        jTf_busqueda4.setForeground(new java.awt.Color(0, 0, 0));
+        jTf_busqueda4.setBorder(null);
+        jTf_busqueda4.addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentShown(java.awt.event.ComponentEvent evt) {
+                jTf_busqueda4ComponentShown(evt);
+            }
+        });
+        tab_reparacion.add(jTf_busqueda4, new org.netbeans.lib.awtextra.AbsoluteConstraints(15, 210, 145, 20));
+
+        btn_Busca5.setBackground(new java.awt.Color(82, 148, 202));
+        btn_Busca5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/lupa48x48.png"))); // NOI18N
+        btn_Busca5.setBorder(null);
+        btn_Busca5.setOpaque(false);
+        tab_reparacion.add(btn_Busca5, new org.netbeans.lib.awtextra.AbsoluteConstraints(61, 252, 60, 60));
+
+        panelBuscar4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/sectorBus-reparacion.png"))); // NOI18N
+        tab_reparacion.add(panelBuscar4, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 0, 190, 530));
+
+        BKGLateral_lbl4.setBackground(new java.awt.Color(82, 148, 202));
+        BKGLateral_lbl4.setForeground(new java.awt.Color(82, 148, 202));
+        BKGLateral_lbl4.setOpaque(true);
+        tab_reparacion.add(BKGLateral_lbl4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -180, 180, 710));
 
         btn_reparacion_alta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/Btn-Alta.png"))); // NOI18N
         btn_reparacion_alta.setBorder(null);
@@ -503,13 +696,8 @@ public class Jf_TallerReparacion extends javax.swing.JFrame {
 
         tab_reparacion.add(jScrollPane5, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 90, 750, 420));
 
-        BKGLateral_lbl4.setBackground(new java.awt.Color(82, 148, 202));
-        BKGLateral_lbl4.setForeground(new java.awt.Color(82, 148, 202));
-        BKGLateral_lbl4.setOpaque(true);
-        tab_reparacion.add(BKGLateral_lbl4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -180, 180, 710));
-
-        jLabel5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 140, 0), 2));
-        tab_reparacion.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 10, 800, 510));
+        marcoNrj4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 140, 0), 2));
+        tab_reparacion.add(marcoNrj4, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 10, 800, 510));
 
         tab_panelPrincipal.addTab("-REPARACION-", tab_reparacion);
 
@@ -652,6 +840,26 @@ cargarTablaBicicleta();
         cargarTablaReparacion();     // TODO add your handling code here:
     }//GEN-LAST:event_formWindowActivated
 
+    private void jTf_busquedaComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_jTf_busquedaComponentShown
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTf_busquedaComponentShown
+
+    private void jTf_busqueda1ComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_jTf_busqueda1ComponentShown
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTf_busqueda1ComponentShown
+
+    private void jTf_busqueda2ComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_jTf_busqueda2ComponentShown
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTf_busqueda2ComponentShown
+
+    private void jTf_busqueda3ComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_jTf_busqueda3ComponentShown
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTf_busqueda3ComponentShown
+
+    private void jTf_busqueda4ComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_jTf_busqueda4ComponentShown
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTf_busqueda4ComponentShown
+
     /**
      * @param args the command line arguments
      */
@@ -697,6 +905,11 @@ cargarTablaBicicleta();
     private javax.swing.JLabel BKGLateral_lbl3;
     private javax.swing.JLabel BKGLateral_lbl4;
     private javax.swing.JLabel BKGLateral_lbl5;
+    private javax.swing.JButton btn_Busca;
+    private javax.swing.JButton btn_Busca2;
+    private javax.swing.JButton btn_Busca3;
+    private javax.swing.JButton btn_Busca4;
+    private javax.swing.JButton btn_Busca5;
     private javax.swing.JButton btn_Servicio;
     private javax.swing.JButton btn_bicicleta;
     private javax.swing.JButton btn_bicicleta_alta;
@@ -715,18 +928,30 @@ cargarTablaBicicleta();
     private javax.swing.JButton btn_servicio_alta;
     private javax.swing.JButton btn_servicio_baja;
     private javax.swing.JButton btn_servicio_modificar;
+    private javax.swing.ButtonGroup buttonGroupBici;
+    private javax.swing.ButtonGroup buttonGroupClie;
+    private javax.swing.ButtonGroup buttonGroupRepar;
+    private javax.swing.ButtonGroup buttonGroupRepue;
+    private javax.swing.ButtonGroup buttonGroupServ;
     private javax.swing.JButton byn_Repuesto;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JRadioButton jRadBut_Anulado;
+    private javax.swing.JRadioButton jRadBut_Entregado;
+    private javax.swing.JRadioButton jRadBut_Pendiente;
+    private javax.swing.JRadioButton jRadBut_Resuelto;
+    private javax.swing.JRadioButton jRadBut_xCodigo;
+    private javax.swing.JRadioButton jRadBut_xDescr;
+    private javax.swing.JRadioButton jRadBut_xDescrip;
     private javax.swing.JRadioButton jRadBut_xDni;
     private javax.swing.JRadioButton jRadBut_xNom;
+    private javax.swing.JRadioButton jRadBut_xNombre;
+    private javax.swing.JRadioButton jRadBut_xNserie;
+    private javax.swing.JRadioButton jRadBut_xSerie;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
@@ -737,10 +962,22 @@ cargarTablaBicicleta();
     private javax.swing.JTable jTable_Reparacion;
     private javax.swing.JTable jTable_Repuesto;
     private javax.swing.JTable jTable_Servicio;
+    private javax.swing.JTextField jTf_busqueda;
+    private javax.swing.JTextField jTf_busqueda1;
+    private javax.swing.JTextField jTf_busqueda2;
+    private javax.swing.JTextField jTf_busqueda3;
+    private javax.swing.JTextField jTf_busqueda4;
     private javax.swing.JLabel lbl_MarcoNja;
     private javax.swing.JLabel marcoNrj;
     private javax.swing.JLabel marcoNrj1;
+    private javax.swing.JLabel marcoNrj2;
+    private javax.swing.JLabel marcoNrj3;
+    private javax.swing.JLabel marcoNrj4;
     private javax.swing.JLabel panelBuscar;
+    private javax.swing.JLabel panelBuscar1;
+    private javax.swing.JLabel panelBuscar2;
+    private javax.swing.JLabel panelBuscar3;
+    private javax.swing.JLabel panelBuscar4;
     private javax.swing.JPanel tab_Cliente;
     private javax.swing.JPanel tab_bici;
     private javax.swing.JPanel tab_inicio;
