@@ -10,6 +10,7 @@ import datos.ServicioData;
 import entidades.Reparacion;
 import datos.ReparacionData;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 public class Jf_TallerReparacion extends javax.swing.JFrame {
@@ -256,17 +257,25 @@ public class Jf_TallerReparacion extends javax.swing.JFrame {
         buttonGroupClie.add(jRadBut_xNom);
         jRadBut_xNom.setAutoscrolls(true);
         jRadBut_xNom.setBorder(null);
+        jRadBut_xNom.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadBut_xNomActionPerformed(evt);
+            }
+        });
         tab_Cliente.add(jRadBut_xNom, new org.netbeans.lib.awtextra.AbsoluteConstraints(34, 102, 20, 30));
 
         jRadBut_xDni.setBackground(new java.awt.Color(82, 148, 202));
         buttonGroupClie.add(jRadBut_xDni);
         jRadBut_xDni.setAutoscrolls(true);
         jRadBut_xDni.setBorder(null);
+        jRadBut_xDni.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadBut_xDniActionPerformed(evt);
+            }
+        });
         tab_Cliente.add(jRadBut_xDni, new org.netbeans.lib.awtextra.AbsoluteConstraints(34, 69, 20, 30));
 
-        jTf_busqueda.setBackground(new java.awt.Color(255, 255, 255));
         jTf_busqueda.setFont(new java.awt.Font("Dialog", 0, 16)); // NOI18N
-        jTf_busqueda.setForeground(new java.awt.Color(0, 0, 0));
         jTf_busqueda.setBorder(null);
         jTf_busqueda.addComponentListener(new java.awt.event.ComponentAdapter() {
             public void componentShown(java.awt.event.ComponentEvent evt) {
@@ -370,9 +379,7 @@ public class Jf_TallerReparacion extends javax.swing.JFrame {
         jRadBut_xSerie.setBorder(null);
         tab_bici.add(jRadBut_xSerie, new org.netbeans.lib.awtextra.AbsoluteConstraints(32, 70, 20, 30));
 
-        jTf_busqueda1.setBackground(new java.awt.Color(255, 255, 255));
         jTf_busqueda1.setFont(new java.awt.Font("Dialog", 0, 16)); // NOI18N
-        jTf_busqueda1.setForeground(new java.awt.Color(0, 0, 0));
         jTf_busqueda1.setBorder(null);
         jTf_busqueda1.addComponentListener(new java.awt.event.ComponentAdapter() {
             public void componentShown(java.awt.event.ComponentEvent evt) {
@@ -474,9 +481,7 @@ public class Jf_TallerReparacion extends javax.swing.JFrame {
         jRadBut_xCodigo.setBorder(null);
         tab_servicio.add(jRadBut_xCodigo, new org.netbeans.lib.awtextra.AbsoluteConstraints(32, 70, 20, 30));
 
-        jTf_busqueda2.setBackground(new java.awt.Color(255, 255, 255));
         jTf_busqueda2.setFont(new java.awt.Font("Dialog", 0, 16)); // NOI18N
-        jTf_busqueda2.setForeground(new java.awt.Color(0, 0, 0));
         jTf_busqueda2.setBorder(null);
         jTf_busqueda2.addComponentListener(new java.awt.event.ComponentAdapter() {
             public void componentShown(java.awt.event.ComponentEvent evt) {
@@ -583,9 +588,7 @@ public class Jf_TallerReparacion extends javax.swing.JFrame {
         btn_Busca4.setOpaque(false);
         tab_repuesto.add(btn_Busca4, new org.netbeans.lib.awtextra.AbsoluteConstraints(62, 204, 60, 60));
 
-        jTf_busqueda3.setBackground(new java.awt.Color(255, 255, 255));
         jTf_busqueda3.setFont(new java.awt.Font("Dialog", 0, 16)); // NOI18N
-        jTf_busqueda3.setForeground(new java.awt.Color(0, 0, 0));
         jTf_busqueda3.setBorder(null);
         jTf_busqueda3.addComponentListener(new java.awt.event.ComponentAdapter() {
             public void componentShown(java.awt.event.ComponentEvent evt) {
@@ -717,9 +720,7 @@ public class Jf_TallerReparacion extends javax.swing.JFrame {
         jRadBut_Entregado.setBorder(null);
         tab_reparacion.add(jRadBut_Entregado, new org.netbeans.lib.awtextra.AbsoluteConstraints(28, 455, 20, 30));
 
-        jTf_busqueda4.setBackground(new java.awt.Color(255, 255, 255));
         jTf_busqueda4.setFont(new java.awt.Font("Dialog", 0, 16)); // NOI18N
-        jTf_busqueda4.setForeground(new java.awt.Color(0, 0, 0));
         jTf_busqueda4.setBorder(null);
         jTf_busqueda4.addComponentListener(new java.awt.event.ComponentAdapter() {
             public void componentShown(java.awt.event.ComponentEvent evt) {
@@ -809,7 +810,15 @@ tab_panelPrincipal.setSelectedIndex(5);        // TODO add your handling code he
     }//GEN-LAST:event_btn_reparacionActionPerformed
 
     private void btn_cliente_bajaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cliente_bajaActionPerformed
-      // TODO add your handling code here:
+                   Cliente cliente = cliDa.buscarCliente((Integer)tModeloCliente.getValueAt(jTable_Cliente.getSelectedRow(), 0));
+if(cliente.isEstado()){
+cliDa.borrarCliente(cliente.getDni());
+}
+else{
+
+cliDa.guardarCliente(cliente);
+}
+ cargarTablaCliente();
     }//GEN-LAST:event_btn_cliente_bajaActionPerformed
 
     private void btn_bicicleta_altaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_bicicleta_altaActionPerformed
@@ -941,6 +950,30 @@ cargarTablaBicicleta();
     private void jTf_busqueda4ComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_jTf_busqueda4ComponentShown
         // TODO add your handling code here:
     }//GEN-LAST:event_jTf_busqueda4ComponentShown
+
+    private void jRadBut_xNomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadBut_xNomActionPerformed
+              borrarFilas();
+        
+         if(jTf_busqueda.getText().length()<1){
+              jRadBut_xNom.setSelected(false);
+             JOptionPane.showMessageDialog(null, " debe ingresar un nombre y luego presionar el boton por nombre");
+         }
+        String nom=jTf_busqueda.getText();
+       
+      
+        for (Cliente cliente :cliDa.BuscarClientePorNombre(nom)) {
+            tModeloCliente.addRow(new Object[]{cliente.getDni(),cliente.getNombre(),cliente.getDomicilio(),cliente.getTel()});
+        }
+        jTable_Cliente.setModel(tModeloCliente);
+    }//GEN-LAST:event_jRadBut_xNomActionPerformed
+
+    private void jRadBut_xDniActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadBut_xDniActionPerformed
+           Cliente cliente = cliDa.buscarCliente(Integer.parseInt(JOptionPane.showInputDialog("ingrese el dni")));
+      Jf_Cliente jfCliente = new Jf_Cliente(this,cliente);
+        jfCliente.setAlwaysOnTop(true);
+        jfCliente.show(true);
+        jfCliente.setVisible(true); 
+    }//GEN-LAST:event_jRadBut_xDniActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1129,5 +1162,13 @@ cargarTablaBicicleta();
             tModeloReparacion.addRow(new Object[]{reparacion.getId(),reparacion.getServicio(), reparacion.getCliente(), reparacion.getBici(), reparacion.getFechaEntrada(), reparacion.getCostoTotal()});
         }
         jTable_Reparacion.setModel(tModeloReparacion);
+    }
+     public void borrarFilas(){
+    
+        int a=tModeloCliente.getRowCount()-1;//cuenta las filas pero el indice es uno menos
+        for (int i = a; i >=0; i--) {
+           tModeloCliente.removeRow(i);
+        }
+    
     }
 }

@@ -93,11 +93,21 @@ public class Jf_Cliente extends javax.swing.JFrame {
         btn_guardar.setBackground(new java.awt.Color(82, 148, 202));
         btn_guardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/Btn-xGuarda.png"))); // NOI18N
         btn_guardar.setBorder(null);
+        btn_guardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_guardarActionPerformed(evt);
+            }
+        });
         jPanel1.add(btn_guardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 520, 140, 50));
 
         btn_salir.setBackground(new java.awt.Color(82, 148, 202));
         btn_salir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/Btn-xSalir.png"))); // NOI18N
         btn_salir.setBorder(null);
+        btn_salir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_salirActionPerformed(evt);
+            }
+        });
         jPanel1.add(btn_salir, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 520, 140, 50));
 
         jLabel1.setBackground(javax.swing.UIManager.getDefaults().getColor("CheckBoxMenuItem.selectionBackground"));
@@ -140,33 +150,63 @@ public class Jf_Cliente extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowClosing
 
     private void btn_guardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_guardarActionPerformed
+       if(esNumero(jTf_dni.getText()) && jTf_nombre.getText().length() > 1 && jTf_domicilio.getText().length() > 1 && esNumero(jTf_telefono.getText())){
         if (cliente == null) {
             cliente = new Cliente();
-            int dni = Integer.parseInt(jTf_dni.getText());
-            String nombre = jTf_nombre.getText();
-            String domicilio = jTf_domicilio.getText();
-            int tel = Integer.parseInt(jTf_telefono.getText());
-            cliente.setNombre(nombre);
-            cliente.setDomicilio(domicilio);
-            cliente.setDni(dni);
-            cliente.setTel(tel);
+           // int dni = Integer.parseInt(jTf_dni.getText());
+            //String nombre = jTf_nombre.getText();
+            //String domicilio = jTf_domicilio.getText();
+            //int tel = Integer.parseInt(jTf_telefono.getText());
+            cliente.setNombre(jTf_nombre.getText());
+            cliente.setDomicilio(jTf_domicilio.getText());
+            cliente.setDni(Integer.parseInt(jTf_dni.getText()));
+            cliente.setTel(Integer.parseInt(jTf_telefono.getText()));
             cliente.setEstado(true);
             cliDa.guardarCliente(cliente);
         } else {
-            int dni = Integer.parseInt(jTf_dni.getText());
-            String nombre = jTf_nombre.getText();
-            String domicilio = jTf_domicilio.getText();
-            int tel = Integer.parseInt(jTf_telefono.getText());
+            //int dni = Integer.parseInt(jTf_dni.getText());
+           // String nombre = jTf_nombre.getText();
+            //String domicilio = jTf_domicilio.getText();
+           // int tel = Integer.parseInt(jTf_telefono.getText());
             // boolean estado=jrbEstado.isSelected(); //NO ACTUALIZAMOS EL ESTADO ACA, HAY QUE SACAR DEL METODO MODIFICAR  
-            cliente.setDni(dni);
-            cliente.setNombre(nombre);
-            cliente.setDomicilio(domicilio);
-            cliente.setTel(tel);
+            cliente.setDni(Integer.parseInt(jTf_dni.getText()));
+            cliente.setNombre(jTf_nombre.getText());
+            cliente.setDomicilio(jTf_domicilio.getText());
+            cliente.setTel(Integer.parseInt(jTf_telefono.getText()));
             //cliente.setEstado(true); //No seteamos, dejamos el que traia el Cliente.
             cliDa.actualizarCliente(cliente);
-        }        
+        }
+       } else{
+            JOptionPane.showMessageDialog(this, "Debe completar todos los datos correctamente");
+       }       
     }//GEN-LAST:event_btn_guardarActionPerformed
 
+    private void btn_salirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_salirActionPerformed
+ this.padre.setEnabled(true);
+        this.dispose();
+    }//GEN-LAST:event_btn_salirActionPerformed
+
+        public boolean esNumero(String cadena) {
+        boolean resultado;
+        try {
+            Integer.parseInt(cadena);
+            resultado = true;
+        } catch (NumberFormatException excepcion) {
+            resultado = false;
+        }
+        return resultado;
+    }
+
+    public boolean esFloat(String cadena) {
+        boolean resultado;
+        try {
+            Float.parseFloat(cadena);
+            resultado = true;
+        } catch (NumberFormatException excepcion) {
+            resultado = false;
+        }
+        return resultado;
+ }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_guardar;

@@ -154,4 +154,32 @@ public class ClienteData {
 
         return borrado;
     }
+               public ArrayList<Cliente> BuscarClientePorNombre(String nombre) {   //SELECT 1 ALUMNO
+        //SELECT 1 ALUMNO
+       
+        
+        String sql = "SELECT * FROM cliente WHERE nombre=?";
+      Cliente cli= null;
+         ArrayList<Cliente>cliente = new ArrayList();
+
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1,nombre);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                cli = new Cliente();
+                cli.setDni(rs.getInt("dni"));
+                cli.setNombre(rs.getString("nombre"));
+                cli.setDomicilio(rs.getString("domicilio"));
+                cli.setTel(rs.getInt("telefono"));
+                //cli.setEstado(rs.getBoolean("estado"));
+                cliente.add(cli);
+
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(ClienteData.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return cliente;
+    }
 }
