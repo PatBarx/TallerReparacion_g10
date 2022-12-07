@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package vistas;
 
 import datos.RepuestoData;
@@ -11,7 +6,7 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author Pat
+ * @author Grupo10
  */
 public class Jf_Repuesto extends javax.swing.JFrame {
 
@@ -19,9 +14,6 @@ public class Jf_Repuesto extends javax.swing.JFrame {
     private Repuesto repuesto;
     private RepuestoData repuDa;
 
-    /**
-     * Creates new form Jif_Cliente
-     */
     public Jf_Repuesto(java.awt.Frame padre, Repuesto repuesto) {
         initComponents();
         this.padre = padre;

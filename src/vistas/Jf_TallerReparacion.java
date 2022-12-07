@@ -52,7 +52,12 @@ public class Jf_TallerReparacion extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         tab_panelPrincipal = new javax.swing.JTabbedPane();
         tab_inicio = new javax.swing.JPanel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
         BKGLateral_lbl = new javax.swing.JLabel();
+        lbl_MarcoNja = new javax.swing.JLabel();
         tab_Cliente = new javax.swing.JPanel();
         jRadBut_xNom = new javax.swing.JRadioButton();
         jRadBut_xDni = new javax.swing.JRadioButton();
@@ -161,17 +166,41 @@ public class Jf_TallerReparacion extends javax.swing.JFrame {
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/Logo-160-150.png"))); // NOI18N
         jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 160, 150));
 
-        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, -10, 1020, 160));
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, -10, 1010, 160));
 
         tab_panelPrincipal.setBackground(new java.awt.Color(82, 148, 202));
 
         tab_inicio.setBackground(new java.awt.Color(255, 255, 255));
         tab_inicio.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/Logo.png"))); // NOI18N
+        tab_inicio.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 170, -1, 320));
+
+        jLabel2.setBackground(new java.awt.Color(9, 77, 114));
+        jLabel2.setFont(new java.awt.Font("Dialog", 1, 35)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(9, 77, 114));
+        jLabel2.setText("DE BICICLETAS");
+        tab_inicio.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 100, 270, 70));
+
+        jLabel3.setBackground(new java.awt.Color(9, 77, 114));
+        jLabel3.setFont(new java.awt.Font("Dialog", 1, 35)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(9, 77, 114));
+        jLabel3.setText("BIENVENIDO AL SISTEMA DE GESTION");
+        tab_inicio.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 20, 650, 70));
+
+        jLabel7.setBackground(new java.awt.Color(9, 77, 114));
+        jLabel7.setFont(new java.awt.Font("Dialog", 1, 35)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(9, 77, 114));
+        jLabel7.setText("PARA TALLER DE REPARACION");
+        tab_inicio.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 60, 540, 70));
+
         BKGLateral_lbl.setBackground(new java.awt.Color(82, 148, 202));
         BKGLateral_lbl.setForeground(new java.awt.Color(82, 148, 202));
         BKGLateral_lbl.setOpaque(true);
         tab_inicio.add(BKGLateral_lbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -180, 180, 710));
+
+        lbl_MarcoNja.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 140, 0), 2));
+        tab_inicio.add(lbl_MarcoNja, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 20, 780, 480));
 
         tab_panelPrincipal.addTab("INICIO", tab_inicio);
 
@@ -181,17 +210,16 @@ public class Jf_TallerReparacion extends javax.swing.JFrame {
         jRadBut_xNom.setBackground(new java.awt.Color(82, 148, 202));
         jRadBut_xNom.setAutoscrolls(true);
         jRadBut_xNom.setBorder(null);
-        tab_Cliente.add(jRadBut_xNom, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, 20, 30));
+        tab_Cliente.add(jRadBut_xNom, new org.netbeans.lib.awtextra.AbsoluteConstraints(28, 120, 20, 30));
 
         jRadBut_xDni.setBackground(new java.awt.Color(82, 148, 202));
         jRadBut_xDni.setAutoscrolls(true);
         jRadBut_xDni.setBorder(null);
-        tab_Cliente.add(jRadBut_xDni, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, 20, 30));
+        tab_Cliente.add(jRadBut_xDni, new org.netbeans.lib.awtextra.AbsoluteConstraints(28, 90, 20, 30));
 
         panelBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/sectorBus-clie.png"))); // NOI18N
         tab_Cliente.add(panelBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 0, 190, 520));
 
-        btn_cliente_baja.setBackground(new java.awt.Color(255, 255, 255));
         btn_cliente_baja.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/Btn-Baja.png"))); // NOI18N
         btn_cliente_baja.setBorder(null);
         btn_cliente_baja.setPreferredSize(new java.awt.Dimension(150, 58));
@@ -202,7 +230,6 @@ public class Jf_TallerReparacion extends javax.swing.JFrame {
         });
         tab_Cliente.add(btn_cliente_baja, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 20, 150, 56));
 
-        btn_cliente_alta.setBackground(new java.awt.Color(255, 255, 255));
         btn_cliente_alta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/Btn-Alta.png"))); // NOI18N
         btn_cliente_alta.setBorder(null);
         btn_cliente_alta.setPreferredSize(new java.awt.Dimension(150, 58));
@@ -213,7 +240,6 @@ public class Jf_TallerReparacion extends javax.swing.JFrame {
         });
         tab_Cliente.add(btn_cliente_alta, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 20, 150, 56));
 
-        btn_cliente_modificar.setBackground(new java.awt.Color(255, 255, 255));
         btn_cliente_modificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/Btn-Actua.png"))); // NOI18N
         btn_cliente_modificar.setBorder(null);
         btn_cliente_modificar.setPreferredSize(new java.awt.Dimension(150, 58));
@@ -264,7 +290,6 @@ public class Jf_TallerReparacion extends javax.swing.JFrame {
         marcoNrj1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 140, 0), 2));
         tab_bici.add(marcoNrj1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 10, 800, 510));
 
-        btn_bicicleta_alta.setBackground(new java.awt.Color(255, 255, 255));
         btn_bicicleta_alta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/Btn-Alta.png"))); // NOI18N
         btn_bicicleta_alta.setBorder(null);
         btn_bicicleta_alta.addActionListener(new java.awt.event.ActionListener() {
@@ -274,7 +299,6 @@ public class Jf_TallerReparacion extends javax.swing.JFrame {
         });
         tab_bici.add(btn_bicicleta_alta, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 20, 150, 56));
 
-        btn_bicicleta_baja.setBackground(new java.awt.Color(255, 255, 255));
         btn_bicicleta_baja.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/Btn-Baja.png"))); // NOI18N
         btn_bicicleta_baja.setBorder(null);
         btn_bicicleta_baja.addActionListener(new java.awt.event.ActionListener() {
@@ -284,7 +308,6 @@ public class Jf_TallerReparacion extends javax.swing.JFrame {
         });
         tab_bici.add(btn_bicicleta_baja, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 20, 150, 56));
 
-        btn_bicicleta_modificar.setBackground(new java.awt.Color(255, 255, 255));
         btn_bicicleta_modificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/Btn-Actua.png"))); // NOI18N
         btn_bicicleta_modificar.setBorder(null);
         btn_bicicleta_modificar.addActionListener(new java.awt.event.ActionListener() {
@@ -319,7 +342,6 @@ public class Jf_TallerReparacion extends javax.swing.JFrame {
         tab_servicio.setForeground(new java.awt.Color(255, 255, 255));
         tab_servicio.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        btn_servicio_alta.setBackground(new java.awt.Color(255, 255, 255));
         btn_servicio_alta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/Btn-Alta.png"))); // NOI18N
         btn_servicio_alta.setBorder(null);
         btn_servicio_alta.addActionListener(new java.awt.event.ActionListener() {
@@ -329,7 +351,6 @@ public class Jf_TallerReparacion extends javax.swing.JFrame {
         });
         tab_servicio.add(btn_servicio_alta, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 20, 150, 56));
 
-        btn_servicio_baja.setBackground(new java.awt.Color(255, 255, 255));
         btn_servicio_baja.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/Btn-Baja.png"))); // NOI18N
         btn_servicio_baja.setBorder(null);
         btn_servicio_baja.addActionListener(new java.awt.event.ActionListener() {
@@ -339,7 +360,6 @@ public class Jf_TallerReparacion extends javax.swing.JFrame {
         });
         tab_servicio.add(btn_servicio_baja, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 20, 150, 56));
 
-        btn_servicio_modificar.setBackground(new java.awt.Color(255, 255, 255));
         btn_servicio_modificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/Btn-Actua.png"))); // NOI18N
         btn_servicio_modificar.setBorder(null);
         btn_servicio_modificar.addActionListener(new java.awt.event.ActionListener() {
@@ -381,7 +401,6 @@ public class Jf_TallerReparacion extends javax.swing.JFrame {
         tab_repuesto.setBackground(new java.awt.Color(255, 255, 255));
         tab_repuesto.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        btn_repuesto_alta.setBackground(new java.awt.Color(255, 255, 255));
         btn_repuesto_alta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/Btn-Alta.png"))); // NOI18N
         btn_repuesto_alta.setText("ALTA");
         btn_repuesto_alta.setBorder(null);
@@ -394,7 +413,6 @@ public class Jf_TallerReparacion extends javax.swing.JFrame {
         });
         tab_repuesto.add(btn_repuesto_alta, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 20, 150, 56));
 
-        btn_repuesto_modificar.setBackground(new java.awt.Color(255, 255, 255));
         btn_repuesto_modificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/Btn-Actua.png"))); // NOI18N
         btn_repuesto_modificar.setText("MODIFICAR");
         btn_repuesto_modificar.setBorder(null);
@@ -406,7 +424,6 @@ public class Jf_TallerReparacion extends javax.swing.JFrame {
         });
         tab_repuesto.add(btn_repuesto_modificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 20, 150, 56));
 
-        btn_repuesto_baja.setBackground(new java.awt.Color(255, 255, 255));
         btn_repuesto_baja.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/Btn-Baja.png"))); // NOI18N
         btn_repuesto_baja.setText("BAJA");
         btn_repuesto_baja.setBorder(null);
@@ -450,7 +467,6 @@ public class Jf_TallerReparacion extends javax.swing.JFrame {
         tab_reparacion.setBackground(new java.awt.Color(255, 255, 255));
         tab_reparacion.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        btn_reparacion_alta.setBackground(new java.awt.Color(255, 255, 255));
         btn_reparacion_alta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/Btn-Alta.png"))); // NOI18N
         btn_reparacion_alta.setBorder(null);
         btn_reparacion_alta.addActionListener(new java.awt.event.ActionListener() {
@@ -460,7 +476,6 @@ public class Jf_TallerReparacion extends javax.swing.JFrame {
         });
         tab_reparacion.add(btn_reparacion_alta, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 20, 150, 56));
 
-        btn_reparacion_modificar.setBackground(new java.awt.Color(255, 255, 255));
         btn_reparacion_modificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/Btn-Actua.png"))); // NOI18N
         btn_reparacion_modificar.setBorder(null);
         btn_reparacion_modificar.addActionListener(new java.awt.event.ActionListener() {
@@ -549,7 +564,10 @@ tab_panelPrincipal.setSelectedIndex(5);        // TODO add your handling code he
     }//GEN-LAST:event_btn_repuesto_altaActionPerformed
 
     private void btn_reparacion_altaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_reparacion_altaActionPerformed
-        // TODO add your handling code here:
+        Jf_Reparacion jfReparacion = new Jf_Reparacion(this,null);
+        jfReparacion.setAlwaysOnTop(true);
+        jfReparacion.show(true);
+        jfReparacion.setVisible(true);  
     }//GEN-LAST:event_btn_reparacion_altaActionPerformed
 
     private void btn_cliente_altaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cliente_altaActionPerformed
@@ -587,7 +605,13 @@ cargarTablaBicicleta();
     }//GEN-LAST:event_btn_bicicleta_modificarActionPerformed
 
     private void btn_servicio_bajaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_servicio_bajaActionPerformed
-        // TODO add your handling code here:
+        Servicio servicio = servDa.buscarServicio((Integer) tModeloServicio.getValueAt(jTable_Servicio.getSelectedRow(), 0));
+        if (servicio.isEstado()) {
+            servDa.bajaServicio(servicio.getCodigo());
+        } else {
+            servDa.activaServicio(servicio.getCodigo());
+        }
+        cargarTablaServicio();
     }//GEN-LAST:event_btn_servicio_bajaActionPerformed
 
     private void btn_servicio_modificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_servicio_modificarActionPerformed
@@ -599,7 +623,7 @@ cargarTablaBicicleta();
     }//GEN-LAST:event_btn_servicio_modificarActionPerformed
 
     private void btn_repuesto_modificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_repuesto_modificarActionPerformed
-        Repuesto repuesto = repuDa.buscarRepuesto((Integer) tModeloRepuesto.getValueAt(jTable_Repuesto.getSelectedRow(), 0)); //REMPLAZAR POR EL DNI DEL CLIENTE EN LA TABLA MOSTRADA
+        Repuesto repuesto = repuDa.buscarRepuesto((Integer) tModeloRepuesto.getValueAt(jTable_Repuesto.getSelectedRow(), 0));
         Jf_Repuesto jfRepuesto = new Jf_Repuesto(this,repuesto);
         jfRepuesto.setAlwaysOnTop(true);
         jfRepuesto.show(true);
@@ -607,8 +631,8 @@ cargarTablaBicicleta();
     }//GEN-LAST:event_btn_repuesto_modificarActionPerformed
 
     private void btn_repuesto_bajaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_repuesto_bajaActionPerformed
-            Repuesto repuesto = repuDa.buscarRepuesto((Integer) tModeloRepuesto.getValueAt(jTable_Repuesto.getSelectedRow(), 0)); //REMPLAZAR POR EL DNI DEL CLIENTE EN LA TABLA MOSTRADA
-        if (repuesto.isEstado()) {
+            Repuesto repuesto = repuDa.buscarRepuesto((Integer) tModeloRepuesto.getValueAt(jTable_Repuesto.getSelectedRow(), 0)); 
+            if (repuesto.isEstado()) {
             repuDa.bajaRepuesto(repuesto);
         } else {
             repuDa.activaRepuesto(repuesto);
@@ -693,9 +717,13 @@ cargarTablaBicicleta();
     private javax.swing.JButton btn_servicio_modificar;
     private javax.swing.JButton byn_Repuesto;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JRadioButton jRadBut_xDni;
     private javax.swing.JRadioButton jRadBut_xNom;
@@ -709,6 +737,7 @@ cargarTablaBicicleta();
     private javax.swing.JTable jTable_Reparacion;
     private javax.swing.JTable jTable_Repuesto;
     private javax.swing.JTable jTable_Servicio;
+    private javax.swing.JLabel lbl_MarcoNja;
     private javax.swing.JLabel marcoNrj;
     private javax.swing.JLabel marcoNrj1;
     private javax.swing.JLabel panelBuscar;

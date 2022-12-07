@@ -44,6 +44,7 @@ public class Jf_Servicio extends javax.swing.JFrame {
         jTf_codServ.setEditable(false);
         jTf_codServ.setFont(new java.awt.Font("Dialog", 0, 16)); // NOI18N
         jTf_codServ.setBorder(null);
+        jTf_codServ.setEnabled(false);
         jTf_codServ.addComponentListener(new java.awt.event.ComponentAdapter() {
             public void componentShown(java.awt.event.ComponentEvent evt) {
                 jTf_codServComponentShown(evt);

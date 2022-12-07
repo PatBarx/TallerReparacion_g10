@@ -59,6 +59,22 @@ public class ServicioData {
             JOptionPane.showMessageDialog(null, "ServicioData ERROR:\n" +e ); 
         }        
     }
+    public void activaServicio(int id){
+    //UPDATE `servicio` SET estado=0 WHERE codigo=1
+        String query= "UPDATE servicio SET estado=1 WHERE codigo=?";
+        try {
+            PreparedStatement ps = con.prepareStatement(query);
+            ps.setInt(1, id);
+        if (ps.executeUpdate()>0) {
+                JOptionPane.showMessageDialog(null, "ServicioData Info:\nReactivacion Exitosa" );                                
+            }else {
+                JOptionPane.showMessageDialog(null, "ServicioData Error:\nNO pudo activarse el Servicio" ); 
+            }            
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "ServicioData ERROR:\n" +e ); 
+        }        
+    }
+    
     public void modificarServicio(Servicio serv){
     //UPDATE `servicio` SET `descripcion`='[value-1]',`costo`='[value-2]',`estado`='[value-3]' WHERE codigo=1;
         String query = "UPDATE servicio SET descripcion=?, costo=?, estado=? WHERE codigo=?";

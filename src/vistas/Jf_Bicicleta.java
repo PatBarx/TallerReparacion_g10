@@ -98,6 +98,7 @@ private final java.awt.Frame padre;
         jPanel1.add(jTf_color, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 370, 270, 20));
 
         jCbox_Dni.setBackground(new java.awt.Color(255, 255, 255));
+        jCbox_Dni.setBorder(null);
         jPanel1.add(jCbox_Dni, new org.netbeans.lib.awtextra.AbsoluteConstraints(116, 441, 293, 35));
 
         btn_guardar1.setBackground(new java.awt.Color(82, 148, 202));
