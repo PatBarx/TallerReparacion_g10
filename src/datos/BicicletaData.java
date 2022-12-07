@@ -9,6 +9,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 
@@ -94,7 +96,28 @@ public class BicicletaData {
             JOptionPane.showMessageDialog(null, "BicicletaData Error: " + e);
         }    
     }
-    
+                    public void activaBicicleta(Bicicleta bicicleta) {
+         String query = "UPDATE bicicleta SET estado = 1 WHERE serie = ?";
+        PreparedStatement ps = null;
+        try{
+            ps = con.prepareStatement(query);
+            ps.setInt(1, bicicleta.getNroSerie());
+            int resultado = ps.executeUpdate();
+            if (resultado > 0) {
+                JOptionPane.showMessageDialog(null, "Se reactivo el bicicleta");
+            } else {
+                JOptionPane.showMessageDialog(null, "No se pudo reactivar la bicicleta");
+            }
+        }catch (SQLException ex){
+            Logger.getLogger(BicicletaData.class.getName()).log(Level.SEVERE, null, ex);
+        }finally{
+             try {
+                ps.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(BicicletaData.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }
     public ArrayList<Bicicleta> listarBicicletas(){
         ArrayList<Bicicleta> misBicis = new ArrayList();
        
