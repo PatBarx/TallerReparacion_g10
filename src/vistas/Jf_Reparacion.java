@@ -33,14 +33,9 @@ public class Jf_Reparacion extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonGroup1 = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
         jDChooser_fecha = new com.toedter.calendar.JDateChooser();
-        btn_nwRepuesto = new javax.swing.JButton();
-        btn_agregRepu = new javax.swing.JButton();
-        btn_quitaRepu = new javax.swing.JButton();
-        btn_nwCliente = new javax.swing.JButton();
-        btn_nwServicio = new javax.swing.JButton();
-        btn_nwBicicleta = new javax.swing.JButton();
         jScrollPane5 = new javax.swing.JScrollPane();
         jTable_Reparacion = new javax.swing.JTable();
         jRBut_Pendiiente = new javax.swing.JRadioButton();
@@ -54,6 +49,12 @@ public class Jf_Reparacion extends javax.swing.JFrame {
         jTf_NumeroRepa = new javax.swing.JTextField();
         jTf_PrecioFinal = new javax.swing.JTextField();
         jTf_totalRepue = new javax.swing.JTextField();
+        btn_nwRepuesto = new javax.swing.JButton();
+        btn_agregRepu = new javax.swing.JButton();
+        btn_quitaRepu = new javax.swing.JButton();
+        btn_nwCliente = new javax.swing.JButton();
+        btn_nwServicio = new javax.swing.JButton();
+        btn_nwBicicleta = new javax.swing.JButton();
         btn_guardar = new javax.swing.JButton();
         btn_salir = new javax.swing.JButton();
         lbl_MarcoNrj = new javax.swing.JLabel();
@@ -68,39 +69,6 @@ public class Jf_Reparacion extends javax.swing.JFrame {
         jDChooser_fecha.setBackground(new java.awt.Color(255, 255, 255));
         jDChooser_fecha.setForeground(new java.awt.Color(0, 51, 102));
         jPanel1.add(jDChooser_fecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(157, 273, 150, 26));
-
-        btn_nwRepuesto.setBackground(new java.awt.Color(82, 148, 202));
-        btn_nwRepuesto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/Mas.png"))); // NOI18N
-        btn_nwRepuesto.setBorder(null);
-        jPanel1.add(btn_nwRepuesto, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 80, 40, 40));
-
-        btn_agregRepu.setBackground(new java.awt.Color(82, 148, 202));
-        btn_agregRepu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/Mas.png"))); // NOI18N
-        btn_agregRepu.setBorder(null);
-        jPanel1.add(btn_agregRepu, new org.netbeans.lib.awtextra.AbsoluteConstraints(467, 170, 38, 38));
-
-        btn_quitaRepu.setBackground(new java.awt.Color(82, 148, 202));
-        btn_quitaRepu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/Menos.png"))); // NOI18N
-        btn_quitaRepu.setBorder(null);
-        jPanel1.add(btn_quitaRepu, new org.netbeans.lib.awtextra.AbsoluteConstraints(639, 172, 38, 38));
-
-        btn_nwCliente.setBackground(new java.awt.Color(82, 148, 202));
-        btn_nwCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/Mas.png"))); // NOI18N
-        btn_nwCliente.setBorder(null);
-        btn_nwCliente.setOpaque(false);
-        jPanel1.add(btn_nwCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(322, 175, 40, 40));
-
-        btn_nwServicio.setBackground(new java.awt.Color(82, 148, 202));
-        btn_nwServicio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/Mas.png"))); // NOI18N
-        btn_nwServicio.setBorder(null);
-        btn_nwServicio.setOpaque(false);
-        jPanel1.add(btn_nwServicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(322, 129, 40, 40));
-
-        btn_nwBicicleta.setBackground(new java.awt.Color(82, 148, 202));
-        btn_nwBicicleta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/Mas.png"))); // NOI18N
-        btn_nwBicicleta.setBorder(null);
-        btn_nwBicicleta.setOpaque(false);
-        jPanel1.add(btn_nwBicicleta, new org.netbeans.lib.awtextra.AbsoluteConstraints(322, 221, 40, 40));
 
         jScrollPane5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 140, 0)));
 
@@ -121,21 +89,25 @@ public class Jf_Reparacion extends javax.swing.JFrame {
         jPanel1.add(jScrollPane5, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 240, 370, 150));
 
         jRBut_Pendiiente.setBackground(new java.awt.Color(82, 148, 202));
+        buttonGroup1.add(jRBut_Pendiiente);
         jRBut_Pendiiente.setAutoscrolls(true);
         jRBut_Pendiiente.setBorder(null);
         jPanel1.add(jRBut_Pendiiente, new org.netbeans.lib.awtextra.AbsoluteConstraints(48, 322, 20, 20));
 
         jRBut_Resuelto.setBackground(new java.awt.Color(82, 148, 202));
+        buttonGroup1.add(jRBut_Resuelto);
         jRBut_Resuelto.setAutoscrolls(true);
         jRBut_Resuelto.setBorder(null);
         jPanel1.add(jRBut_Resuelto, new org.netbeans.lib.awtextra.AbsoluteConstraints(48, 352, 20, 20));
 
         jRBut_Entregado.setBackground(new java.awt.Color(82, 148, 202));
+        buttonGroup1.add(jRBut_Entregado);
         jRBut_Entregado.setAutoscrolls(true);
         jRBut_Entregado.setBorder(null);
         jPanel1.add(jRBut_Entregado, new org.netbeans.lib.awtextra.AbsoluteConstraints(48, 382, 20, 20));
 
         jRBut_Anulado.setBackground(new java.awt.Color(82, 148, 202));
+        buttonGroup1.add(jRBut_Anulado);
         jRBut_Anulado.setAutoscrolls(true);
         jRBut_Anulado.setBorder(null);
         jPanel1.add(jRBut_Anulado, new org.netbeans.lib.awtextra.AbsoluteConstraints(48, 412, 20, 20));
@@ -189,6 +161,38 @@ public class Jf_Reparacion extends javax.swing.JFrame {
         });
         jPanel1.add(jTf_totalRepue, new org.netbeans.lib.awtextra.AbsoluteConstraints(618, 403, 120, 30));
 
+        btn_nwRepuesto.setBackground(new java.awt.Color(82, 148, 202));
+        btn_nwRepuesto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/Mas.png"))); // NOI18N
+        btn_nwRepuesto.setBorder(null);
+        jPanel1.add(btn_nwRepuesto, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 80, 40, 40));
+
+        btn_agregRepu.setBackground(new java.awt.Color(82, 148, 202));
+        btn_agregRepu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/Mas.png"))); // NOI18N
+        btn_agregRepu.setBorder(null);
+        jPanel1.add(btn_agregRepu, new org.netbeans.lib.awtextra.AbsoluteConstraints(467, 170, 38, 38));
+
+        btn_quitaRepu.setBackground(new java.awt.Color(82, 148, 202));
+        btn_quitaRepu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/Menos.png"))); // NOI18N
+        btn_quitaRepu.setBorder(null);
+        jPanel1.add(btn_quitaRepu, new org.netbeans.lib.awtextra.AbsoluteConstraints(639, 172, 38, 38));
+
+        btn_nwCliente.setBackground(new java.awt.Color(82, 148, 202));
+        btn_nwCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/Mas.png"))); // NOI18N
+        btn_nwCliente.setBorder(null);
+        btn_nwCliente.setOpaque(false);
+        jPanel1.add(btn_nwCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(322, 175, 40, 40));
+
+        btn_nwServicio.setBackground(new java.awt.Color(82, 148, 202));
+        btn_nwServicio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/Mas.png"))); // NOI18N
+        btn_nwServicio.setBorder(null);
+        jPanel1.add(btn_nwServicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(322, 129, 40, 40));
+
+        btn_nwBicicleta.setBackground(new java.awt.Color(82, 148, 202));
+        btn_nwBicicleta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/Mas.png"))); // NOI18N
+        btn_nwBicicleta.setBorder(null);
+        btn_nwBicicleta.setOpaque(false);
+        jPanel1.add(btn_nwBicicleta, new org.netbeans.lib.awtextra.AbsoluteConstraints(322, 221, 40, 40));
+
         btn_guardar.setBackground(new java.awt.Color(82, 148, 202));
         btn_guardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/Btn-xGuarda.png"))); // NOI18N
         btn_guardar.setBorder(null);
@@ -236,6 +240,7 @@ public class Jf_Reparacion extends javax.swing.JFrame {
     private javax.swing.JButton btn_nwServicio;
     private javax.swing.JButton btn_quitaRepu;
     private javax.swing.JButton btn_salir;
+    private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JComboBox<Bicicleta> jCbox_Bicicleta;
     private javax.swing.JComboBox<Cliente> jCbox_Cliente;
     private javax.swing.JComboBox<Repuesto> jCbox_Repuestos;
