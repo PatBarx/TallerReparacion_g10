@@ -107,11 +107,11 @@ public class ClienteData {
             String sql = " SELECT *  FROM cliente where estado=1";
             PreparedStatement pst = con.prepareStatement(sql);
             ResultSet resultSet = pst.executeQuery();
-
+           int c=0;
             Cliente cl;
 
             while (resultSet.next()) {
-
+                 c=1;
                 cl = new Cliente();
                 cl.setDni(resultSet.getInt("dni"));
                 cl.setNombre(resultSet.getString("nombre"));
@@ -121,6 +121,7 @@ public class ClienteData {
 
                 clientes.add(cl);
             }
+            
             pst.close();
         } catch (SQLException e) {
 
@@ -214,12 +215,13 @@ public class ClienteData {
         String sql = "SELECT * FROM cliente WHERE estado=1 and nombre=?";
       Cliente cli= null;
          ArrayList<Cliente>cliente = new ArrayList();
-
+        int c=0;
         try {
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setString(1,nombre);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
+                c=1;
                 cli = new Cliente();
                 cli.setDni(rs.getInt("dni"));
                 cli.setNombre(rs.getString("nombre"));
@@ -229,6 +231,7 @@ public class ClienteData {
                 cliente.add(cli);
 
             }
+             if(c==0){JOptionPane.showMessageDialog(null, "no hay clientes con ese nombre");}
 
         } catch (SQLException ex) {
             Logger.getLogger(ClienteData.class.getName()).log(Level.SEVERE, null, ex);
@@ -242,12 +245,13 @@ public class ClienteData {
         String sql = "SELECT * FROM cliente WHERE estado=0 and nombre=?";
       Cliente cli= null;
          ArrayList<Cliente>cliente = new ArrayList();
-
+       int c=0;
         try {
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setString(1,nombre);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
+                c=1;
                 cli = new Cliente();
                 cli.setDni(rs.getInt("dni"));
                 cli.setNombre(rs.getString("nombre"));
@@ -257,7 +261,7 @@ public class ClienteData {
                 cliente.add(cli);
 
             }
-
+           if(c==0){JOptionPane.showMessageDialog(null, "no hay clientes con ese nombre");}
         } catch (SQLException ex) {
             Logger.getLogger(ClienteData.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -267,7 +271,7 @@ public class ClienteData {
      public ArrayList<Cliente> BuscarClientePorDni(int dni) {   //SELECT 1 ALUMNO
         //SELECT 1 ALUMNO
        
-        
+        int c=0;
         String sql = "SELECT * FROM cliente WHERE estado=1 and dni=?";
       Cliente cli= null;
          ArrayList<Cliente>cliente = new ArrayList();
@@ -277,6 +281,7 @@ public class ClienteData {
             ps.setInt(1,dni);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
+                c=1;
                 cli = new Cliente();
                 cli.setDni(rs.getInt("dni"));
                 cli.setNombre(rs.getString("nombre"));
@@ -286,7 +291,7 @@ public class ClienteData {
                 cliente.add(cli);
 
             }
-
+ if(c==0){JOptionPane.showMessageDialog(null, "no hay cliente con ese dni");}
         } catch (SQLException ex) {
             Logger.getLogger(ClienteData.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -299,12 +304,13 @@ public class ClienteData {
         String sql = "SELECT * FROM cliente WHERE estado=0 and dni=?";
       Cliente cli= null;
          ArrayList<Cliente>cliente = new ArrayList();
-
+int c=0;
         try {
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setInt(1,dni);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
+                c=1;
                 cli = new Cliente();
                 cli.setDni(rs.getInt("dni"));
                 cli.setNombre(rs.getString("nombre"));
@@ -314,6 +320,7 @@ public class ClienteData {
                 cliente.add(cli);
 
             }
+             if(c==0){JOptionPane.showMessageDialog(null, "no hay cliente con ese dni");}
 
         } catch (SQLException ex) {
             Logger.getLogger(ClienteData.class.getName()).log(Level.SEVERE, null, ex);

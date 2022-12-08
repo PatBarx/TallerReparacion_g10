@@ -1093,6 +1093,14 @@ cargarTablaRepuesto();
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -1265,12 +1273,13 @@ cargarTablaRepuesto();
              public void BuscarPorNombre(){
         
          if (jRadBut_Entregado1.isSelected() && jRadBut_xNom.isSelected()) {
-             
+              cargarTablaCliente();
          if(jTf_busqueda.getText().length()<1){
               
            JOptionPane.showMessageDialog(null, "ingrese un nombre");
-           cargarTablaCliente(); 
-         }
+            
+         }else{
+             cargarTablaCliente();
            String nom = jTf_busqueda.getText();
    
       borrarFilas();
@@ -1279,12 +1288,13 @@ cargarTablaRepuesto();
              jTable_Cliente.setModel(tModeloCliente);
         }
         jTf_busqueda.setText("");
-         }
+         }}
          if (jRadBut_Anulado1.isSelected()&&jRadBut_xNom.isSelected()) {  
-            cargarTablaClienteinactivos();
+             cargarTablaClienteinactivos();
          if(jTf_busqueda.getText().length()<1){
          JOptionPane.showMessageDialog(null, "ingrese un nombre");
-         }
+         }else{
+         cargarTablaClienteinactivos();
          String nom1=jTf_busqueda.getText();
        
         borrarFilas();
@@ -1295,7 +1305,7 @@ cargarTablaRepuesto();
        
         jTf_busqueda.setText("");
         
-         }
+         }}
      }
      
     
