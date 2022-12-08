@@ -1,4 +1,5 @@
 package vistas;
+
 import entidades.Cliente;
 import datos.ClienteData;
 import entidades.Bicicleta;
@@ -14,11 +15,12 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 public class Jf_TallerReparacion extends javax.swing.JFrame {
+
     private DefaultTableModel tModeloCliente = new DefaultTableModel(new String[]{"Dni", "Nombre", "Domicilio", "Teléfono"}, 0);
-    private DefaultTableModel tModeloBicicleta = new DefaultTableModel(new String[]{"Serie", "Marca", "Tipo", "Color","Cliente"}, 0);
+    private DefaultTableModel tModeloBicicleta = new DefaultTableModel(new String[]{"Serie", "Marca", "Tipo", "Color", "Cliente"}, 0);
     private DefaultTableModel tModeloRepuesto = new DefaultTableModel(new String[]{"Serie", "Descripcion", "Costo"}, 0);
     private DefaultTableModel tModeloServicio = new DefaultTableModel(new String[]{"Codigo", "Descripcion", "Costo"}, 0);
-    private DefaultTableModel tModeloReparacion = new DefaultTableModel(new String[]{"Numero", "Servicio", "Cliente", "Bicicleta","Fecha","Precio"}, 0);
+    private DefaultTableModel tModeloReparacion = new DefaultTableModel(new String[]{"Numero", "Servicio", "Cliente", "Bicicleta", "Fecha", "Precio"}, 0);
     private ClienteData cliDa = new ClienteData();
     private BicicletaData biciDa = new BicicletaData();
     private RepuestoData repuDa = new RepuestoData();
@@ -32,10 +34,13 @@ public class Jf_TallerReparacion extends javax.swing.JFrame {
     private boolean refrescarTabla = false;
 
     public Jf_TallerReparacion() {
-        
+
         initComponents();
         jRadBut_Entregado3.setSelected(true);
         jRadBut_Entregado4.setSelected(true);
+        jRadBut_Pendiente.setSelected(true);
+        jRadBut_Entregado1.setSelected(true);
+        jRadBut_Entregado2.setSelected(true);
         cargarTablaCliente();
         cargarTablaBicicleta();
         cargarTablaRepuesto();
@@ -745,24 +750,44 @@ public class Jf_TallerReparacion extends javax.swing.JFrame {
         buttonGroupReparEstado.add(jRadBut_Pendiente);
         jRadBut_Pendiente.setAutoscrolls(true);
         jRadBut_Pendiente.setBorder(null);
+        jRadBut_Pendiente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadBut_PendienteActionPerformed(evt);
+            }
+        });
         tab_reparacion.add(jRadBut_Pendiente, new org.netbeans.lib.awtextra.AbsoluteConstraints(28, 389, 20, 30));
 
         jRadBut_Resuelto.setBackground(new java.awt.Color(82, 148, 202));
         buttonGroupReparEstado.add(jRadBut_Resuelto);
         jRadBut_Resuelto.setAutoscrolls(true);
         jRadBut_Resuelto.setBorder(null);
+        jRadBut_Resuelto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadBut_ResueltoActionPerformed(evt);
+            }
+        });
         tab_reparacion.add(jRadBut_Resuelto, new org.netbeans.lib.awtextra.AbsoluteConstraints(28, 421, 20, 30));
 
         jRadBut_Anulado.setBackground(new java.awt.Color(82, 148, 202));
         buttonGroupReparEstado.add(jRadBut_Anulado);
         jRadBut_Anulado.setAutoscrolls(true);
         jRadBut_Anulado.setBorder(null);
+        jRadBut_Anulado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadBut_AnuladoActionPerformed(evt);
+            }
+        });
         tab_reparacion.add(jRadBut_Anulado, new org.netbeans.lib.awtextra.AbsoluteConstraints(28, 488, 20, 30));
 
         jRadBut_Entregado.setBackground(new java.awt.Color(82, 148, 202));
         buttonGroupReparEstado.add(jRadBut_Entregado);
         jRadBut_Entregado.setAutoscrolls(true);
         jRadBut_Entregado.setBorder(null);
+        jRadBut_Entregado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadBut_EntregadoActionPerformed(evt);
+            }
+        });
         tab_reparacion.add(jRadBut_Entregado, new org.netbeans.lib.awtextra.AbsoluteConstraints(28, 455, 20, 30));
 
         jTf_busqueda4.setFont(new java.awt.Font("Dialog", 0, 16)); // NOI18N
@@ -834,55 +859,54 @@ public class Jf_TallerReparacion extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_clienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_clienteActionPerformed
-tab_panelPrincipal.setSelectedIndex(1);
+        tab_panelPrincipal.setSelectedIndex(1);
     }//GEN-LAST:event_btn_clienteActionPerformed
 
     private void btn_bicicletaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_bicicletaActionPerformed
-tab_panelPrincipal.setSelectedIndex(2);        // TODO add your handling code here:
+        tab_panelPrincipal.setSelectedIndex(2);        // TODO add your handling code here:
     }//GEN-LAST:event_btn_bicicletaActionPerformed
 
     private void btn_ServicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_ServicioActionPerformed
-tab_panelPrincipal.setSelectedIndex(3);        // TODO add your handling code here:
+        tab_panelPrincipal.setSelectedIndex(3);        // TODO add your handling code here:
     }//GEN-LAST:event_btn_ServicioActionPerformed
 
     private void byn_RepuestoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_byn_RepuestoActionPerformed
-tab_panelPrincipal.setSelectedIndex(4);        // TODO add your handling code here:
+        tab_panelPrincipal.setSelectedIndex(4);        // TODO add your handling code here:
     }//GEN-LAST:event_byn_RepuestoActionPerformed
 
     private void btn_reparacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_reparacionActionPerformed
-tab_panelPrincipal.setSelectedIndex(5);        // TODO add your handling code here:
+        tab_panelPrincipal.setSelectedIndex(5);        // TODO add your handling code here:
     }//GEN-LAST:event_btn_reparacionActionPerformed
 
     private void btn_cliente_bajaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cliente_bajaActionPerformed
-                   Cliente cliente = cliDa.buscarCliente((Integer)tModeloCliente.getValueAt(jTable_Cliente.getSelectedRow(), 0));
-if(cliente.isEstado()){
-cliDa.borrarCliente(cliente.getDni());
-}
-else{
+        Cliente cliente = cliDa.buscarCliente((Integer) tModeloCliente.getValueAt(jTable_Cliente.getSelectedRow(), 0));
+        if (cliente.isEstado()) {
+            cliDa.borrarCliente(cliente.getDni());
+        } else {
 
-cliDa.activaCliente(cliente.getDni());
-}
- cargarTablaCliente();
+            cliDa.activaCliente(cliente.getDni());
+        }
+        cargarTablaCliente();
     }//GEN-LAST:event_btn_cliente_bajaActionPerformed
 
     private void btn_bicicleta_altaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_bicicleta_altaActionPerformed
-        Jf_Bicicleta jfBicicleta = new Jf_Bicicleta(this,null);
+        Jf_Bicicleta jfBicicleta = new Jf_Bicicleta(this, null);
         jfBicicleta.setAlwaysOnTop(true);
         jfBicicleta.show(true);
-        jfBicicleta.setVisible(true); 
-        refrescarTabla = true;        
+        jfBicicleta.setVisible(true);
+        refrescarTabla = true;
     }//GEN-LAST:event_btn_bicicleta_altaActionPerformed
 
     private void btn_servicio_altaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_servicio_altaActionPerformed
-        Jf_Servicio jfServicio = new Jf_Servicio(this,null);
+        Jf_Servicio jfServicio = new Jf_Servicio(this, null);
         jfServicio.setAlwaysOnTop(true);
         jfServicio.show(true);
-        jfServicio.setVisible(true); 
+        jfServicio.setVisible(true);
         refrescarTabla = true;
     }//GEN-LAST:event_btn_servicio_altaActionPerformed
 
     private void btn_repuesto_altaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_repuesto_altaActionPerformed
-        Jf_Repuesto jfRepuesto = new Jf_Repuesto(this,null);
+        Jf_Repuesto jfRepuesto = new Jf_Repuesto(this, null);
         jfRepuesto.setAlwaysOnTop(true);
         jfRepuesto.show(true);
         jfRepuesto.setVisible(true);
@@ -891,7 +915,7 @@ cliDa.activaCliente(cliente.getDni());
 
     private void btn_reparacion_altaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_reparacion_altaActionPerformed
         //Jf_Reparacion jfReparacion = new Jf_Reparacion(this,null); //inicial con comboBx
-        Jf_Reparacion2 jfReparacion = new Jf_Reparacion2(this,null);
+        Jf_Reparacion2 jfReparacion = new Jf_Reparacion2(this, null);
         jfReparacion.setAlwaysOnTop(true);
         jfReparacion.show(true);
         jfReparacion.setVisible(true);
@@ -899,7 +923,7 @@ cliDa.activaCliente(cliente.getDni());
     }//GEN-LAST:event_btn_reparacion_altaActionPerformed
 
     private void btn_cliente_altaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cliente_altaActionPerformed
-        Jf_Cliente jfCliente = new Jf_Cliente(this,null);
+        Jf_Cliente jfCliente = new Jf_Cliente(this, null);
         jfCliente.setAlwaysOnTop(true);
         jfCliente.show(true);
         jfCliente.setVisible(true);
@@ -908,7 +932,7 @@ cliDa.activaCliente(cliente.getDni());
 
     private void btn_cliente_modificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cliente_modificarActionPerformed
         Cliente cliente = cliDa.buscarCliente((Integer) tModeloCliente.getValueAt(jTable_Cliente.getSelectedRow(), 0));
-        Jf_Cliente jfCliente = new Jf_Cliente(this,cliente);
+        Jf_Cliente jfCliente = new Jf_Cliente(this, cliente);
         jfCliente.setAlwaysOnTop(true);
         jfCliente.show(true);
         jfCliente.setVisible(true);
@@ -916,19 +940,19 @@ cliDa.activaCliente(cliente.getDni());
     }//GEN-LAST:event_btn_cliente_modificarActionPerformed
 
     private void btn_bicicleta_bajaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_bicicleta_bajaActionPerformed
-       Bicicleta bicicleta = biciDa.buscaBicicleta((Integer)tModeloBicicleta.getValueAt(jTable_Bicicleta.getSelectedRow(),0));
-if(bicicleta.isEstado()){
-biciDa.bajaBicicleta(bicicleta);}
-else{
+        Bicicleta bicicleta = biciDa.buscaBicicleta((Integer) tModeloBicicleta.getValueAt(jTable_Bicicleta.getSelectedRow(), 0));
+        if (bicicleta.isEstado()) {
+            biciDa.bajaBicicleta(bicicleta);
+        } else {
 
-biciDa.altaBicicleta(bicicleta);
-}
-cargarTablaBicicleta();
+            biciDa.altaBicicleta(bicicleta);
+        }
+        cargarTablaBicicleta();
     }//GEN-LAST:event_btn_bicicleta_bajaActionPerformed
 
     private void btn_bicicleta_modificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_bicicleta_modificarActionPerformed
-            Bicicleta bicicleta = biciDa.buscaBicicleta((Integer)tModeloBicicleta.getValueAt(jTable_Bicicleta.getSelectedRow(), 0));
-        Jf_Bicicleta jfBicicleta =new Jf_Bicicleta(this,bicicleta);
+        Bicicleta bicicleta = biciDa.buscaBicicleta((Integer) tModeloBicicleta.getValueAt(jTable_Bicicleta.getSelectedRow(), 0));
+        Jf_Bicicleta jfBicicleta = new Jf_Bicicleta(this, bicicleta);
         jfBicicleta.setAlwaysOnTop(true);
         jfBicicleta.show(true);
         jfBicicleta.setVisible(true);
@@ -947,7 +971,7 @@ cargarTablaBicicleta();
 
     private void btn_servicio_modificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_servicio_modificarActionPerformed
         Servicio servicio = servDa.buscarServicio((Integer) tModeloServicio.getValueAt(jTable_Servicio.getSelectedRow(), 0));
-        Jf_Servicio jfServicio = new Jf_Servicio(this,servicio);
+        Jf_Servicio jfServicio = new Jf_Servicio(this, servicio);
         jfServicio.setAlwaysOnTop(true);
         jfServicio.show(true);
         jfServicio.setVisible(true);
@@ -956,7 +980,7 @@ cargarTablaBicicleta();
 
     private void btn_repuesto_modificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_repuesto_modificarActionPerformed
         Repuesto repuesto = repuDa.buscarRepuesto((Integer) tModeloRepuesto.getValueAt(jTable_Repuesto.getSelectedRow(), 0));
-        Jf_Repuesto jfRepuesto = new Jf_Repuesto(this,repuesto);
+        Jf_Repuesto jfRepuesto = new Jf_Repuesto(this, repuesto);
         jfRepuesto.setAlwaysOnTop(true);
         jfRepuesto.show(true);
         jfRepuesto.setVisible(true);
@@ -964,8 +988,8 @@ cargarTablaBicicleta();
     }//GEN-LAST:event_btn_repuesto_modificarActionPerformed
 
     private void btn_repuesto_bajaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_repuesto_bajaActionPerformed
-            Repuesto repuesto = repuDa.buscarRepuesto((Integer) tModeloRepuesto.getValueAt(jTable_Repuesto.getSelectedRow(), 0)); 
-            if (repuesto.isEstado()) {
+        Repuesto repuesto = repuDa.buscarRepuesto((Integer) tModeloRepuesto.getValueAt(jTable_Repuesto.getSelectedRow(), 0));
+        if (repuesto.isEstado()) {
             repuDa.bajaRepuesto(repuesto);
         } else {
             repuDa.activaRepuesto(repuesto);
@@ -976,23 +1000,23 @@ cargarTablaBicicleta();
     private void btn_reparacion_modificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_reparacion_modificarActionPerformed
         Reparacion reparacion = repaDa.buscarReparacion((Integer) tModeloReparacion.getValueAt(jTable_Reparacion.getSelectedRow(), 0));
         //Jf_Reparacion jfReparacion = new Jf_Reparacion(this,reparacion);  //Ventana inicial con comboBox
-        Jf_Reparacion2 jfReparacion = new Jf_Reparacion2(this,reparacion);
+        Jf_Reparacion2 jfReparacion = new Jf_Reparacion2(this, reparacion);
         jfReparacion.setAlwaysOnTop(true);
         jfReparacion.show(true);
-        jfReparacion.setVisible(true);  
+        jfReparacion.setVisible(true);
         refrescarTabla = true;
     }//GEN-LAST:event_btn_reparacion_modificarActionPerformed
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
         if (refrescarTabla) {
-        cargarTablaCliente();
-        cargarTablaBicicleta();
-        cargarTablaRepuesto();
-        cargarTablaServicio();
-        cargarTablaReparacion();
-        refrescarTabla = false;
+            cargarTablaCliente();
+            cargarTablaBicicleta();
+            cargarTablaRepuesto();
+            cargarTablaServicio();
+            cargarTablaReparacion();
+            refrescarTabla = false;
         }
-    // TODO add your handling code here:
+        // TODO add your handling code here:
     }//GEN-LAST:event_formWindowActivated
 
     private void jTf_busquedaComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_jTf_busquedaComponentShown
@@ -1016,23 +1040,23 @@ cargarTablaBicicleta();
     }//GEN-LAST:event_jTf_busqueda4ComponentShown
 
     private void jRadBut_xNomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadBut_xNomActionPerformed
-       
+
     }//GEN-LAST:event_jRadBut_xNomActionPerformed
 
     private void jRadBut_xDniActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadBut_xDniActionPerformed
-     
+
     }//GEN-LAST:event_jRadBut_xDniActionPerformed
 
     private void btn_Busca4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_Busca4ActionPerformed
-cargarTablaRepuesto();        // TODO add your handling code here:
+        cargarTablaRepuesto();        // TODO add your handling code here:
     }//GEN-LAST:event_btn_Busca4ActionPerformed
 
     private void jRadBut_Entregado4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadBut_Entregado4ActionPerformed
-cargarTablaRepuesto();   
+        cargarTablaRepuesto();
     }//GEN-LAST:event_jRadBut_Entregado4ActionPerformed
 
     private void jRadBut_Anulado4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadBut_Anulado4ActionPerformed
-cargarTablaRepuesto();   
+        cargarTablaRepuesto();
     }//GEN-LAST:event_jRadBut_Anulado4ActionPerformed
 
     private void btn_Busca3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_Busca3ActionPerformed
@@ -1052,13 +1076,29 @@ cargarTablaRepuesto();
     }//GEN-LAST:event_jRadBut_Entregado1ActionPerformed
 
     private void jRadBut_Anulado1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadBut_Anulado1ActionPerformed
-     cargarTablaClienteinactivos();
+        cargarTablaClienteinactivos();
     }//GEN-LAST:event_jRadBut_Anulado1ActionPerformed
 
     private void btn_BuscaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_BuscaActionPerformed
         BuscarPorDni();
         BuscarPorNombre();
     }//GEN-LAST:event_btn_BuscaActionPerformed
+
+    private void jRadBut_PendienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadBut_PendienteActionPerformed
+        cargarTablaReparacion();
+    }//GEN-LAST:event_jRadBut_PendienteActionPerformed
+
+    private void jRadBut_ResueltoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadBut_ResueltoActionPerformed
+        cargarTablaReparacionResuelto();
+    }//GEN-LAST:event_jRadBut_ResueltoActionPerformed
+
+    private void jRadBut_EntregadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadBut_EntregadoActionPerformed
+        cargarTablaReparacionTerminadas();
+    }//GEN-LAST:event_jRadBut_EntregadoActionPerformed
+
+    private void jRadBut_AnuladoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadBut_AnuladoActionPerformed
+        cargarTablaReparacionAnulados();
+    }//GEN-LAST:event_jRadBut_AnuladoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1219,136 +1259,138 @@ cargarTablaRepuesto();
         tModeloCliente.setNumRows(0);
         listaCliente = cliDa.listarCliente();
         for (Cliente cliente : listaCliente) {
-            tModeloCliente.addRow(new Object[]{cliente.getDni(),cliente.getNombre(),cliente.getDomicilio(),cliente.getTel()});
+            tModeloCliente.addRow(new Object[]{cliente.getDni(), cliente.getNombre(), cliente.getDomicilio(), cliente.getTel()});
         }
         jTable_Cliente.setModel(tModeloCliente);
     }
-    
-     public void cargarTablaClienteinactivos() {
+
+    public void cargarTablaClienteinactivos() {
         tModeloCliente.setNumRows(0);
         listaCliente = cliDa.listarClienteInactivos();
         for (Cliente cliente : listaCliente) {
-            tModeloCliente.addRow(new Object[]{cliente.getDni(),cliente.getNombre(),cliente.getDomicilio(),cliente.getTel()});
+            tModeloCliente.addRow(new Object[]{cliente.getDni(), cliente.getNombre(), cliente.getDomicilio(), cliente.getTel()});
         }
         jTable_Cliente.setModel(tModeloCliente);
     }
-        public void BuscarPorDni(){
-       
-           if (jRadBut_Entregado1.isSelected()&&jRadBut_xDni.isSelected()) {
-                 cargarTablaCliente();
-          if(!esNumero(jTf_busqueda.getText())){
-              JOptionPane.showMessageDialog(null, "ingrese un numero");
-               }
-       int dni = Integer.parseInt( jTf_busqueda.getText());
-        //int num=Integer.parseInt(jTf_busqueda.getText());
-          borrarFilas();
-        for (Cliente cliente :cliDa.BuscarClientePorDni(dni)) {
-            tModeloCliente.addRow(new Object[]{cliente.getDni(),cliente.getNombre(),cliente.getDomicilio(),cliente.getTel()});
-      
-        jTable_Cliente.setModel(tModeloCliente);
+
+    public void BuscarPorDni() {
+
+        if (jRadBut_Entregado1.isSelected() && jRadBut_xDni.isSelected()) {
+            cargarTablaCliente();
+            if (!esNumero(jTf_busqueda.getText())) {
+                JOptionPane.showMessageDialog(null, "ingrese un numero");
+            }
+            int dni = Integer.parseInt(jTf_busqueda.getText());
+            //int num=Integer.parseInt(jTf_busqueda.getText());
+            borrarFilas();
+            for (Cliente cliente : cliDa.BuscarClientePorDni(dni)) {
+                tModeloCliente.addRow(new Object[]{cliente.getDni(), cliente.getNombre(), cliente.getDomicilio(), cliente.getTel()});
+
+                jTable_Cliente.setModel(tModeloCliente);
+            }
+            jTf_busqueda.setText("");
+
         }
-         jTf_busqueda.setText("");
-        
-           }
-            if (jRadBut_Anulado1.isSelected()&&jRadBut_xDni.isSelected()) {
-                 cargarTablaClienteinactivos();
-               
-          if(!esNumero(jTf_busqueda.getText())){
-               JOptionPane.showMessageDialog(null, "ingrese un numero");
-                  }
-            int dni1 = Integer.parseInt( jTf_busqueda.getText());
-                //Si Activos?
-     
-      borrarFilas();
-        for (Cliente cliente :cliDa.BuscarClienteInacPorDni(dni1)) {
-            tModeloCliente.addRow(new Object[]{cliente.getDni(),cliente.getNombre(),cliente.getDomicilio(),cliente.getTel()});
-      
-        jTable_Cliente.setModel(tModeloCliente);
+        if (jRadBut_Anulado1.isSelected() && jRadBut_xDni.isSelected()) {
+            cargarTablaClienteinactivos();
+
+            if (!esNumero(jTf_busqueda.getText())) {
+                JOptionPane.showMessageDialog(null, "ingrese un numero");
+            }
+            int dni1 = Integer.parseInt(jTf_busqueda.getText());
+            //Si Activos?
+
+            borrarFilas();
+            for (Cliente cliente : cliDa.BuscarClienteInacPorDni(dni1)) {
+                tModeloCliente.addRow(new Object[]{cliente.getDni(), cliente.getNombre(), cliente.getDomicilio(), cliente.getTel()});
+
+                jTable_Cliente.setModel(tModeloCliente);
+            }
+            jTf_busqueda.setText("");
+
         }
-         jTf_busqueda.setText("");
-         
-           }
-           
-     }
-             public void BuscarPorNombre(){
-        
-         if (jRadBut_Entregado1.isSelected() && jRadBut_xNom.isSelected()) {
-              cargarTablaCliente();
-         if(jTf_busqueda.getText().length()<1){
-              
-           JOptionPane.showMessageDialog(null, "ingrese un nombre");
-            
-         }else{
-             cargarTablaCliente();
-           String nom = jTf_busqueda.getText();
-   
-      borrarFilas();
-        for (Cliente cliente :cliDa.BuscarClientePorNombreActivo(nom)) {
-            tModeloCliente.addRow(new Object[]{cliente.getDni(),cliente.getNombre(),cliente.getDomicilio(),cliente.getTel()});
-             jTable_Cliente.setModel(tModeloCliente);
+
+    }
+
+    public void BuscarPorNombre() {
+
+        if (jRadBut_Entregado1.isSelected() && jRadBut_xNom.isSelected()) {
+            cargarTablaCliente();
+            if (jTf_busqueda.getText().length() < 1) {
+
+                JOptionPane.showMessageDialog(null, "ingrese un nombre");
+
+            } else {
+                cargarTablaCliente();
+                String nom = jTf_busqueda.getText();
+
+                borrarFilas();
+                for (Cliente cliente : cliDa.BuscarClientePorNombreActivo(nom)) {
+                    tModeloCliente.addRow(new Object[]{cliente.getDni(), cliente.getNombre(), cliente.getDomicilio(), cliente.getTel()});
+                    jTable_Cliente.setModel(tModeloCliente);
+                }
+                jTf_busqueda.setText("");
+            }
         }
-        jTf_busqueda.setText("");
-         }}
-         if (jRadBut_Anulado1.isSelected()&&jRadBut_xNom.isSelected()) {  
-             cargarTablaClienteinactivos();
-         if(jTf_busqueda.getText().length()<1){
-         JOptionPane.showMessageDialog(null, "ingrese un nombre");
-         }else{
-         cargarTablaClienteinactivos();
-         String nom1=jTf_busqueda.getText();
-       
-        borrarFilas();
-        for (Cliente cliente :cliDa.BuscarClientePorNombreinactivo(nom1)) {
-            tModeloCliente.addRow(new Object[]{cliente.getDni(),cliente.getNombre(),cliente.getDomicilio(),cliente.getTel()});
-             jTable_Cliente.setModel(tModeloCliente);
+        if (jRadBut_Anulado1.isSelected() && jRadBut_xNom.isSelected()) {
+            cargarTablaClienteinactivos();
+            if (jTf_busqueda.getText().length() < 1) {
+                JOptionPane.showMessageDialog(null, "ingrese un nombre");
+            } else {
+                cargarTablaClienteinactivos();
+                String nom1 = jTf_busqueda.getText();
+
+                borrarFilas();
+                for (Cliente cliente : cliDa.BuscarClientePorNombreinactivo(nom1)) {
+                    tModeloCliente.addRow(new Object[]{cliente.getDni(), cliente.getNombre(), cliente.getDomicilio(), cliente.getTel()});
+                    jTable_Cliente.setModel(tModeloCliente);
+                }
+
+                jTf_busqueda.setText("");
+
+            }
         }
-       
-        jTf_busqueda.setText("");
-        
-         }}
-     }
-     
-    
+    }
 
     private void cargarTablaBicicleta() {
         tModeloBicicleta.setNumRows(0);
         listaBicicleta = biciDa.listarBicicletas();
         for (Bicicleta bicicleta : listaBicicleta) {
-            tModeloBicicleta.addRow(new Object[]{bicicleta.getNroSerie(),bicicleta.getMarca(),bicicleta.getTipo(),bicicleta.getColor(),bicicleta.getCliente()});
+            tModeloBicicleta.addRow(new Object[]{bicicleta.getNroSerie(), bicicleta.getMarca(), bicicleta.getTipo(), bicicleta.getColor(), bicicleta.getCliente()});
         }
         jTable_Bicicleta.setModel(tModeloBicicleta);
     }
 
- private void cargarTablaRepuesto() {
+    private void cargarTablaRepuesto() {
 
         if (jTf_busqueda3.getText().length() > 0) {     //Si tiene Algo
             if (jRadBut_Entregado4.isSelected()) {      //Si Activos?
                 if (jRadBut_xNserie.isSelected()) {     //Si x numero serie?
                     if (esNumero(jTf_busqueda3.getText())) {    //Check numero o Texto
                         //activo con serie
-                        listaRepuesto = repuDa.listaRepuesto(1, "%" + jTf_busqueda3.getText() + "%" , "%");
+                        listaRepuesto = repuDa.listaRepuesto(1, "%" + jTf_busqueda3.getText() + "%", "%");
                     } else {
                         JOptionPane.showMessageDialog(this, "Ingrese un Numero o Busque por Descripcion");
                         //solo activos
-                         listaRepuesto = repuDa.listaRepuesto(1, "%", "%");
+                        listaRepuesto = repuDa.listaRepuesto(1, "%", "%");
                     }
                 } else if (jRadBut_xDescr.isSelected()) { //Si x Descripcion?
                     //activos por descripcion
-                    listaRepuesto = repuDa.listaRepuesto(1, "%", "%" + jTf_busqueda3.getText() + "%" );
+                    listaRepuesto = repuDa.listaRepuesto(1, "%", "%" + jTf_busqueda3.getText() + "%");
                 }
             } else if (jRadBut_Anulado4.isSelected()) {     //Si INactivos?
                 if (jRadBut_xNserie.isSelected()) {         //Si x serie? (Inactivos)
                     if (esNumero(jTf_busqueda3.getText())) {//Check numero o Texto
                         //inactivo con serie
-                        listaRepuesto = repuDa.listaRepuesto(0, "%" + jTf_busqueda3.getText() + "%" , "%");
+                        listaRepuesto = repuDa.listaRepuesto(0, "%" + jTf_busqueda3.getText() + "%", "%");
                     } else {
                         JOptionPane.showMessageDialog(this, "Ingrese un Numero o Busque por Descripcion");
                         // solo inactivo
                         listaRepuesto = repuDa.listaRepuesto(0, "%", "%");
                     }
                 } else if (jRadBut_xDescr.isSelected()) { //Si x Descripcion? (Inactivos)
-                   //inactivo por descripcion 
-                   listaRepuesto = repuDa.listaRepuesto(0, "%", "%" + jTf_busqueda3.getText() + "%" );
+                    //inactivo por descripcion 
+                    listaRepuesto = repuDa.listaRepuesto(0, "%", "%" + jTf_busqueda3.getText() + "%");
                 }
             }
         } else if (jRadBut_Entregado4.isSelected()) {   //Si Solo Activos?
@@ -1369,7 +1411,7 @@ cargarTablaRepuesto();
     }
 
     private void cargarTablaServicio() {
-         if (jTf_busqueda2.getText().length() > 0) {     //Si tiene Algo
+        if (jTf_busqueda2.getText().length() > 0) {     //Si tiene Algo
             if (jRadBut_Entregado3.isSelected()) {      //Si Activos?
                 if (jRadBut_xCodigo.isSelected()) {     //Si x Codigo?
                     if (esNumero(jTf_busqueda2.getText())) {    //Check numero o Texto
@@ -1406,23 +1448,55 @@ cargarTablaRepuesto();
         jTable_Servicio.setModel(tModeloServicio);      //Se carga la tabla con datos del modelo
     }
 
-    private void cargarTablaReparacion() {
-         tModeloReparacion.setNumRows(0);
+    private void cargarTablaReparacion() { //PENDIENTES
+        tModeloReparacion.setNumRows(0);
         listaReparacion = repaDa.listarBicisPendientes();
         for (Reparacion reparacion : listaReparacion) {
 //(new String[]{"Numero", "Servicio", "Cliente", "Bicicleta","Fecha","Precio"}, 0);
-            tModeloReparacion.addRow(new Object[]{reparacion.getId(),reparacion.getServicio(), reparacion.getCliente(), reparacion.getBici(), reparacion.getFechaEntrada(), reparacion.getCostoTotal()});
+            tModeloReparacion.addRow(new Object[]{reparacion.getId(), reparacion.getServicio(), reparacion.getCliente(), reparacion.getBici(), reparacion.getFechaEntrada(), reparacion.getCostoTotal()});
         }
         jTable_Reparacion.setModel(tModeloReparacion);
     }
-     public void borrarFilas(){
-    
-        int a=tModeloCliente.getRowCount()-1;//cuenta las filas pero el indice es uno menos
-        for (int i = a; i >=0; i--) {
-           tModeloCliente.removeRow(i);
+
+    private void cargarTablaReparacionTerminadas() { //TERMINADAS ENTREGADAS
+        tModeloReparacion.setNumRows(0);
+        listaReparacion = repaDa.listarBicisPendientes();
+        for (Reparacion reparacion : listaReparacion) {
+//(new String[]{"Numero", "Servicio", "Cliente", "Bicicleta","Fecha","Precio"}, 0);
+            tModeloReparacion.addRow(new Object[]{reparacion.getId(), reparacion.getServicio(), reparacion.getCliente(), reparacion.getBici(), reparacion.getFechaEntrada(), reparacion.getCostoTotal()});
         }
-    
+        jTable_Reparacion.setModel(tModeloReparacion);
     }
+
+    private void cargarTablaReparacionResuelto() {
+        tModeloReparacion.setNumRows(0);
+        listaReparacion = repaDa.listarBicisResuelto();
+        for (Reparacion reparacion : listaReparacion) {
+//(new String[]{"Numero", "Servicio", "Cliente", "Bicicleta","Fecha","Precio"}, 0);
+            tModeloReparacion.addRow(new Object[]{reparacion.getId(), reparacion.getServicio(), reparacion.getCliente(), reparacion.getBici(), reparacion.getFechaEntrada(), reparacion.getCostoTotal()});
+        }
+        jTable_Reparacion.setModel(tModeloReparacion);
+    }
+
+    private void cargarTablaReparacionAnulados() {
+        tModeloReparacion.setNumRows(0);
+        listaReparacion = repaDa.listarBicisAnulado();
+        for (Reparacion reparacion : listaReparacion) {
+//(new String[]{"Numero", "Servicio", "Cliente", "Bicicleta","Fecha","Precio"}, 0);
+            tModeloReparacion.addRow(new Object[]{reparacion.getId(), reparacion.getServicio(), reparacion.getCliente(), reparacion.getBici(), reparacion.getFechaEntrada(), reparacion.getCostoTotal()});
+        }
+        jTable_Reparacion.setModel(tModeloReparacion);
+    }
+
+    public void borrarFilas() {
+
+        int a = tModeloCliente.getRowCount() - 1;//cuenta las filas pero el indice es uno menos
+        for (int i = a; i >= 0; i--) {
+            tModeloCliente.removeRow(i);
+        }
+
+    }
+
     //método que verifica si es Numero o no.
     public boolean esNumero(String cadena) {
         boolean resultado;
