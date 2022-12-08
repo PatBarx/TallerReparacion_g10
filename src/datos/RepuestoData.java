@@ -144,13 +144,16 @@ public class RepuestoData {
     
     }
 
-    public ArrayList<Repuesto> listaRepuesto() {
-        ArrayList<Repuesto> repuestos = new ArrayList<>();
+    public ArrayList<Repuesto> listaRepuesto(int estado, String serie, String descripcion) {
+         ArrayList<Repuesto> repuestos = new ArrayList<>();
         Repuesto rep = null;
-        String sql = "SELECT * FROM repuesto WHERE estado = 1";
+        String sql = "SELECT * FROM repuesto WHERE estado = ? and CAST(serie as CHAR) like ? and descripcion like ? ";
         PreparedStatement ps = null;
         try {
             ps = con.prepareStatement(sql);
+            ps.setInt(1, estado);
+            ps.setString(2, serie);
+            ps.setString(3, descripcion);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
               rep = new Repuesto();

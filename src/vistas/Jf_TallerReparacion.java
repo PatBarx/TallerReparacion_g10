@@ -35,6 +35,7 @@ public class Jf_TallerReparacion extends javax.swing.JFrame {
         
         initComponents();
         jRadBut_Entregado3.setSelected(true);
+        jRadBut_Entregado4.setSelected(true);
         cargarTablaCliente();
         cargarTablaBicicleta();
         cargarTablaRepuesto();
@@ -290,7 +291,6 @@ public class Jf_TallerReparacion extends javax.swing.JFrame {
         btn_Busca.setBackground(new java.awt.Color(82, 148, 202));
         btn_Busca.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/lupa48x48.png"))); // NOI18N
         btn_Busca.setBorder(null);
-        btn_Busca.setOpaque(false);
         tab_Cliente.add(btn_Busca, new org.netbeans.lib.awtextra.AbsoluteConstraints(62, 204, 60, 60));
 
         jRadBut_Anulado1.setBackground(new java.awt.Color(82, 148, 202));
@@ -394,7 +394,6 @@ public class Jf_TallerReparacion extends javax.swing.JFrame {
         btn_Busca2.setBackground(new java.awt.Color(82, 148, 202));
         btn_Busca2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/lupa48x48.png"))); // NOI18N
         btn_Busca2.setBorder(null);
-        btn_Busca2.setOpaque(false);
         tab_bici.add(btn_Busca2, new org.netbeans.lib.awtextra.AbsoluteConstraints(62, 204, 60, 60));
 
         jRadBut_Entregado2.setBackground(new java.awt.Color(82, 148, 202));
@@ -496,7 +495,6 @@ public class Jf_TallerReparacion extends javax.swing.JFrame {
         btn_Busca3.setBackground(new java.awt.Color(82, 148, 202));
         btn_Busca3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/lupa48x48.png"))); // NOI18N
         btn_Busca3.setBorder(null);
-        btn_Busca3.setOpaque(false);
         tab_servicio.add(btn_Busca3, new org.netbeans.lib.awtextra.AbsoluteConstraints(62, 204, 60, 60));
 
         jRadBut_Entregado3.setBackground(new java.awt.Color(82, 148, 202));
@@ -588,7 +586,11 @@ public class Jf_TallerReparacion extends javax.swing.JFrame {
         btn_Busca4.setBackground(new java.awt.Color(82, 148, 202));
         btn_Busca4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/lupa48x48.png"))); // NOI18N
         btn_Busca4.setBorder(null);
-        btn_Busca4.setOpaque(false);
+        btn_Busca4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_Busca4ActionPerformed(evt);
+            }
+        });
         tab_repuesto.add(btn_Busca4, new org.netbeans.lib.awtextra.AbsoluteConstraints(62, 204, 60, 60));
 
         jTf_busqueda3.setFont(new java.awt.Font("Dialog", 0, 16)); // NOI18N
@@ -604,12 +606,22 @@ public class Jf_TallerReparacion extends javax.swing.JFrame {
         buttonGroupRepuEstado.add(jRadBut_Entregado4);
         jRadBut_Entregado4.setAutoscrolls(true);
         jRadBut_Entregado4.setBorder(null);
+        jRadBut_Entregado4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadBut_Entregado4ActionPerformed(evt);
+            }
+        });
         tab_repuesto.add(jRadBut_Entregado4, new org.netbeans.lib.awtextra.AbsoluteConstraints(28, 455, 20, 30));
 
         jRadBut_Anulado4.setBackground(new java.awt.Color(82, 148, 202));
         buttonGroupRepuEstado.add(jRadBut_Anulado4);
         jRadBut_Anulado4.setAutoscrolls(true);
         jRadBut_Anulado4.setBorder(null);
+        jRadBut_Anulado4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadBut_Anulado4ActionPerformed(evt);
+            }
+        });
         tab_repuesto.add(jRadBut_Anulado4, new org.netbeans.lib.awtextra.AbsoluteConstraints(28, 488, 20, 30));
 
         panelBuscar3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/sectorBus-repuesto.png"))); // NOI18N
@@ -735,7 +747,6 @@ public class Jf_TallerReparacion extends javax.swing.JFrame {
         btn_Busca5.setBackground(new java.awt.Color(82, 148, 202));
         btn_Busca5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/lupa48x48.png"))); // NOI18N
         btn_Busca5.setBorder(null);
-        btn_Busca5.setOpaque(false);
         tab_reparacion.add(btn_Busca5, new org.netbeans.lib.awtextra.AbsoluteConstraints(61, 204, 60, 60));
 
         panelBuscar4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/sectorBus-reparacion.png"))); // NOI18N
@@ -991,6 +1002,18 @@ cargarTablaBicicleta();
         jfCliente.setVisible(true); 
     }//GEN-LAST:event_jRadBut_xDniActionPerformed
 
+    private void btn_Busca4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_Busca4ActionPerformed
+cargarTablaRepuesto();        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_Busca4ActionPerformed
+
+    private void jRadBut_Entregado4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadBut_Entregado4ActionPerformed
+cargarTablaRepuesto();   
+    }//GEN-LAST:event_jRadBut_Entregado4ActionPerformed
+
+    private void jRadBut_Anulado4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadBut_Anulado4ActionPerformed
+cargarTablaRepuesto();   
+    }//GEN-LAST:event_jRadBut_Anulado4ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -1152,11 +1175,51 @@ cargarTablaBicicleta();
         jTable_Bicicleta.setModel(tModeloBicicleta);
     }
 
-    private void cargarTablaRepuesto() {
-       tModeloRepuesto.setNumRows(0);
-        listaRepuesto = repuDa.listaRepuesto();
+ private void cargarTablaRepuesto() {
+
+        if (jTf_busqueda3.getText().length() > 0) {     //Si tiene Algo
+            if (jRadBut_Entregado4.isSelected()) {      //Si Activos?
+                if (jRadBut_xNserie.isSelected()) {     //Si x numero serie?
+                    if (esNumero(jTf_busqueda3.getText())) {    //Check numero o Texto
+                        //activo con serie
+                        listaRepuesto = repuDa.listaRepuesto(1, "%" + jTf_busqueda3.getText() + "%" , "%");
+                    } else {
+                        JOptionPane.showMessageDialog(this, "Ingrese un Numero o Busque por Descripcion");
+                        //solo activos
+                         listaRepuesto = repuDa.listaRepuesto(1, "%", "%");
+                    }
+                } else if (jRadBut_xDescr.isSelected()) { //Si x Descripcion?
+                    //activos por descripcion
+                    listaRepuesto = repuDa.listaRepuesto(1, "%", "%" + jTf_busqueda3.getText() + "%" );
+                }
+            } else if (jRadBut_Anulado4.isSelected()) {     //Si INactivos?
+                if (jRadBut_xNserie.isSelected()) {         //Si x serie? (Inactivos)
+                    if (esNumero(jTf_busqueda3.getText())) {//Check numero o Texto
+                        //inactivo con serie
+                        listaRepuesto = repuDa.listaRepuesto(0, "%" + jTf_busqueda3.getText() + "%" , "%");
+                    } else {
+                        JOptionPane.showMessageDialog(this, "Ingrese un Numero o Busque por Descripcion");
+                        // solo inactivo
+                        listaRepuesto = repuDa.listaRepuesto(0, "%", "%");
+                    }
+                } else if (jRadBut_xDescr.isSelected()) { //Si x Descripcion? (Inactivos)
+                   //inactivo por descripcion 
+                   listaRepuesto = repuDa.listaRepuesto(0, "%", "%" + jTf_busqueda3.getText() + "%" );
+                }
+            }
+        } else if (jRadBut_Entregado4.isSelected()) {   //Si Solo Activos?
+            // solo activo
+            listaRepuesto = repuDa.listaRepuesto(1, "%", "%");
+
+        } else if (jRadBut_Anulado4.isSelected()) {     //Si Solo INactivos?
+            //solo inactivo
+            listaRepuesto = repuDa.listaRepuesto(0, "%", "%");
+        }
+
+        tModeloRepuesto.setNumRows(0);
+
         for (Repuesto repuesto : listaRepuesto) {
-            tModeloRepuesto.addRow(new Object[]{repuesto.getSerie(),repuesto.getDescripcion(),repuesto.getCosto()});
+            tModeloRepuesto.addRow(new Object[]{repuesto.getSerie(), repuesto.getDescripcion(), repuesto.getCosto()});
         }
         jTable_Repuesto.setModel(tModeloRepuesto);
     }
