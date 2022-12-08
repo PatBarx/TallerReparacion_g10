@@ -291,18 +291,33 @@ public class Jf_TallerReparacion extends javax.swing.JFrame {
         btn_Busca.setBackground(new java.awt.Color(82, 148, 202));
         btn_Busca.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/lupa48x48.png"))); // NOI18N
         btn_Busca.setBorder(null);
+        btn_Busca.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_BuscaActionPerformed(evt);
+            }
+        });
         tab_Cliente.add(btn_Busca, new org.netbeans.lib.awtextra.AbsoluteConstraints(62, 204, 60, 60));
 
         jRadBut_Anulado1.setBackground(new java.awt.Color(82, 148, 202));
         buttonGroupCliEstado.add(jRadBut_Anulado1);
         jRadBut_Anulado1.setAutoscrolls(true);
         jRadBut_Anulado1.setBorder(null);
+        jRadBut_Anulado1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadBut_Anulado1ActionPerformed(evt);
+            }
+        });
         tab_Cliente.add(jRadBut_Anulado1, new org.netbeans.lib.awtextra.AbsoluteConstraints(33, 492, 20, 30));
 
         jRadBut_Entregado1.setBackground(new java.awt.Color(82, 148, 202));
         buttonGroupCliEstado.add(jRadBut_Entregado1);
         jRadBut_Entregado1.setAutoscrolls(true);
         jRadBut_Entregado1.setBorder(null);
+        jRadBut_Entregado1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadBut_Entregado1ActionPerformed(evt);
+            }
+        });
         tab_Cliente.add(jRadBut_Entregado1, new org.netbeans.lib.awtextra.AbsoluteConstraints(33, 459, 20, 30));
 
         panelBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/sectorBus-clie.png"))); // NOI18N
@@ -845,7 +860,7 @@ cliDa.borrarCliente(cliente.getDni());
 }
 else{
 
-cliDa.guardarCliente(cliente);
+cliDa.activaCliente(cliente.getDni());
 }
  cargarTablaCliente();
     }//GEN-LAST:event_btn_cliente_bajaActionPerformed
@@ -1001,27 +1016,11 @@ cargarTablaBicicleta();
     }//GEN-LAST:event_jTf_busqueda4ComponentShown
 
     private void jRadBut_xNomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadBut_xNomActionPerformed
-              borrarFilas();
-        
-         if(jTf_busqueda.getText().length()<1){
-              jRadBut_xNom.setSelected(false);
-             JOptionPane.showMessageDialog(null, " debe ingresar un nombre y luego presionar el boton por nombre");
-         }
-        String nom=jTf_busqueda.getText();
        
-      
-        for (Cliente cliente :cliDa.BuscarClientePorNombre(nom)) {
-            tModeloCliente.addRow(new Object[]{cliente.getDni(),cliente.getNombre(),cliente.getDomicilio(),cliente.getTel()});
-        }
-        jTable_Cliente.setModel(tModeloCliente);
     }//GEN-LAST:event_jRadBut_xNomActionPerformed
 
     private void jRadBut_xDniActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadBut_xDniActionPerformed
-           Cliente cliente = cliDa.buscarCliente(Integer.parseInt(JOptionPane.showInputDialog("ingrese el dni")));
-      Jf_Cliente jfCliente = new Jf_Cliente(this,cliente);
-        jfCliente.setAlwaysOnTop(true);
-        jfCliente.show(true);
-        jfCliente.setVisible(true); 
+     
     }//GEN-LAST:event_jRadBut_xDniActionPerformed
 
     private void btn_Busca4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_Busca4ActionPerformed
@@ -1048,6 +1047,19 @@ cargarTablaRepuesto();
         cargarTablaServicio();
     }//GEN-LAST:event_jRadBut_Anulado3ActionPerformed
 
+    private void jRadBut_Entregado1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadBut_Entregado1ActionPerformed
+        cargarTablaCliente();
+    }//GEN-LAST:event_jRadBut_Entregado1ActionPerformed
+
+    private void jRadBut_Anulado1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadBut_Anulado1ActionPerformed
+     cargarTablaClienteinactivos();
+    }//GEN-LAST:event_jRadBut_Anulado1ActionPerformed
+
+    private void btn_BuscaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_BuscaActionPerformed
+        BuscarPorDni();
+        BuscarPorNombre();
+    }//GEN-LAST:event_btn_BuscaActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -1073,6 +1085,10 @@ cargarTablaRepuesto();
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(Jf_TallerReparacion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -1199,6 +1215,90 @@ cargarTablaRepuesto();
         }
         jTable_Cliente.setModel(tModeloCliente);
     }
+    
+     public void cargarTablaClienteinactivos() {
+        tModeloCliente.setNumRows(0);
+        listaCliente = cliDa.listarClienteInactivos();
+        for (Cliente cliente : listaCliente) {
+            tModeloCliente.addRow(new Object[]{cliente.getDni(),cliente.getNombre(),cliente.getDomicilio(),cliente.getTel()});
+        }
+        jTable_Cliente.setModel(tModeloCliente);
+    }
+        public void BuscarPorDni(){
+       
+           if (jRadBut_Entregado1.isSelected()&&jRadBut_xDni.isSelected()) {
+                 cargarTablaCliente();
+          if(!esNumero(jTf_busqueda.getText())){
+              JOptionPane.showMessageDialog(null, "ingrese un numero");
+               }
+       int dni = Integer.parseInt( jTf_busqueda.getText());
+        //int num=Integer.parseInt(jTf_busqueda.getText());
+          borrarFilas();
+        for (Cliente cliente :cliDa.BuscarClientePorDni(dni)) {
+            tModeloCliente.addRow(new Object[]{cliente.getDni(),cliente.getNombre(),cliente.getDomicilio(),cliente.getTel()});
+      
+        jTable_Cliente.setModel(tModeloCliente);
+        }
+         jTf_busqueda.setText("");
+        
+           }
+            if (jRadBut_Anulado1.isSelected()&&jRadBut_xDni.isSelected()) {
+                 cargarTablaClienteinactivos();
+               
+          if(!esNumero(jTf_busqueda.getText())){
+               JOptionPane.showMessageDialog(null, "ingrese un numero");
+                  }
+            int dni1 = Integer.parseInt( jTf_busqueda.getText());
+                //Si Activos?
+     
+      borrarFilas();
+        for (Cliente cliente :cliDa.BuscarClienteInacPorDni(dni1)) {
+            tModeloCliente.addRow(new Object[]{cliente.getDni(),cliente.getNombre(),cliente.getDomicilio(),cliente.getTel()});
+      
+        jTable_Cliente.setModel(tModeloCliente);
+        }
+         jTf_busqueda.setText("");
+         
+           }
+           
+     }
+             public void BuscarPorNombre(){
+        
+         if (jRadBut_Entregado1.isSelected() && jRadBut_xNom.isSelected()) {
+             
+         if(jTf_busqueda.getText().length()<1){
+              
+           JOptionPane.showMessageDialog(null, "ingrese un nombre");
+           cargarTablaCliente(); 
+         }
+           String nom = jTf_busqueda.getText();
+   
+      borrarFilas();
+        for (Cliente cliente :cliDa.BuscarClientePorNombreActivo(nom)) {
+            tModeloCliente.addRow(new Object[]{cliente.getDni(),cliente.getNombre(),cliente.getDomicilio(),cliente.getTel()});
+             jTable_Cliente.setModel(tModeloCliente);
+        }
+        jTf_busqueda.setText("");
+         }
+         if (jRadBut_Anulado1.isSelected()&&jRadBut_xNom.isSelected()) {  
+            cargarTablaClienteinactivos();
+         if(jTf_busqueda.getText().length()<1){
+         JOptionPane.showMessageDialog(null, "ingrese un nombre");
+         }
+         String nom1=jTf_busqueda.getText();
+       
+        borrarFilas();
+        for (Cliente cliente :cliDa.BuscarClientePorNombreinactivo(nom1)) {
+            tModeloCliente.addRow(new Object[]{cliente.getDni(),cliente.getNombre(),cliente.getDomicilio(),cliente.getTel()});
+             jTable_Cliente.setModel(tModeloCliente);
+        }
+       
+        jTf_busqueda.setText("");
+        
+         }
+     }
+     
+    
 
     private void cargarTablaBicicleta() {
         tModeloBicicleta.setNumRows(0);

@@ -128,6 +128,59 @@ public class ClienteData {
         }
         return clientes;
     }
+     public ArrayList<Cliente> listarClienteInactivos() {    //SELECT *
+        ArrayList<Cliente> clientes = new ArrayList();
+
+        try {
+            String sql = " SELECT *  FROM cliente where estado=0 ";
+            PreparedStatement pst = con.prepareStatement(sql);
+            ResultSet resultSet = pst.executeQuery();
+
+            Cliente cl;
+
+            while (resultSet.next()) {
+
+                cl = new Cliente();
+                cl.setDni(resultSet.getInt("dni"));
+                cl.setNombre(resultSet.getString("nombre"));
+                cl.setDomicilio(resultSet.getString("domicilio"));
+                cl.setTel(resultSet.getInt("telefono"));
+                cl.setEstado(resultSet.getBoolean("estado"));
+
+                clientes.add(cl);
+            }
+            pst.close();
+        } catch (SQLException e) {
+
+            JOptionPane.showMessageDialog(null, "error al obtner Cliente");
+        }
+        return clientes;
+    }
+  public boolean activaCliente(int dni) {   //UPDATE SET / DELETE
+
+        boolean borrado = false;
+
+        String sql = "UPDATE cliente SET estado = 1 WHERE dni = ?";
+        try {
+            PreparedStatement pts = con.prepareStatement(sql);
+            pts.setInt(1, dni);
+
+            if (pts.executeUpdate() != 0) {
+                JOptionPane.showMessageDialog(null, "cliente activado");
+                borrado = true;
+            } else {
+                JOptionPane.showMessageDialog(null, " No se pudo Borrar");
+            }
+            pts.close();
+
+        } catch (SQLException e) {
+            System.out.println(e);
+            JOptionPane.showMessageDialog(null, "error al borrar cliente");
+
+        }
+
+        return borrado;
+    }
 
     public boolean borrarCliente(int dni) {   //UPDATE SET / DELETE
 
@@ -154,17 +207,102 @@ public class ClienteData {
 
         return borrado;
     }
-               public ArrayList<Cliente> BuscarClientePorNombre(String nombre) {   //SELECT 1 ALUMNO
+    public ArrayList<Cliente> BuscarClientePorNombreActivo(String nombre) {   //SELECT 1 ALUMNO
         //SELECT 1 ALUMNO
        
         
-        String sql = "SELECT * FROM cliente WHERE nombre=?";
+        String sql = "SELECT * FROM cliente WHERE estado=1 and nombre=?";
       Cliente cli= null;
          ArrayList<Cliente>cliente = new ArrayList();
 
         try {
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setString(1,nombre);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                cli = new Cliente();
+                cli.setDni(rs.getInt("dni"));
+                cli.setNombre(rs.getString("nombre"));
+                cli.setDomicilio(rs.getString("domicilio"));
+                cli.setTel(rs.getInt("telefono"));
+                //cli.setEstado(rs.getBoolean("estado"));
+                cliente.add(cli);
+
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(ClienteData.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return cliente;
+    }
+       public ArrayList<Cliente> BuscarClientePorNombreinactivo(String nombre) {   //SELECT 1 ALUMNO
+        //SELECT 1 ALUMNO
+       
+        
+        String sql = "SELECT * FROM cliente WHERE estado=0 and nombre=?";
+      Cliente cli= null;
+         ArrayList<Cliente>cliente = new ArrayList();
+
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1,nombre);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                cli = new Cliente();
+                cli.setDni(rs.getInt("dni"));
+                cli.setNombre(rs.getString("nombre"));
+                cli.setDomicilio(rs.getString("domicilio"));
+                cli.setTel(rs.getInt("telefono"));
+                //cli.setEstado(rs.getBoolean("estado"));
+                cliente.add(cli);
+
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(ClienteData.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return cliente;
+    }
+               
+     public ArrayList<Cliente> BuscarClientePorDni(int dni) {   //SELECT 1 ALUMNO
+        //SELECT 1 ALUMNO
+       
+        
+        String sql = "SELECT * FROM cliente WHERE estado=1 and dni=?";
+      Cliente cli= null;
+         ArrayList<Cliente>cliente = new ArrayList();
+
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1,dni);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                cli = new Cliente();
+                cli.setDni(rs.getInt("dni"));
+                cli.setNombre(rs.getString("nombre"));
+                cli.setDomicilio(rs.getString("domicilio"));
+                cli.setTel(rs.getInt("telefono"));
+                //cli.setEstado(rs.getBoolean("estado"));
+                cliente.add(cli);
+
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(ClienteData.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return cliente;
+    }
+          public ArrayList<Cliente> BuscarClienteInacPorDni(int dni) {   //SELECT 1 ALUMNO
+        //SELECT 1 ALUMNO
+       
+        
+        String sql = "SELECT * FROM cliente WHERE estado=0 and dni=?";
+      Cliente cli= null;
+         ArrayList<Cliente>cliente = new ArrayList();
+
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1,dni);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 cli = new Cliente();
