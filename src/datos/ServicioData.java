@@ -116,6 +116,7 @@ public class ServicioData {
         }
         return arrServ;        
     }
+    
     public Servicio buscarServicio(int id) {   
         //Creo un obj, instancio un query..
         Servicio serv = new Servicio();
@@ -140,5 +141,118 @@ public class ServicioData {
             return null;
         }    
         return serv;
+    }
+    
+    
+  // - - - Metodo Extra para filtro de inactivos tabla    
+    public ArrayList<Servicio> listarServInactivos(){
+        ArrayList<Servicio> arrServ = new ArrayList();
+        //SELECT `codigo`, `descripcion`, `costo`, `estado` FROM `servicio` WHERE 1
+        String query = "SELECT * FROM servicio WHERE estado = 0"; //DEvuelve inactivos
+        try {
+            PreparedStatement ps = con.prepareStatement(query);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                Servicio serv = new Servicio();
+                serv.setCodigo(rs.getInt("codigo"));
+                serv.setDescripcion(rs.getString("descripcion"));
+                serv.setCosto(rs.getFloat("costo"));
+                serv.setEstado(rs.getBoolean("estado"));                
+                arrServ.add(serv);
+                ps.close();    
+            }            
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "ServicioData Error:\n" + e);
+        }
+        return arrServ;        
+    }
+    // - - - - METODOS Extra Para Listar combinados Tabla - - - - - - //
+    public ArrayList<Servicio> listarServActCod(int cod){
+        ArrayList<Servicio> arrServ = new ArrayList();
+        //SELECT `codigo`, `descripcion`, `costo`, `estado` FROM `servicio` WHERE 1
+        String query = "SELECT * FROM servicio WHERE estado = 1 AND codigo = ?"; //Por CODIGO activos
+        try {
+            PreparedStatement ps = con.prepareStatement(query);
+            ps.setInt(1, cod);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                Servicio serv = new Servicio();
+                serv.setCodigo(rs.getInt("codigo"));
+                serv.setDescripcion(rs.getString("descripcion"));
+                serv.setCosto(rs.getFloat("costo"));
+                serv.setEstado(rs.getBoolean("estado"));                
+                arrServ.add(serv);
+                ps.close();    
+            }            
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "ServicioData Error:\n" + e);
+        }
+        return arrServ;        
+    }
+    public ArrayList<Servicio> listarServInactCod(int cod){
+        ArrayList<Servicio> arrServ = new ArrayList();
+        //SELECT `codigo`, `descripcion`, `costo`, `estado` FROM `servicio` WHERE 1
+        String query = "SELECT * FROM servicio WHERE estado = 0 AND codigo = ?"; //Por CODIGO inactivos
+        try {
+            PreparedStatement ps = con.prepareStatement(query);
+            ps.setInt(1, cod);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                Servicio serv = new Servicio();
+                serv.setCodigo(rs.getInt("codigo"));
+                serv.setDescripcion(rs.getString("descripcion"));
+                serv.setCosto(rs.getFloat("costo"));
+                serv.setEstado(rs.getBoolean("estado"));                
+                arrServ.add(serv);
+                ps.close();    
+            }            
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "ServicioData Error:\n" + e);
+        }
+        return arrServ;        
+    }
+    public ArrayList<Servicio> listarServActDesc(String descrip){
+        ArrayList<Servicio> arrServ = new ArrayList();
+        //SELECT `codigo`, `descripcion`, `costo`, `estado` FROM `servicio` WHERE 1
+        String query = "SELECT * FROM servicio WHERE estado = 1 AND descripcion LIKE ?"; //Por DESCRIPCION activos
+        try {
+            PreparedStatement ps = con.prepareStatement(query);
+            ps.setString(1, descrip);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                Servicio serv = new Servicio();
+                serv.setCodigo(rs.getInt("codigo"));
+                serv.setDescripcion(rs.getString("descripcion"));
+                serv.setCosto(rs.getFloat("costo"));
+                serv.setEstado(rs.getBoolean("estado"));                
+                arrServ.add(serv);
+                ps.close();    
+            }            
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "ServicioData Error:\n" + e);
+        }
+        return arrServ;        
+    }
+    public ArrayList<Servicio> listarServInactDesc(String descrip){
+        ArrayList<Servicio> arrServ = new ArrayList();
+        //SELECT `codigo`, `descripcion`, `costo`, `estado` FROM `servicio` WHERE 1
+        String query = "SELECT * FROM servicio WHERE estado = 0 AND descripcion LIKE ?"; //Por DESCRIPCION inactivos
+        try {
+            PreparedStatement ps = con.prepareStatement(query);
+            ps.setString(1, descrip);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                Servicio serv = new Servicio();
+                serv.setCodigo(rs.getInt("codigo"));
+                serv.setDescripcion(rs.getString("descripcion"));
+                serv.setCosto(rs.getFloat("costo"));
+                serv.setEstado(rs.getBoolean("estado"));                
+                arrServ.add(serv);
+                ps.close();    
+            }            
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "ServicioData Error:\n" + e);
+        }
+        return arrServ;        
     }
 }

@@ -84,7 +84,7 @@ public class Servicio {
 //ToString
     @Override
     public String toString() {
-        return "Servicio:\n" + "Codigo: " + codigo + "\tDescripcion: " + descripcion + "\tCosto: $" + costo + "\tEstado: " + estado + '.';
+        return  "(" +codigo +")" +descripcion;
     }
     
 }

@@ -31,7 +31,9 @@ public class Jf_TallerReparacion extends javax.swing.JFrame {
     private ArrayList<Reparacion> listaReparacion;
 
     public Jf_TallerReparacion() {
+        
         initComponents();
+        jRadBut_Entregado3.setSelected(true);
         cargarTablaCliente();
         cargarTablaBicicleta();
         cargarTablaRepuesto();
@@ -1146,12 +1148,41 @@ cargarTablaBicicleta();
     }
 
     private void cargarTablaServicio() {
-               tModeloServicio.setNumRows(0);
-        listaServicio = servDa.listarServicios();
-        for (Servicio servicio : listaServicio) {
-            tModeloServicio.addRow(new Object[]{servicio.getCodigo(),servicio.getDescripcion(),servicio.getCosto()});
+         if (jTf_busqueda2.getText().length() > 0) {     //Si tiene Algo
+            if (jRadBut_Entregado3.isSelected()) {      //Si Activos?
+                if (jRadBut_xCodigo.isSelected()) {     //Si x Codigo?
+                    if (esNumero(jTf_busqueda2.getText())) {    //Check numero o Texto
+                        listaServicio = servDa.listarServActCod(Integer.parseInt(jTf_busqueda2.getText()));
+                    } else {
+                        JOptionPane.showMessageDialog(this, "Ingrese un Numero o Busque por Descripcion");
+                        listaServicio = servDa.listarServicios();   //Si no es numero, carga la tabla con Activos
+                    }
+                } else if (jRadBut_xDescrip.isSelected()) { //Si x Descripcion?
+                    listaServicio = servDa.listarServActDesc("%" + jTf_busqueda2.getText() + "%");//Puede buscar por cualquier caracter
+                }
+            } else if (jRadBut_Anulado3.isSelected()) {     //Si INactivos?
+                if (jRadBut_xCodigo.isSelected()) {         //Si x Codigo? (Inactivos)
+                    if (esNumero(jTf_busqueda2.getText())) {//Check numero o Texto
+                        listaServicio = servDa.listarServInactCod(Integer.parseInt(jTf_busqueda2.getText()));
+                    } else {
+                        JOptionPane.showMessageDialog(this, "Ingrese un Numero o Busque por Descripcion");
+                        listaServicio = servDa.listarServInactivos();//Si no es numero, carga la tabla con INctivos
+                    }
+                } else if (jRadBut_xDescrip.isSelected()) { //Si x Descripcion? (Inactivos)
+                    listaServicio = servDa.listarServInactDesc("%" + jTf_busqueda2.getText() + "%");
+                }
+            }
+        } else if (jRadBut_Entregado3.isSelected()) {   //Si Solo Activos?
+            listaServicio = servDa.listarServicios();
+
+        } else if (jRadBut_Anulado3.isSelected()) {     //Si Solo INactivos?
+            listaServicio = servDa.listarServInactivos();
         }
-        jTable_Servicio.setModel(tModeloServicio);
+        tModeloServicio.setNumRows(0);                  //Resetea la tabla a cero(Borra Filas)
+        for (Servicio servicio : listaServicio) {       //Recorre el arreglo y Carga modelo con los datos que trae segun filtros
+            tModeloServicio.addRow(new Object[]{servicio.getCodigo(), servicio.getDescripcion(), servicio.getCosto()});
+        }
+        jTable_Servicio.setModel(tModeloServicio);      //Se carga la tabla con datos del modelo
     }
 
     private void cargarTablaReparacion() {
@@ -1170,5 +1201,16 @@ cargarTablaBicicleta();
            tModeloCliente.removeRow(i);
         }
     
+    }
+    //método que verifica si es Numero o no.
+    public boolean esNumero(String cadena) {
+        boolean resultado;
+        try {
+            Integer.parseInt(cadena);
+            resultado = true;
+        } catch (NumberFormatException excepcion) {
+            resultado = false;
+        }
+        return resultado;
     }
 }
