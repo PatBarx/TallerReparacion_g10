@@ -29,6 +29,7 @@ public class Jf_TallerReparacion extends javax.swing.JFrame {
     private ArrayList<Repuesto> listaRepuesto;
     private ArrayList<Servicio> listaServicio;
     private ArrayList<Reparacion> listaReparacion;
+    private boolean refrescarTabla = false;
 
     public Jf_TallerReparacion() {
         
@@ -827,35 +828,40 @@ cliDa.guardarCliente(cliente);
         Jf_Bicicleta jfBicicleta = new Jf_Bicicleta(this,null);
         jfBicicleta.setAlwaysOnTop(true);
         jfBicicleta.show(true);
-        jfBicicleta.setVisible(true);         // TODO add your handling code here:
+        jfBicicleta.setVisible(true); 
+        refrescarTabla = true;        
     }//GEN-LAST:event_btn_bicicleta_altaActionPerformed
 
     private void btn_servicio_altaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_servicio_altaActionPerformed
         Jf_Servicio jfServicio = new Jf_Servicio(this,null);
         jfServicio.setAlwaysOnTop(true);
         jfServicio.show(true);
-        jfServicio.setVisible(true);        // TODO add your handling code here:
+        jfServicio.setVisible(true); 
+        refrescarTabla = true;
     }//GEN-LAST:event_btn_servicio_altaActionPerformed
 
     private void btn_repuesto_altaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_repuesto_altaActionPerformed
         Jf_Repuesto jfRepuesto = new Jf_Repuesto(this,null);
         jfRepuesto.setAlwaysOnTop(true);
         jfRepuesto.show(true);
-        jfRepuesto.setVisible(true);          // TODO add your handling code here:
+        jfRepuesto.setVisible(true);
+        refrescarTabla = true;
     }//GEN-LAST:event_btn_repuesto_altaActionPerformed
 
     private void btn_reparacion_altaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_reparacion_altaActionPerformed
         Jf_Reparacion jfReparacion = new Jf_Reparacion(this,null);
         jfReparacion.setAlwaysOnTop(true);
         jfReparacion.show(true);
-        jfReparacion.setVisible(true);  
+        jfReparacion.setVisible(true);
+        refrescarTabla = true;
     }//GEN-LAST:event_btn_reparacion_altaActionPerformed
 
     private void btn_cliente_altaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cliente_altaActionPerformed
         Jf_Cliente jfCliente = new Jf_Cliente(this,null);
         jfCliente.setAlwaysOnTop(true);
         jfCliente.show(true);
-        jfCliente.setVisible(true);          
+        jfCliente.setVisible(true);
+        refrescarTabla = true;
     }//GEN-LAST:event_btn_cliente_altaActionPerformed
 
     private void btn_cliente_modificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cliente_modificarActionPerformed
@@ -863,7 +869,8 @@ cliDa.guardarCliente(cliente);
         Jf_Cliente jfCliente = new Jf_Cliente(this,cliente);
         jfCliente.setAlwaysOnTop(true);
         jfCliente.show(true);
-        jfCliente.setVisible(true);  
+        jfCliente.setVisible(true);
+        refrescarTabla = true;
     }//GEN-LAST:event_btn_cliente_modificarActionPerformed
 
     private void btn_bicicleta_bajaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_bicicleta_bajaActionPerformed
@@ -883,6 +890,7 @@ cargarTablaBicicleta();
         jfBicicleta.setAlwaysOnTop(true);
         jfBicicleta.show(true);
         jfBicicleta.setVisible(true);
+        refrescarTabla = true;
     }//GEN-LAST:event_btn_bicicleta_modificarActionPerformed
 
     private void btn_servicio_bajaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_servicio_bajaActionPerformed
@@ -901,6 +909,7 @@ cargarTablaBicicleta();
         jfServicio.setAlwaysOnTop(true);
         jfServicio.show(true);
         jfServicio.setVisible(true);
+        refrescarTabla = true;
     }//GEN-LAST:event_btn_servicio_modificarActionPerformed
 
     private void btn_repuesto_modificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_repuesto_modificarActionPerformed
@@ -908,7 +917,8 @@ cargarTablaBicicleta();
         Jf_Repuesto jfRepuesto = new Jf_Repuesto(this,repuesto);
         jfRepuesto.setAlwaysOnTop(true);
         jfRepuesto.show(true);
-        jfRepuesto.setVisible(true);          
+        jfRepuesto.setVisible(true);
+        refrescarTabla = true;
     }//GEN-LAST:event_btn_repuesto_modificarActionPerformed
 
     private void btn_repuesto_bajaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_repuesto_bajaActionPerformed
@@ -926,11 +936,15 @@ cargarTablaBicicleta();
     }//GEN-LAST:event_btn_reparacion_modificarActionPerformed
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
+        if (refrescarTabla) {
         cargarTablaCliente();
         cargarTablaBicicleta();
         cargarTablaRepuesto();
         cargarTablaServicio();
-        cargarTablaReparacion();     // TODO add your handling code here:
+        cargarTablaReparacion();
+        refrescarTabla = false;
+        }
+    // TODO add your handling code here:
     }//GEN-LAST:event_formWindowActivated
 
     private void jTf_busquedaComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_jTf_busquedaComponentShown
