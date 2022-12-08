@@ -120,7 +120,8 @@ public class ServicioData {
     public Servicio buscarServicio(int id) {   
         //Creo un obj, instancio un query..
         Servicio serv = new Servicio();
-        String query =  "SELECT * FROM servicio WHERE estado = 1 AND codigo = ? ";
+        //"SELECT * FROM servicio WHERE estado = 1 AND codigo = ? ";
+        String query =  "SELECT * FROM servicio WHERE codigo = ? ";
         //Try: Ps/ ps.set(id xparametro).. / rs.. /if(next) ../ Set obj / ps.Close...
         try {
             PreparedStatement ps = con.prepareStatement(query);

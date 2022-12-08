@@ -95,7 +95,7 @@ public class Cliente {
 
     @Override
     public String toString() {
-        return "Cliente{" + "dni=" + dni + ", nombre=" + nombre + ", domicilio=" + domicilio + ", tel=" + tel + ", estado=" + estado + '}';
+        return "{"+ dni + "}" + nombre;
     }
     
 }

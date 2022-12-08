@@ -297,13 +297,13 @@ public class Jf_TallerReparacion extends javax.swing.JFrame {
         buttonGroupCliEstado.add(jRadBut_Anulado1);
         jRadBut_Anulado1.setAutoscrolls(true);
         jRadBut_Anulado1.setBorder(null);
-        tab_Cliente.add(jRadBut_Anulado1, new org.netbeans.lib.awtextra.AbsoluteConstraints(28, 488, 20, 30));
+        tab_Cliente.add(jRadBut_Anulado1, new org.netbeans.lib.awtextra.AbsoluteConstraints(33, 492, 20, 30));
 
         jRadBut_Entregado1.setBackground(new java.awt.Color(82, 148, 202));
         buttonGroupCliEstado.add(jRadBut_Entregado1);
         jRadBut_Entregado1.setAutoscrolls(true);
         jRadBut_Entregado1.setBorder(null);
-        tab_Cliente.add(jRadBut_Entregado1, new org.netbeans.lib.awtextra.AbsoluteConstraints(28, 455, 20, 30));
+        tab_Cliente.add(jRadBut_Entregado1, new org.netbeans.lib.awtextra.AbsoluteConstraints(33, 459, 20, 30));
 
         panelBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/sectorBus-clie.png"))); // NOI18N
         tab_Cliente.add(panelBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 0, 190, 530));
@@ -400,13 +400,13 @@ public class Jf_TallerReparacion extends javax.swing.JFrame {
         buttonGroupbiciEstado.add(jRadBut_Entregado2);
         jRadBut_Entregado2.setAutoscrolls(true);
         jRadBut_Entregado2.setBorder(null);
-        tab_bici.add(jRadBut_Entregado2, new org.netbeans.lib.awtextra.AbsoluteConstraints(28, 455, 20, 30));
+        tab_bici.add(jRadBut_Entregado2, new org.netbeans.lib.awtextra.AbsoluteConstraints(33, 460, 20, 30));
 
         jRadBut_Anulado2.setBackground(new java.awt.Color(82, 148, 202));
         buttonGroupbiciEstado.add(jRadBut_Anulado2);
         jRadBut_Anulado2.setAutoscrolls(true);
         jRadBut_Anulado2.setBorder(null);
-        tab_bici.add(jRadBut_Anulado2, new org.netbeans.lib.awtextra.AbsoluteConstraints(28, 488, 20, 30));
+        tab_bici.add(jRadBut_Anulado2, new org.netbeans.lib.awtextra.AbsoluteConstraints(33, 492, 20, 30));
 
         panelBuscar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/sectorBus-bici.png"))); // NOI18N
         tab_bici.add(panelBuscar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 0, 190, 530));
@@ -495,19 +495,34 @@ public class Jf_TallerReparacion extends javax.swing.JFrame {
         btn_Busca3.setBackground(new java.awt.Color(82, 148, 202));
         btn_Busca3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/lupa48x48.png"))); // NOI18N
         btn_Busca3.setBorder(null);
+        btn_Busca3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_Busca3ActionPerformed(evt);
+            }
+        });
         tab_servicio.add(btn_Busca3, new org.netbeans.lib.awtextra.AbsoluteConstraints(62, 204, 60, 60));
 
         jRadBut_Entregado3.setBackground(new java.awt.Color(82, 148, 202));
         buttonGroupServEstado.add(jRadBut_Entregado3);
         jRadBut_Entregado3.setAutoscrolls(true);
         jRadBut_Entregado3.setBorder(null);
-        tab_servicio.add(jRadBut_Entregado3, new org.netbeans.lib.awtextra.AbsoluteConstraints(28, 455, 20, 30));
+        jRadBut_Entregado3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadBut_Entregado3ActionPerformed(evt);
+            }
+        });
+        tab_servicio.add(jRadBut_Entregado3, new org.netbeans.lib.awtextra.AbsoluteConstraints(33, 460, 20, 30));
 
         jRadBut_Anulado3.setBackground(new java.awt.Color(82, 148, 202));
         buttonGroupServEstado.add(jRadBut_Anulado3);
         jRadBut_Anulado3.setAutoscrolls(true);
         jRadBut_Anulado3.setBorder(null);
-        tab_servicio.add(jRadBut_Anulado3, new org.netbeans.lib.awtextra.AbsoluteConstraints(28, 488, 20, 30));
+        jRadBut_Anulado3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadBut_Anulado3ActionPerformed(evt);
+            }
+        });
+        tab_servicio.add(jRadBut_Anulado3, new org.netbeans.lib.awtextra.AbsoluteConstraints(33, 493, 20, 30));
 
         panelBuscar2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/sectorBus-servicio.png"))); // NOI18N
         tab_servicio.add(panelBuscar2, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 0, 190, 530));
@@ -611,7 +626,7 @@ public class Jf_TallerReparacion extends javax.swing.JFrame {
                 jRadBut_Entregado4ActionPerformed(evt);
             }
         });
-        tab_repuesto.add(jRadBut_Entregado4, new org.netbeans.lib.awtextra.AbsoluteConstraints(28, 455, 20, 30));
+        tab_repuesto.add(jRadBut_Entregado4, new org.netbeans.lib.awtextra.AbsoluteConstraints(33, 460, 20, 30));
 
         jRadBut_Anulado4.setBackground(new java.awt.Color(82, 148, 202));
         buttonGroupRepuEstado.add(jRadBut_Anulado4);
@@ -622,7 +637,7 @@ public class Jf_TallerReparacion extends javax.swing.JFrame {
                 jRadBut_Anulado4ActionPerformed(evt);
             }
         });
-        tab_repuesto.add(jRadBut_Anulado4, new org.netbeans.lib.awtextra.AbsoluteConstraints(28, 488, 20, 30));
+        tab_repuesto.add(jRadBut_Anulado4, new org.netbeans.lib.awtextra.AbsoluteConstraints(33, 493, 20, 30));
 
         panelBuscar3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/sectorBus-repuesto.png"))); // NOI18N
         tab_repuesto.add(panelBuscar3, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 0, 190, 530));
@@ -943,7 +958,12 @@ cargarTablaBicicleta();
     }//GEN-LAST:event_btn_repuesto_bajaActionPerformed
 
     private void btn_reparacion_modificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_reparacion_modificarActionPerformed
-        // TODO add your handling code here:
+        Reparacion reparacion = repaDa.buscarReparacion((Integer) tModeloReparacion.getValueAt(jTable_Reparacion.getSelectedRow(), 0));
+        Jf_Reparacion jfReparacion = new Jf_Reparacion(this,reparacion);
+        jfReparacion.setAlwaysOnTop(true);
+        jfReparacion.show(true);
+        jfReparacion.setVisible(true);  
+        refrescarTabla = true;
     }//GEN-LAST:event_btn_reparacion_modificarActionPerformed
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
@@ -1013,6 +1033,18 @@ cargarTablaRepuesto();
     private void jRadBut_Anulado4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadBut_Anulado4ActionPerformed
 cargarTablaRepuesto();   
     }//GEN-LAST:event_jRadBut_Anulado4ActionPerformed
+
+    private void btn_Busca3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_Busca3ActionPerformed
+        cargarTablaServicio();
+    }//GEN-LAST:event_btn_Busca3ActionPerformed
+
+    private void jRadBut_Entregado3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadBut_Entregado3ActionPerformed
+        cargarTablaServicio();
+    }//GEN-LAST:event_jRadBut_Entregado3ActionPerformed
+
+    private void jRadBut_Anulado3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadBut_Anulado3ActionPerformed
+        cargarTablaServicio();
+    }//GEN-LAST:event_jRadBut_Anulado3ActionPerformed
 
     /**
      * @param args the command line arguments
