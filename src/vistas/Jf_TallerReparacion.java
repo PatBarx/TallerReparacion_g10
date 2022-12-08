@@ -875,7 +875,8 @@ cliDa.guardarCliente(cliente);
     }//GEN-LAST:event_btn_repuesto_altaActionPerformed
 
     private void btn_reparacion_altaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_reparacion_altaActionPerformed
-        Jf_Reparacion jfReparacion = new Jf_Reparacion(this,null);
+        //Jf_Reparacion jfReparacion = new Jf_Reparacion(this,null); //inicial con comboBx
+        Jf_Reparacion2 jfReparacion = new Jf_Reparacion2(this,null);
         jfReparacion.setAlwaysOnTop(true);
         jfReparacion.show(true);
         jfReparacion.setVisible(true);
@@ -959,7 +960,8 @@ cargarTablaBicicleta();
 
     private void btn_reparacion_modificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_reparacion_modificarActionPerformed
         Reparacion reparacion = repaDa.buscarReparacion((Integer) tModeloReparacion.getValueAt(jTable_Reparacion.getSelectedRow(), 0));
-        Jf_Reparacion jfReparacion = new Jf_Reparacion(this,reparacion);
+        //Jf_Reparacion jfReparacion = new Jf_Reparacion(this,reparacion);  //Ventana inicial con comboBox
+        Jf_Reparacion2 jfReparacion = new Jf_Reparacion2(this,reparacion);
         jfReparacion.setAlwaysOnTop(true);
         jfReparacion.show(true);
         jfReparacion.setVisible(true);  

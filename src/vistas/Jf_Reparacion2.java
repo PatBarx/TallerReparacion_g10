@@ -26,6 +26,9 @@ public class Jf_Reparacion2 extends javax.swing.JFrame {
     private ArrayList<ItemRep> listaItems;
     private ItemRepData itemDat;
     private Servicio servicio = new Servicio();
+    private Cliente cliente = new Cliente();
+    private Bicicleta bicicleta = new Bicicleta();
+    
     
     public Jf_Reparacion2(java.awt.Frame padre, Reparacion reparacion) {
         initComponents();
@@ -50,7 +53,9 @@ public class Jf_Reparacion2 extends javax.swing.JFrame {
         jRBut_Entregado = new javax.swing.JRadioButton();
         jRBut_Anulado = new javax.swing.JRadioButton();
         jCbox_Repuestos = new javax.swing.JComboBox<>();
-        jButton1 = new javax.swing.JButton();
+        btn_buscaB = new javax.swing.JButton();
+        btn_buscaC = new javax.swing.JButton();
+        btn_buscaS = new javax.swing.JButton();
         jTf_NumeroRepa = new javax.swing.JTextField();
         jTf_Servicio = new javax.swing.JTextField();
         jTf_Cliente = new javax.swing.JTextField();
@@ -150,18 +155,50 @@ public class Jf_Reparacion2 extends javax.swing.JFrame {
         jCbox_Repuestos.setBorder(null);
         jPanel1.add(jCbox_Repuestos, new org.netbeans.lib.awtextra.AbsoluteConstraints(407, 86, 285, 28));
 
-        jButton1.setText("jButton1");
-        jButton1.addFocusListener(new java.awt.event.FocusAdapter() {
+        btn_buscaB.setBackground(new java.awt.Color(82, 148, 202));
+        btn_buscaB.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/MLupa.png"))); // NOI18N
+        btn_buscaB.setBorder(null);
+        btn_buscaB.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
-                jButton1FocusGained(evt);
+                btn_buscaBFocusGained(evt);
             }
         });
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btn_buscaB.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btn_buscaBActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 140, 30, -1));
+        jPanel1.add(btn_buscaB, new org.netbeans.lib.awtextra.AbsoluteConstraints(105, 220, 40, 40));
+
+        btn_buscaC.setBackground(new java.awt.Color(82, 148, 202));
+        btn_buscaC.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/MLupa.png"))); // NOI18N
+        btn_buscaC.setBorder(null);
+        btn_buscaC.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                btn_buscaCFocusGained(evt);
+            }
+        });
+        btn_buscaC.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_buscaCActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btn_buscaC, new org.netbeans.lib.awtextra.AbsoluteConstraints(105, 173, 40, 40));
+
+        btn_buscaS.setBackground(new java.awt.Color(82, 148, 202));
+        btn_buscaS.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/MLupa.png"))); // NOI18N
+        btn_buscaS.setBorder(null);
+        btn_buscaS.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                btn_buscaSFocusGained(evt);
+            }
+        });
+        btn_buscaS.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_buscaSActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btn_buscaS, new org.netbeans.lib.awtextra.AbsoluteConstraints(105, 128, 40, 40));
 
         jTf_NumeroRepa.setFont(new java.awt.Font("Dialog", 0, 16)); // NOI18N
         jTf_NumeroRepa.setBorder(null);
@@ -170,9 +207,8 @@ public class Jf_Reparacion2 extends javax.swing.JFrame {
                 jTf_NumeroRepaComponentShown(evt);
             }
         });
-        jPanel1.add(jTf_NumeroRepa, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 90, 145, 20));
+        jPanel1.add(jTf_NumeroRepa, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 93, 145, 20));
 
-        jTf_Servicio.setFont(new java.awt.Font("Dialog", 0, 16)); // NOI18N
         jTf_Servicio.setBorder(null);
         jTf_Servicio.addComponentListener(new java.awt.event.ComponentAdapter() {
             public void componentShown(java.awt.event.ComponentEvent evt) {
@@ -181,16 +217,14 @@ public class Jf_Reparacion2 extends javax.swing.JFrame {
         });
         jPanel1.add(jTf_Servicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 140, 145, 20));
 
-        jTf_Cliente.setFont(new java.awt.Font("Dialog", 0, 16)); // NOI18N
         jTf_Cliente.setBorder(null);
         jTf_Cliente.addComponentListener(new java.awt.event.ComponentAdapter() {
             public void componentShown(java.awt.event.ComponentEvent evt) {
                 jTf_ClienteComponentShown(evt);
             }
         });
-        jPanel1.add(jTf_Cliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 180, 145, 20));
+        jPanel1.add(jTf_Cliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 185, 145, 20));
 
-        jTf_Bicicleta.setFont(new java.awt.Font("Dialog", 0, 16)); // NOI18N
         jTf_Bicicleta.setBorder(null);
         jTf_Bicicleta.addComponentListener(new java.awt.event.ComponentAdapter() {
             public void componentShown(java.awt.event.ComponentEvent evt) {
@@ -356,16 +390,17 @@ public class Jf_Reparacion2 extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTf_BicicletaComponentShown
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btn_buscaSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_buscaSActionPerformed
         jf_BusquedaServicio jfBusquedaServicio = new jf_BusquedaServicio(this,servicio);
         jfBusquedaServicio.setAlwaysOnTop(true);
         jfBusquedaServicio.show(true); 
         jfBusquedaServicio.setVisible(true); 
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btn_buscaSActionPerformed
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
-    jTf_Servicio.setText(servicio.toString());         
-        
+    jTf_Servicio.setText(servicio.toString());       
+    jTf_Cliente.setText(cliente.toString()); 
+    jTf_Bicicleta.setText(bicicleta.toString());         
     }//GEN-LAST:event_formWindowActivated
 
     private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
@@ -380,13 +415,38 @@ public class Jf_Reparacion2 extends javax.swing.JFrame {
       // TODO add your handling code here:
     }//GEN-LAST:event_formFocusGained
 
-    private void jButton1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jButton1FocusGained
+    private void btn_buscaSFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_btn_buscaSFocusGained
  
-    }//GEN-LAST:event_jButton1FocusGained
+    }//GEN-LAST:event_btn_buscaSFocusGained
+
+    private void btn_buscaCFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_btn_buscaCFocusGained
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_buscaCFocusGained
+
+    private void btn_buscaCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_buscaCActionPerformed
+        jf_BusquedaCliente jfBusquedaCliente = new jf_BusquedaCliente(this,cliente);
+        jfBusquedaCliente.setAlwaysOnTop(true);
+        jfBusquedaCliente.show(true); 
+        jfBusquedaCliente.setVisible(true); 
+    }//GEN-LAST:event_btn_buscaCActionPerformed
+
+    private void btn_buscaBFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_btn_buscaBFocusGained
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_buscaBFocusGained
+
+    private void btn_buscaBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_buscaBActionPerformed
+        jf_BusquedaBicicleta jfBusquedaBicicleta = new jf_BusquedaBicicleta(this,bicicleta);
+        jfBusquedaBicicleta.setAlwaysOnTop(true);
+        jfBusquedaBicicleta.show(true); 
+        jfBusquedaBicicleta.setVisible(true); 
+    }//GEN-LAST:event_btn_buscaBActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_agregRepu;
+    private javax.swing.JButton btn_buscaB;
+    private javax.swing.JButton btn_buscaC;
+    private javax.swing.JButton btn_buscaS;
     private javax.swing.JButton btn_guardar;
     private javax.swing.JButton btn_nwBicicleta;
     private javax.swing.JButton btn_nwCliente;
@@ -395,7 +455,6 @@ public class Jf_Reparacion2 extends javax.swing.JFrame {
     private javax.swing.JButton btn_quitaRepu;
     private javax.swing.JButton btn_salir;
     private javax.swing.ButtonGroup buttonGroup1;
-    private javax.swing.JButton jButton1;
     private javax.swing.JComboBox<Repuesto> jCbox_Repuestos;
     private com.toedter.calendar.JDateChooser jDChooser_fecha;
     private javax.swing.JPanel jPanel1;

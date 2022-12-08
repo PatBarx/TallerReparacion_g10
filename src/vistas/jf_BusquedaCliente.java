@@ -1,38 +1,33 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package vistas;
 
-import entidades.Servicio;
-import datos.ServicioData;
+import datos.ClienteData;
+import entidades.Cliente;
 import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
 
 /**
- *
- * @author Mauro
+ * @author Grupo10
  */
-public class jf_BusquedaServicio extends javax.swing.JFrame {
-    private Servicio servicio;
+public class jf_BusquedaCliente extends javax.swing.JFrame {
+    private Cliente cliente;
     private final java.awt.Frame padre;
-    private DefaultTableModel tModeloServicio = new DefaultTableModel(new String[]{"Codigo", "Descripcion", "Costo"}, 0);
-    private ArrayList<Servicio> listaServicio;
-    private ServicioData servDa = new ServicioData();
+    private DefaultTableModel tModeloCliente = new DefaultTableModel(new String[]{"Dni", "Nombre", "Domicilio", "Teléfono"}, 0);
+    private ArrayList<Cliente> listaCliente;
+    private ClienteData cliDa = new ClienteData();
 
     /**
      * Creates new form jf_BusquedaServicio
      */
-    public jf_BusquedaServicio(Jf_Reparacion2 padre, Servicio servicio) {
+    public jf_BusquedaCliente(Jf_Reparacion2 padre, Cliente cliente) {
         initComponents();
-        this.servicio = servicio;
+        this.cliente = cliente;
         this.padre = padre;
-        listaServicio = servDa.listarServicios();
-        tModeloServicio.setNumRows(0);                  //Resetea la tabla a cero(Borra Filas)
-        for (Servicio ser : listaServicio) {       //Recorre el arreglo y Carga modelo con los datos que trae segun filtros
-            tModeloServicio.addRow(new Object[]{ser.getCodigo(), ser.getDescripcion(), ser.getCosto()});
+        listaCliente = cliDa.listarCliente();
+        tModeloCliente.setNumRows(0);            //Resetea la tabla a cero(Borra Filas)
+        for (Cliente cli : listaCliente) {       //Recorre el arreglo y Carga modelo con los datos que trae segun filtros
+            tModeloCliente.addRow(new Object[]{cli.getDni(),cli.getNombre(),cli.getDomicilio(),cli.getTel()});
         }
-        jTable_Servicio.setModel(tModeloServicio);      //Se carga la tabla con datos del modelo
+        jTable_Cliente.setModel(tModeloCliente);  //Se carga la tabla con datos del modelo
     }
 
     /**
@@ -46,7 +41,7 @@ public class jf_BusquedaServicio extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable_Servicio = new javax.swing.JTable();
+        jTable_Cliente = new javax.swing.JTable();
         Btn_Select = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
@@ -69,8 +64,8 @@ public class jf_BusquedaServicio extends javax.swing.JFrame {
         jScrollPane1.setBackground(new java.awt.Color(255, 255, 255));
         jScrollPane1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 140, 0)));
 
-        jTable_Servicio.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        jTable_Servicio.setModel(new javax.swing.table.DefaultTableModel(
+        jTable_Cliente.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jTable_Cliente.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -81,8 +76,8 @@ public class jf_BusquedaServicio extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jTable_Servicio.setRowHeight(22);
-        jScrollPane1.setViewportView(jTable_Servicio);
+        jTable_Cliente.setRowHeight(22);
+        jScrollPane1.setViewportView(jTable_Cliente);
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, 510, 310));
 
@@ -97,7 +92,7 @@ public class jf_BusquedaServicio extends javax.swing.JFrame {
         jPanel1.add(Btn_Select, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 410, -1, -1));
 
         jLabel1.setBackground(javax.swing.UIManager.getDefaults().getColor("CheckBoxMenuItem.selectionBackground"));
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/TablaServicio.png"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/TablaCliente.png"))); // NOI18N
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 530, 590));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(2, 2, -1, -1));
@@ -106,12 +101,12 @@ public class jf_BusquedaServicio extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void Btn_SelectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_SelectActionPerformed
-        Servicio serv2 = servDa.buscarServicio((Integer) tModeloServicio.getValueAt(jTable_Servicio.getSelectedRow(), 0));
-        servicio.setCodigo(serv2.getCodigo());
-        servicio.setCosto(serv2.getCosto());
-        servicio.setDescripcion(serv2.getDescripcion());
+        Cliente cli2 = cliDa.buscarCliente((Integer) tModeloCliente.getValueAt(jTable_Cliente.getSelectedRow(), 0));
+        cliente.setDni(cli2.getDni());
+        cliente.setNombre(cli2.getNombre());
+        cliente.setDomicilio(cli2.getDomicilio());
+        cliente.setTel(cli2.getTel());
         
-//servicio = servDa.buscarServicio((Integer) tModeloServicio.getValueAt(jTable_Servicio.getSelectedRow(), 0));
         this.dispose();
         this.padre.setEnabled(true);
     }//GEN-LAST:event_Btn_SelectActionPerformed
@@ -134,6 +129,6 @@ this.padre.setEnabled(true);        // TODO add your handling code here:
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable_Servicio;
+    private javax.swing.JTable jTable_Cliente;
     // End of variables declaration//GEN-END:variables
 }
