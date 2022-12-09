@@ -104,7 +104,7 @@ public class ReparacionData {
         return borrado;
     }
 
-    public ArrayList<Reparacion> listarBicisPendientes() {
+    public ArrayList<Reparacion> listarBicisPendientes(String cliente, String servicio, String fecha) {
         ServicioData ser = new ServicioData();
 
         ClienteData clieDa = new ClienteData();
@@ -112,10 +112,13 @@ public class ReparacionData {
         ArrayList<Reparacion> reparaciones = new ArrayList();
 
         //SELECT * FROM `bicicleta` WHERE estado=1; //(pendiente 1- resuelto 0 -Entregada 2 - anulada3)
-        String query = "SELECT * FROM reparacion WHERE reparacion.estado = 1";
+        String query = "SELECT * FROM reparacion left join cliente on cliente.dni = reparacion.clienteDni left join servicio on servicio.codigo = reparacion.servicioCodigo WHERE reparacion.estado = 1 and cliente.nombre like ? and servicio.descripcion like ? and CAST(reparacion.fecha_entrada as CHAR) like ?;";
         try {
 
             PreparedStatement ps = con.prepareStatement(query);
+            ps.setString(1, cliente);
+            ps.setString(2, servicio);
+            ps.setString(3, fecha);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
 
@@ -141,17 +144,20 @@ public class ReparacionData {
         return reparaciones;
     }
 
-    public ArrayList<Reparacion> listarBicisTerminadas() {
+    public ArrayList<Reparacion> listarBicisTerminadas(String cliente, String servicio, String fecha) {
         ServicioData ser = new ServicioData();
         BicicletaData bic = new BicicletaData();
         ClienteData clieDa = new ClienteData();
         ArrayList<Reparacion> reparaciones = new ArrayList();
 
         //SELECT * FROM `bicicleta` WHERE estado=1;
-        String query = "SELECT * FROM reparacion WHERE reparacion.estado = 2";
+        String query = "SELECT * FROM reparacion left join cliente on cliente.dni = reparacion.clienteDni left join servicio on servicio.codigo = reparacion.servicioCodigo WHERE reparacion.estado = 2 and cliente.nombre like ? and servicio.descripcion like ? and CAST(reparacion.fecha_entrada as CHAR) like ?;";
         try {
 
             PreparedStatement ps = con.prepareStatement(query);
+            ps.setString(1, cliente);
+            ps.setString(2, servicio);
+            ps.setString(3, fecha);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
 
@@ -177,17 +183,20 @@ public class ReparacionData {
         return reparaciones;
     }
 
-    public ArrayList<Reparacion> listarBicisResuelto() {
+    public ArrayList<Reparacion> listarBicisResuelto(String cliente, String servicio, String fecha) {
         ServicioData ser = new ServicioData();
         BicicletaData bic = new BicicletaData();
         ClienteData clieDa = new ClienteData();
         ArrayList<Reparacion> reparaciones = new ArrayList();
 
         //SELECT * FROM `bicicleta` WHERE estado=1;
-        String query = "SELECT * FROM reparacion WHERE reparacion.estado = 0";
+        String query = "SELECT * FROM reparacion left join cliente on cliente.dni = reparacion.clienteDni left join servicio on servicio.codigo = reparacion.servicioCodigo WHERE reparacion.estado = 0 and cliente.nombre like ? and servicio.descripcion like ? and CAST(reparacion.fecha_entrada as CHAR) like ?;";
         try {
 
             PreparedStatement ps = con.prepareStatement(query);
+            ps.setString(1, cliente);
+            ps.setString(2, servicio);
+            ps.setString(3, fecha);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
 
@@ -213,17 +222,20 @@ public class ReparacionData {
         return reparaciones;
     }
 
-    public ArrayList<Reparacion> listarBicisAnulado() {
+    public ArrayList<Reparacion> listarBicisAnulado(String cliente, String servicio, String fecha) {
         ServicioData ser = new ServicioData();
         BicicletaData bic = new BicicletaData();
         ClienteData clieDa = new ClienteData();
         ArrayList<Reparacion> reparaciones = new ArrayList();
 
         //SELECT * FROM `bicicleta` WHERE estado=1;
-        String query = "SELECT * FROM reparacion WHERE reparacion.estado = 3";
+        String query = "SELECT * FROM reparacion left join cliente on cliente.dni = reparacion.clienteDni left join servicio on servicio.codigo = reparacion.servicioCodigo WHERE reparacion.estado = 3 and cliente.nombre like ? and servicio.descripcion like ? and CAST(reparacion.fecha_entrada as CHAR) like ?;";
         try {
 
             PreparedStatement ps = con.prepareStatement(query);
+            ps.setString(1, cliente);
+            ps.setString(2, servicio);
+            ps.setString(3, fecha);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
 

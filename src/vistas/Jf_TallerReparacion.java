@@ -802,6 +802,11 @@ public class Jf_TallerReparacion extends javax.swing.JFrame {
         btn_Busca5.setBackground(new java.awt.Color(82, 148, 202));
         btn_Busca5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/lupa48x48.png"))); // NOI18N
         btn_Busca5.setBorder(null);
+        btn_Busca5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_Busca5ActionPerformed(evt);
+            }
+        });
         tab_reparacion.add(btn_Busca5, new org.netbeans.lib.awtextra.AbsoluteConstraints(61, 204, 60, 60));
 
         panelBuscar4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/sectorBus-reparacion.png"))); // NOI18N
@@ -1099,6 +1104,23 @@ public class Jf_TallerReparacion extends javax.swing.JFrame {
     private void jRadBut_AnuladoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadBut_AnuladoActionPerformed
         cargarTablaReparacionAnulados();
     }//GEN-LAST:event_jRadBut_AnuladoActionPerformed
+
+    private void btn_Busca5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_Busca5ActionPerformed
+
+        if (jRadBut_Pendiente.isSelected()) {
+            cargarTablaReparacion();
+        }
+        if (jRadBut_Entregado.isSelected()) {
+            cargarTablaReparacionTerminadas();
+        }
+        if (jRadBut_Resuelto.isSelected()) {
+            cargarTablaReparacionResuelto();
+        }
+        if (jRadBut_Anulado.isSelected()) {
+            cargarTablaReparacionAnulados();
+        }
+
+    }//GEN-LAST:event_btn_Busca5ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1448,41 +1470,89 @@ public class Jf_TallerReparacion extends javax.swing.JFrame {
         jTable_Servicio.setModel(tModeloServicio);      //Se carga la tabla con datos del modelo
     }
 
+
     private void cargarTablaReparacion() { //PENDIENTES
+        //cliente jRadBut_PorClie servicio jRadBut_PorServi fecha jRadBut_PorFech
+        if (jTf_busqueda4.getText().length() > 0) {
+            if (jRadBut_PorClie.isSelected()) {
+                listaReparacion = repaDa.listarBicisPendientes("%" + jTf_busqueda4.getText() + "%", "%", "%");
+            } else if (jRadBut_PorServi.isSelected()) {
+                listaReparacion = repaDa.listarBicisPendientes("%", "%" + jTf_busqueda4.getText() + "%", "%");
+            } else if (jRadBut_PorFech.isSelected()) {
+                listaReparacion = repaDa.listarBicisPendientes("%", "%", "%" + jTf_busqueda4.getText() + "%");
+            } else {
+                listaReparacion = repaDa.listarBicisPendientes("%", "%", "%");
+            }
+        } else {
+            listaReparacion = repaDa.listarBicisPendientes("%", "%", "%");
+        }
         tModeloReparacion.setNumRows(0);
-        listaReparacion = repaDa.listarBicisPendientes();
         for (Reparacion reparacion : listaReparacion) {
-//(new String[]{"Numero", "Servicio", "Cliente", "Bicicleta","Fecha","Precio"}, 0);
             tModeloReparacion.addRow(new Object[]{reparacion.getId(), reparacion.getServicio(), reparacion.getCliente(), reparacion.getBici(), reparacion.getFechaEntrada(), reparacion.getCostoTotal()});
         }
         jTable_Reparacion.setModel(tModeloReparacion);
     }
 
     private void cargarTablaReparacionTerminadas() { //TERMINADAS ENTREGADAS
+        if (jTf_busqueda4.getText().length() > 0) {
+            if (jRadBut_PorClie.isSelected()) {
+                listaReparacion = repaDa.listarBicisTerminadas("%" + jTf_busqueda4.getText() + "%", "%", "%");
+            } else if (jRadBut_PorServi.isSelected()) {
+                listaReparacion = repaDa.listarBicisTerminadas("%", "%" + jTf_busqueda4.getText() + "%", "%");
+            } else if (jRadBut_PorFech.isSelected()) {
+                listaReparacion = repaDa.listarBicisTerminadas("%", "%", "%" + jTf_busqueda4.getText() + "%");
+            } else {
+                listaReparacion = repaDa.listarBicisTerminadas("%", "%", "%");
+            }
+        } else {
+            listaReparacion = repaDa.listarBicisTerminadas("%", "%", "%");
+        }
         tModeloReparacion.setNumRows(0);
-        listaReparacion = repaDa.listarBicisPendientes();
         for (Reparacion reparacion : listaReparacion) {
-//(new String[]{"Numero", "Servicio", "Cliente", "Bicicleta","Fecha","Precio"}, 0);
             tModeloReparacion.addRow(new Object[]{reparacion.getId(), reparacion.getServicio(), reparacion.getCliente(), reparacion.getBici(), reparacion.getFechaEntrada(), reparacion.getCostoTotal()});
         }
         jTable_Reparacion.setModel(tModeloReparacion);
     }
 
-    private void cargarTablaReparacionResuelto() {
+    private void cargarTablaReparacionResuelto() { //resueltos
+        if (jTf_busqueda4.getText().length() > 0) {
+            if (jRadBut_PorClie.isSelected()) {
+                listaReparacion = repaDa.listarBicisResuelto("%" + jTf_busqueda4.getText() + "%", "%", "%");
+            } else if (jRadBut_PorServi.isSelected()) {
+                listaReparacion = repaDa.listarBicisResuelto("%", "%" + jTf_busqueda4.getText() + "%", "%");
+            } else if (jRadBut_PorFech.isSelected()) {
+                listaReparacion = repaDa.listarBicisResuelto("%", "%", "%" + jTf_busqueda4.getText() + "%");
+            } else {
+                listaReparacion = repaDa.listarBicisResuelto("%", "%", "%");
+            }
+        } else {
+            listaReparacion = repaDa.listarBicisResuelto("%", "%", "%");
+        }
         tModeloReparacion.setNumRows(0);
-        listaReparacion = repaDa.listarBicisResuelto();
+
         for (Reparacion reparacion : listaReparacion) {
-//(new String[]{"Numero", "Servicio", "Cliente", "Bicicleta","Fecha","Precio"}, 0);
             tModeloReparacion.addRow(new Object[]{reparacion.getId(), reparacion.getServicio(), reparacion.getCliente(), reparacion.getBici(), reparacion.getFechaEntrada(), reparacion.getCostoTotal()});
         }
         jTable_Reparacion.setModel(tModeloReparacion);
     }
 
-    private void cargarTablaReparacionAnulados() {
+    private void cargarTablaReparacionAnulados() { //anulados
+        if (jTf_busqueda4.getText().length() > 0) {
+            if (jRadBut_PorClie.isSelected()) {
+                listaReparacion = repaDa.listarBicisAnulado("%" + jTf_busqueda4.getText() + "%", "%", "%");
+            } else if (jRadBut_PorServi.isSelected()) {
+                listaReparacion = repaDa.listarBicisAnulado("%", "%" + jTf_busqueda4.getText() + "%", "%");
+            } else if (jRadBut_PorFech.isSelected()) {
+                listaReparacion = repaDa.listarBicisAnulado("%", "%", "%" + jTf_busqueda4.getText() + "%");
+            } else {
+                listaReparacion = repaDa.listarBicisAnulado("%", "%", "%");
+            }
+        } else {
+            listaReparacion = repaDa.listarBicisAnulado("%", "%", "%");
+        }
         tModeloReparacion.setNumRows(0);
-        listaReparacion = repaDa.listarBicisAnulado();
+
         for (Reparacion reparacion : listaReparacion) {
-//(new String[]{"Numero", "Servicio", "Cliente", "Bicicleta","Fecha","Precio"}, 0);
             tModeloReparacion.addRow(new Object[]{reparacion.getId(), reparacion.getServicio(), reparacion.getCliente(), reparacion.getBici(), reparacion.getFechaEntrada(), reparacion.getCostoTotal()});
         }
         jTable_Reparacion.setModel(tModeloReparacion);
