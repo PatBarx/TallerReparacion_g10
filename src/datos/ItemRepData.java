@@ -133,7 +133,8 @@ public class ItemRepData {
                 itemRep.setCosto(rs.getFloat("costo"));
                 itemRep.setCantidad(rs.getInt("cantidad"));
                 itemRep.setReparacion(rep);
-                itemRep.setRepuesto(rd.buscarRepuesto(rs.getInt("repuesto")));
+                itemRep.setRepuesto(rd.buscarRepuesto(rs.getInt("repuestoSerie")));
+                listaItemRep.add(itemRep);
             }
         } catch (SQLException ex) {
             Logger.getLogger(ItemRepData.class.getName()).log(Level.SEVERE, null, ex);

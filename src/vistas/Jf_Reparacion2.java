@@ -12,6 +12,10 @@ import entidades.Servicio;
 import entidades.Reparacion;
 import java.sql.Date;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
+import javax.swing.event.TableModelEvent;
+import javax.swing.event.TableModelListener;
+import javax.swing.table.DefaultTableModel;
 
 /**
  * @author Grupo10
@@ -21,24 +25,46 @@ public class Jf_Reparacion2 extends javax.swing.JFrame {
     private final java.awt.Frame padre;
     private Reparacion reparacion;
     private ReparacionData repaDa;
-    private ArrayList<Repuesto> listaRepuestos;
-    private RepuestoData repuDat;
-    private ArrayList<ItemRep> listaItems;
-    private ItemRepData itemDat;
+    private RepuestoData repuDat = new RepuestoData();
+    private ItemRepData itemDat = new ItemRepData();
     private Servicio servicio = new Servicio();
     private Cliente cliente = new Cliente();
     private Bicicleta bicicleta = new Bicicleta();
-    
-    
+    private DefaultTableModel tModeloItemRep = new DefaultTableModel(new String[]{"Repuesto", "Cantidad", "Costo"}, 0);
+    private ArrayList<ItemRep> listaItems;
+    private boolean cambiaPrecioItem = true;
+
     public Jf_Reparacion2(java.awt.Frame padre, Reparacion reparacion) {
         initComponents();
         this.padre = padre;
         this.reparacion = reparacion;
         this.repaDa = new ReparacionData();
-       
+
+        for (Repuesto repuesto : repuDat.listaRepuesto(1, "%", "%")) {
+            jCbox_Repuestos.addItem(repuesto);
+        }
+        tModeloItemRep.addTableModelListener(new TableModelListener(){
+        @Override
+        public void tableChanged(TableModelEvent evento) {
+                actualizaSumasItem(evento);
+            }
+        } );
     }
 
-    
+    private void actualizaSumasItem(TableModelEvent evento){
+        if (cambiaPrecioItem) {
+            
+            for (ItemRep item : listaItems) {
+                if (item.getRepuesto().equals(tModeloItemRep.getValueAt(jTable_Reparacion.getSelectedRow(), 0))) {
+                    int cantidad = Integer.parseInt(tModeloItemRep.getValueAt(jTable_Reparacion.getSelectedRow(), 1).toString());
+                    float costo = item.getRepuesto().getCosto();
+                  item.setCantidad(cantidad);
+                  item.setCosto(costo * cantidad);
+                }
+            }
+            cargaTablaItems();
+        }
+    };
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -75,21 +101,6 @@ public class Jf_Reparacion2 extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
-        addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                formFocusGained(evt);
-            }
-        });
-        addComponentListener(new java.awt.event.ComponentAdapter() {
-            public void componentShown(java.awt.event.ComponentEvent evt) {
-                formComponentShown(evt);
-            }
-        });
-        addWindowStateListener(new java.awt.event.WindowStateListener() {
-            public void windowStateChanged(java.awt.event.WindowEvent evt) {
-                formWindowStateChanged(evt);
-            }
-        });
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowActivated(java.awt.event.WindowEvent evt) {
                 formWindowActivated(evt);
@@ -124,6 +135,13 @@ public class Jf_Reparacion2 extends javax.swing.JFrame {
             }
         ));
         jTable_Reparacion.setRowHeight(22);
+        jTable_Reparacion.addInputMethodListener(new java.awt.event.InputMethodListener() {
+            public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
+            }
+            public void inputMethodTextChanged(java.awt.event.InputMethodEvent evt) {
+                jTable_ReparacionInputMethodTextChanged(evt);
+            }
+        });
         jScrollPane5.setViewportView(jTable_Reparacion);
 
         jPanel1.add(jScrollPane5, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 240, 370, 150));
@@ -200,6 +218,7 @@ public class Jf_Reparacion2 extends javax.swing.JFrame {
         });
         jPanel1.add(btn_buscaS, new org.netbeans.lib.awtextra.AbsoluteConstraints(105, 128, 40, 40));
 
+        jTf_NumeroRepa.setEditable(false);
         jTf_NumeroRepa.setFont(new java.awt.Font("Dialog", 0, 16)); // NOI18N
         jTf_NumeroRepa.setBorder(null);
         jTf_NumeroRepa.addComponentListener(new java.awt.event.ComponentAdapter() {
@@ -209,14 +228,11 @@ public class Jf_Reparacion2 extends javax.swing.JFrame {
         });
         jPanel1.add(jTf_NumeroRepa, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 93, 145, 20));
 
+        jTf_Servicio.setEditable(false);
         jTf_Servicio.setBorder(null);
-        jTf_Servicio.addComponentListener(new java.awt.event.ComponentAdapter() {
-            public void componentShown(java.awt.event.ComponentEvent evt) {
-                jTf_ServicioComponentShown(evt);
-            }
-        });
         jPanel1.add(jTf_Servicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 140, 145, 20));
 
+        jTf_Cliente.setEditable(false);
         jTf_Cliente.setBorder(null);
         jTf_Cliente.addComponentListener(new java.awt.event.ComponentAdapter() {
             public void componentShown(java.awt.event.ComponentEvent evt) {
@@ -225,6 +241,7 @@ public class Jf_Reparacion2 extends javax.swing.JFrame {
         });
         jPanel1.add(jTf_Cliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 185, 145, 20));
 
+        jTf_Bicicleta.setEditable(false);
         jTf_Bicicleta.setBorder(null);
         jTf_Bicicleta.addComponentListener(new java.awt.event.ComponentAdapter() {
             public void componentShown(java.awt.event.ComponentEvent evt) {
@@ -233,6 +250,7 @@ public class Jf_Reparacion2 extends javax.swing.JFrame {
         });
         jPanel1.add(jTf_Bicicleta, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 230, 145, 20));
 
+        jTf_PrecioFinal.setEditable(false);
         jTf_PrecioFinal.setFont(new java.awt.Font("Dialog", 1, 28)); // NOI18N
         jTf_PrecioFinal.setBorder(null);
         jTf_PrecioFinal.addComponentListener(new java.awt.event.ComponentAdapter() {
@@ -242,6 +260,7 @@ public class Jf_Reparacion2 extends javax.swing.JFrame {
         });
         jPanel1.add(jTf_PrecioFinal, new org.netbeans.lib.awtextra.AbsoluteConstraints(207, 385, 140, 50));
 
+        jTf_totalRepue.setEditable(false);
         jTf_totalRepue.setFont(new java.awt.Font("Dialog", 3, 20)); // NOI18N
         jTf_totalRepue.setBorder(null);
         jTf_totalRepue.addComponentListener(new java.awt.event.ComponentAdapter() {
@@ -254,11 +273,21 @@ public class Jf_Reparacion2 extends javax.swing.JFrame {
         btn_nwRepuesto.setBackground(new java.awt.Color(82, 148, 202));
         btn_nwRepuesto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/Mas.png"))); // NOI18N
         btn_nwRepuesto.setBorder(null);
+        btn_nwRepuesto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_nwRepuestoActionPerformed(evt);
+            }
+        });
         jPanel1.add(btn_nwRepuesto, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 80, 40, 40));
 
         btn_agregRepu.setBackground(new java.awt.Color(82, 148, 202));
         btn_agregRepu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/Mas.png"))); // NOI18N
         btn_agregRepu.setBorder(null);
+        btn_agregRepu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_agregRepuActionPerformed(evt);
+            }
+        });
         jPanel1.add(btn_agregRepu, new org.netbeans.lib.awtextra.AbsoluteConstraints(467, 170, 38, 38));
 
         btn_quitaRepu.setBackground(new java.awt.Color(82, 148, 202));
@@ -289,6 +318,11 @@ public class Jf_Reparacion2 extends javax.swing.JFrame {
         btn_guardar.setBackground(new java.awt.Color(82, 148, 202));
         btn_guardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/Btn-xGuarda.png"))); // NOI18N
         btn_guardar.setBorder(null);
+        btn_guardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_guardarActionPerformed(evt);
+            }
+        });
         jPanel1.add(btn_guardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 460, 150, 55));
 
         btn_salir.setBackground(new java.awt.Color(82, 148, 202));
@@ -334,36 +368,39 @@ public class Jf_Reparacion2 extends javax.swing.JFrame {
             jTf_NumeroRepa.setText(String.valueOf(reparacion.getId()));
             jTf_NumeroRepa.setEnabled(false);
             servicio = reparacion.getServicio();
-            jTf_Servicio.setText(servicio.toString()); 
-            jTf_Cliente.setText(reparacion.getCliente().toString());
-            jTf_Bicicleta.setText(reparacion.getBici().toString());
+            jTf_Servicio.setText(servicio.toString());
+            cliente = reparacion.getCliente();
+            jTf_Cliente.setText(cliente.toString());
+            bicicleta = reparacion.getBici();
+            jTf_Bicicleta.setText(bicicleta.toString());
             jDChooser_fecha.setDate(Date.valueOf(reparacion.getFechaEntrada()));
             jTf_PrecioFinal.setText(String.valueOf(reparacion.getCostoTotal()));
             switch (reparacion.getEstado()) {
                 //(pendiente 1- resuelto 0 -Entregada 2 - anulada3)
                 case 1:
                     jRBut_Pendiiente.setSelected(true);
-                break;
+                    break;
                 case 2:
-                    jRBut_Entregado.setSelected(true);                    
-                break;
+                    jRBut_Entregado.setSelected(true);
+                    break;
                 case 3:
                     jRBut_Anulado.setSelected(true);
-                break;
+                    break;
                 case 0:
                     jRBut_Resuelto.setSelected(true);
-                break;                
+                    break;
             }
-            
+
             // - - Repuestos - - - - - - - - - -- - - *//// / / / / 
-            //jTable_Reparacion
-            
+            listaItems = itemDat.listarItemRepPorReparacion(reparacion);
+            cargaTablaItems();
+
             //jTf_totalRepue.setText(String.valueOf(listaItems.));
         }
     }//GEN-LAST:event_formWindowOpened
 
     private void btn_nwServicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_nwServicioActionPerformed
-        Jf_Servicio jfServicio = new Jf_Servicio(this,null);
+        Jf_Servicio jfServicio = new Jf_Servicio(this, null);
         jfServicio.setAlwaysOnTop(true);
         jfServicio.show(true);
         jfServicio.setVisible(true);
@@ -378,10 +415,6 @@ public class Jf_Reparacion2 extends javax.swing.JFrame {
         this.padre.setEnabled(true);
     }//GEN-LAST:event_formWindowClosing
 
-    private void jTf_ServicioComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_jTf_ServicioComponentShown
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTf_ServicioComponentShown
-
     private void jTf_ClienteComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_jTf_ClienteComponentShown
         // TODO add your handling code here:
     }//GEN-LAST:event_jTf_ClienteComponentShown
@@ -391,32 +424,23 @@ public class Jf_Reparacion2 extends javax.swing.JFrame {
     }//GEN-LAST:event_jTf_BicicletaComponentShown
 
     private void btn_buscaSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_buscaSActionPerformed
-        jf_BusquedaServicio jfBusquedaServicio = new jf_BusquedaServicio(this,servicio);
+        jf_BusquedaServicio jfBusquedaServicio = new jf_BusquedaServicio(this, servicio);
         jfBusquedaServicio.setAlwaysOnTop(true);
-        jfBusquedaServicio.show(true); 
-        jfBusquedaServicio.setVisible(true); 
+        jfBusquedaServicio.show(true);
+        jfBusquedaServicio.setVisible(true);
     }//GEN-LAST:event_btn_buscaSActionPerformed
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
-    jTf_Servicio.setText(servicio.toString());       
-    jTf_Cliente.setText(cliente.toString()); 
-    jTf_Bicicleta.setText(bicicleta.toString());         
+        jTf_Servicio.setText(servicio.toString());
+        jTf_Cliente.setText(cliente.toString());
+        jTf_Bicicleta.setText(bicicleta.toString());
+        for (Repuesto repuesto : repuDat.listaRepuesto(1, "%", "%")) {
+            jCbox_Repuestos.addItem(repuesto);
+        }
     }//GEN-LAST:event_formWindowActivated
 
-    private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
-
-    }//GEN-LAST:event_formComponentShown
-
-    private void formWindowStateChanged(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowStateChanged
-       // TODO add your handling code here:
-    }//GEN-LAST:event_formWindowStateChanged
-
-    private void formFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_formFocusGained
-      // TODO add your handling code here:
-    }//GEN-LAST:event_formFocusGained
-
     private void btn_buscaSFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_btn_buscaSFocusGained
- 
+
     }//GEN-LAST:event_btn_buscaSFocusGained
 
     private void btn_buscaCFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_btn_buscaCFocusGained
@@ -424,10 +448,10 @@ public class Jf_Reparacion2 extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_buscaCFocusGained
 
     private void btn_buscaCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_buscaCActionPerformed
-        jf_BusquedaCliente jfBusquedaCliente = new jf_BusquedaCliente(this,cliente);
+        jf_BusquedaCliente jfBusquedaCliente = new jf_BusquedaCliente(this, cliente);
         jfBusquedaCliente.setAlwaysOnTop(true);
-        jfBusquedaCliente.show(true); 
-        jfBusquedaCliente.setVisible(true); 
+        jfBusquedaCliente.show(true);
+        jfBusquedaCliente.setVisible(true);
     }//GEN-LAST:event_btn_buscaCActionPerformed
 
     private void btn_buscaBFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_btn_buscaBFocusGained
@@ -435,11 +459,48 @@ public class Jf_Reparacion2 extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_buscaBFocusGained
 
     private void btn_buscaBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_buscaBActionPerformed
-        jf_BusquedaBicicleta jfBusquedaBicicleta = new jf_BusquedaBicicleta(this,bicicleta);
+        jf_BusquedaBicicleta jfBusquedaBicicleta = new jf_BusquedaBicicleta(this, bicicleta);
         jfBusquedaBicicleta.setAlwaysOnTop(true);
-        jfBusquedaBicicleta.show(true); 
-        jfBusquedaBicicleta.setVisible(true); 
+        jfBusquedaBicicleta.show(true);
+        jfBusquedaBicicleta.setVisible(true);
     }//GEN-LAST:event_btn_buscaBActionPerformed
+
+    private void btn_guardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_guardarActionPerformed
+
+    }//GEN-LAST:event_btn_guardarActionPerformed
+
+    private void btn_nwRepuestoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_nwRepuestoActionPerformed
+        Jf_Repuesto jfRepuesto = new Jf_Repuesto(this, null);
+        jfRepuesto.setAlwaysOnTop(true);
+        jfRepuesto.show(true);
+        jfRepuesto.setVisible(true);
+    }//GEN-LAST:event_btn_nwRepuestoActionPerformed
+
+    private void btn_agregRepuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_agregRepuActionPerformed
+        boolean existe = false;
+        for (ItemRep it : listaItems) {
+            if (it.getRepuesto().equals((Repuesto) jCbox_Repuestos.getSelectedItem())) {
+                existe = true;
+            }
+        }
+        if (!existe) {
+            ItemRep item = new ItemRep();
+                item.setReparacion(reparacion);
+                item.setRepuesto((Repuesto) jCbox_Repuestos.getSelectedItem());
+                item.setCantidad(1);
+                item.setCosto(item.getRepuesto().getCosto());
+                listaItems.add(item);
+                cargaTablaItems();
+        } else {
+        JOptionPane.showMessageDialog(this, "No puede repetir un repuesto ya ingresado");
+        }
+
+
+    }//GEN-LAST:event_btn_agregRepuActionPerformed
+
+    private void jTable_ReparacionInputMethodTextChanged(java.awt.event.InputMethodEvent evt) {//GEN-FIRST:event_jTable_ReparacionInputMethodTextChanged
+        
+    }//GEN-LAST:event_jTable_ReparacionInputMethodTextChanged
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -474,5 +535,18 @@ public class Jf_Reparacion2 extends javax.swing.JFrame {
     private javax.swing.JLabel lbl_marcoAzl;
     // End of variables declaration//GEN-END:variables
 
+    private void cargaTablaItems() {
+        cambiaPrecioItem = false;
+        tModeloItemRep.setNumRows(0);
+        float totalRepuesto = 0;
+        for (ItemRep item : listaItems) {
+            tModeloItemRep.addRow(new Object[]{item.getRepuesto(), item.getCantidad(), item.getCosto()});
+            totalRepuesto += item.getCosto();
+        }
+        jTable_Reparacion.setModel(tModeloItemRep);
+        
+        jTf_totalRepue.setText(String.valueOf(totalRepuesto));
+cambiaPrecioItem = true;
+    }
 
 }
