@@ -394,12 +394,22 @@ public class Jf_TallerReparacion extends javax.swing.JFrame {
         buttonGroupBici.add(jRadBut_xNombre);
         jRadBut_xNombre.setAutoscrolls(true);
         jRadBut_xNombre.setBorder(null);
+        jRadBut_xNombre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadBut_xNombreActionPerformed(evt);
+            }
+        });
         tab_bici.add(jRadBut_xNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(32, 100, 20, 30));
 
         jRadBut_xSerie.setBackground(new java.awt.Color(82, 148, 202));
         buttonGroupBici.add(jRadBut_xSerie);
         jRadBut_xSerie.setAutoscrolls(true);
         jRadBut_xSerie.setBorder(null);
+        jRadBut_xSerie.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadBut_xSerieActionPerformed(evt);
+            }
+        });
         tab_bici.add(jRadBut_xSerie, new org.netbeans.lib.awtextra.AbsoluteConstraints(32, 70, 20, 30));
 
         jTf_busqueda1.setFont(new java.awt.Font("Dialog", 0, 16)); // NOI18N
@@ -414,18 +424,33 @@ public class Jf_TallerReparacion extends javax.swing.JFrame {
         btn_Busca2.setBackground(new java.awt.Color(82, 148, 202));
         btn_Busca2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/lupa48x48.png"))); // NOI18N
         btn_Busca2.setBorder(null);
+        btn_Busca2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_Busca2ActionPerformed(evt);
+            }
+        });
         tab_bici.add(btn_Busca2, new org.netbeans.lib.awtextra.AbsoluteConstraints(62, 204, 60, 60));
 
         jRadBut_Entregado2.setBackground(new java.awt.Color(82, 148, 202));
         buttonGroupbiciEstado.add(jRadBut_Entregado2);
         jRadBut_Entregado2.setAutoscrolls(true);
         jRadBut_Entregado2.setBorder(null);
+        jRadBut_Entregado2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadBut_Entregado2ActionPerformed(evt);
+            }
+        });
         tab_bici.add(jRadBut_Entregado2, new org.netbeans.lib.awtextra.AbsoluteConstraints(33, 460, 20, 30));
 
         jRadBut_Anulado2.setBackground(new java.awt.Color(82, 148, 202));
         buttonGroupbiciEstado.add(jRadBut_Anulado2);
         jRadBut_Anulado2.setAutoscrolls(true);
         jRadBut_Anulado2.setBorder(null);
+        jRadBut_Anulado2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadBut_Anulado2ActionPerformed(evt);
+            }
+        });
         tab_bici.add(jRadBut_Anulado2, new org.netbeans.lib.awtextra.AbsoluteConstraints(33, 492, 20, 30));
 
         panelBuscar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/sectorBus-bici.png"))); // NOI18N
@@ -950,7 +975,7 @@ public class Jf_TallerReparacion extends javax.swing.JFrame {
             biciDa.bajaBicicleta(bicicleta);
         } else {
 
-            biciDa.altaBicicleta(bicicleta);
+            biciDa.activaBicicleta(bicicleta);
         }
         cargarTablaBicicleta();
     }//GEN-LAST:event_btn_bicicleta_bajaActionPerformed
@@ -1121,6 +1146,26 @@ public class Jf_TallerReparacion extends javax.swing.JFrame {
         }
 
     }//GEN-LAST:event_btn_Busca5ActionPerformed
+
+    private void jRadBut_xSerieActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadBut_xSerieActionPerformed
+       cargarTablaBicicleta();
+    }//GEN-LAST:event_jRadBut_xSerieActionPerformed
+
+    private void jRadBut_xNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadBut_xNombreActionPerformed
+        cargarTablaBicicleta();
+    }//GEN-LAST:event_jRadBut_xNombreActionPerformed
+
+    private void btn_Busca2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_Busca2ActionPerformed
+         cargarTablaBicicleta();
+    }//GEN-LAST:event_btn_Busca2ActionPerformed
+
+    private void jRadBut_Entregado2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadBut_Entregado2ActionPerformed
+       cargarTablaBicicleta();
+    }//GEN-LAST:event_jRadBut_Entregado2ActionPerformed
+
+    private void jRadBut_Anulado2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadBut_Anulado2ActionPerformed
+      cargarTablaBicicleta();
+    }//GEN-LAST:event_jRadBut_Anulado2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1375,12 +1420,39 @@ public class Jf_TallerReparacion extends javax.swing.JFrame {
     }
 
     private void cargarTablaBicicleta() {
+     if (jTf_busqueda1.getText().length() > 0 && jRadBut_xSerie.isSelected()&&jRadBut_Entregado2.isSelected()&&esNumero(jTf_busqueda1.getText())){
+       listaBicicleta = biciDa.listarBicisActSerie(Integer.parseInt(jTf_busqueda1.getText()));
+      
+      }else if(jTf_busqueda1.getText().length() > 0 && jRadBut_xNombre.isSelected()&&jRadBut_Entregado2.isSelected() ){
+        listaBicicleta = biciDa.listarBicisActClienteDni(jTf_busqueda1.getText()); 
+      
+      }else if(jTf_busqueda1.getText().length() > 0 && jRadBut_xSerie.isSelected()&&jRadBut_Anulado2.isSelected()&& esNumero(jTf_busqueda1.getText())){
+      listaBicicleta = biciDa.listarBicisNoActSerie(Integer.parseInt(jTf_busqueda1.getText()));
+      
+      }else if(jTf_busqueda1.getText().length() == 0 && jRadBut_xSerie.isSelected()&&jRadBut_Anulado2.isSelected()){
+      listaBicicleta = biciDa.listarBicicletasInac();
+      
+      }else if(jTf_busqueda1.getText().length() == 0 && jRadBut_xNombre.isSelected()&&jRadBut_Anulado2.isSelected()){
+       listaBicicleta = biciDa.listarBicicletasInac();
+     
+      }else if(jTf_busqueda1.getText().length() > 0 && jRadBut_xNombre.isSelected()&&jRadBut_Anulado2.isSelected()){
+      listaBicicleta = biciDa.listarBicisNoActClienteDni(jTf_busqueda1.getText());
+      
+      }else if(jTf_busqueda1.getText().length() > 0 && jRadBut_xSerie.isSelected()&&jRadBut_Entregado2.isSelected()&& !esNumero(jTf_busqueda1.getText())){
+       JOptionPane.showMessageDialog(this, "Ingrese un Numero o Busque por nombre delcliente");
+      
+      }else if(jTf_busqueda1.getText().length() > 0 && jRadBut_xSerie.isSelected()&& jRadBut_Anulado2.isSelected()&& !esNumero(jTf_busqueda1.getText())){
+       JOptionPane.showMessageDialog(this, "Ingrese un Numero o Busque por nombre del cliente");
+      
+      }else{listaBicicleta = biciDa.listarBicicletas();}   
+          
+          
         tModeloBicicleta.setNumRows(0);
-        listaBicicleta = biciDa.listarBicicletas();
-        for (Bicicleta bicicleta : listaBicicleta) {
-            tModeloBicicleta.addRow(new Object[]{bicicleta.getNroSerie(), bicicleta.getMarca(), bicicleta.getTipo(), bicicleta.getColor(), bicicleta.getCliente()});
-        }
-        jTable_Bicicleta.setModel(tModeloBicicleta);
+    for (Bicicleta bicicleta : listaBicicleta) {
+          tModeloBicicleta.addRow(new Object[]{bicicleta.getNroSerie(),bicicleta.getMarca(),bicicleta.getTipo(),bicicleta.getColor(),bicicleta.getCliente()});
+    }
+       jTable_Bicicleta.setModel(tModeloBicicleta);
+    
     }
 
     private void cargarTablaRepuesto() {

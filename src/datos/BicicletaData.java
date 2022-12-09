@@ -181,4 +181,176 @@ public class BicicletaData {
         }    
         return bici;
     } 
+        // - - - Metodo Extra para filtro de inactivos tabla    
+      public ArrayList<Bicicleta> listarBicicletasInac(){
+        ArrayList<Bicicleta> misBicis = new ArrayList();
+       
+        //SELECT * FROM `bicicleta` WHERE estado=1;
+        String query = "SELECT * FROM bicicleta WHERE estado = 0"; 
+        try {
+           
+            PreparedStatement ps = con.prepareStatement(query);
+            ResultSet rs = ps.executeQuery();
+            ClienteData clieDa=new ClienteData();
+            Cliente clie=new Cliente();
+            while (rs.next()) {
+                
+                Bicicleta bici = new Bicicleta();
+                
+                bici.setNroSerie(rs.getInt("serie"));
+                bici.setMarca(rs.getString("marca"));
+                bici.setTipo(rs.getString("tipo"));
+                bici.setColor(rs.getString("color"));
+                clie = clieDa.buscarCliente(rs.getInt("clienteDni"));
+                bici.setCliente(clie);
+                bici.setEstado(rs.getBoolean("estado"));
+                misBicis.add(bici);
+                ps.close();    
+            }            
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "BicicletaData Error:\n" + e);
+        }
+        return misBicis;        
+    }
+        public ArrayList<Bicicleta> listarBicisActSerie(int serie){
+        ArrayList<Bicicleta> misBicis = new ArrayList();
+          ClienteData clieDa=new ClienteData();
+            Cliente clie=new Cliente();
+        String query = "SELECT * FROM bicicleta WHERE estado = 1 AND serie = ?"; //Por CODIGO activos
+        try {
+           
+            PreparedStatement ps = con.prepareStatement(query);
+            ps.setInt(1, serie);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                 Bicicleta bici = new Bicicleta();
+                
+                bici.setNroSerie(rs.getInt("serie"));
+                bici.setMarca(rs.getString("marca"));
+                bici.setTipo(rs.getString("tipo"));
+                bici.setColor(rs.getString("color"));
+                clie = clieDa.buscarCliente(rs.getInt("clienteDni"));
+                bici.setCliente(clie);
+                bici.setEstado(rs.getBoolean("estado"));
+                misBicis.add(bici);
+                ps.close();    
+            }            
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "ServicioData Error:\n" + e);
+        }
+        return misBicis;        
+    }
+             public ArrayList<Bicicleta> listarBicisNoActSerie(int serie){
+        ArrayList<Bicicleta> misBicis = new ArrayList();
+          ClienteData clieDa=new ClienteData();
+            Cliente clie=new Cliente();
+        String query = "SELECT * FROM bicicleta WHERE estado = 0 AND serie = ?"; //Por CODIGO activos
+        try {
+           
+            PreparedStatement ps = con.prepareStatement(query);
+            ps.setInt(1, serie);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                 Bicicleta bici = new Bicicleta();
+                
+                bici.setNroSerie(rs.getInt("serie"));
+                bici.setMarca(rs.getString("marca"));
+                bici.setTipo(rs.getString("tipo"));
+                bici.setColor(rs.getString("color"));
+                clie = clieDa.buscarCliente(rs.getInt("clienteDni"));
+                bici.setCliente(clie);
+                bici.setEstado(rs.getBoolean("estado"));
+                misBicis.add(bici);
+                ps.close();    
+            }            
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "BicicletaData Error:\n" + e);
+        }
+        return misBicis;        
+    }
+   
+   public ArrayList<Bicicleta> listarBicisNoActClienteDni(String nombre){
+        ArrayList<Bicicleta> misBicis = new ArrayList();
+          ClienteData clieDa=new ClienteData();
+            Cliente clie=new Cliente();
+            int aux=0;
+        ArrayList<Cliente>misClientes=clieDa.listarCliente();
+        for (Cliente  cliente : misClientes) {
+           
+           if(nombre.equalsIgnoreCase(cliente.getNombre())){
+           
+                aux=cliente.getDni();
+      
+               String query = "SELECT * FROM bicicleta WHERE estado = 0 AND clienteDni = ?"; //Por CODIGO activos
+        try {
+           
+            PreparedStatement ps = con.prepareStatement(query);
+            
+            ps.setInt(1, aux);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                 Bicicleta bici = new Bicicleta();
+                
+                bici.setNroSerie(rs.getInt("serie"));
+                bici.setMarca(rs.getString("marca"));
+                bici.setTipo(rs.getString("tipo"));
+                bici.setColor(rs.getString("color"));
+                clie = clieDa.buscarCliente(rs.getInt("clienteDni"));
+                bici.setCliente(clie);
+                bici.setEstado(rs.getBoolean("estado"));
+                misBicis.add(bici);
+                ps.close();    
+            }            
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "BicicletaData Error:\n" + e);
+        }
+            
+                
+           }
+       }
+        return misBicis;    
+       
+    }
+      public ArrayList<Bicicleta> listarBicisActClienteDni(String nombre){
+                 ArrayList<Bicicleta> misBicis = new ArrayList();
+          ClienteData clieDa=new ClienteData();
+            Cliente clie=new Cliente();
+            int aux=0;
+        ArrayList<Cliente>misClientes=clieDa.listarCliente();
+        for (Cliente  cliente : misClientes) {
+           
+           if(nombre.equalsIgnoreCase(cliente.getNombre())){
+           
+                aux=cliente.getDni();
+      
+               String query = "SELECT * FROM bicicleta WHERE estado = 1 AND clienteDni = ?"; //Por CODIGO activos
+        try {
+           
+            PreparedStatement ps = con.prepareStatement(query);
+            
+            ps.setInt(1, aux);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                 Bicicleta bici = new Bicicleta();
+                
+                bici.setNroSerie(rs.getInt("serie"));
+                bici.setMarca(rs.getString("marca"));
+                bici.setTipo(rs.getString("tipo"));
+                bici.setColor(rs.getString("color"));
+                clie = clieDa.buscarCliente(rs.getInt("clienteDni"));
+                bici.setCliente(clie);
+                bici.setEstado(rs.getBoolean("estado"));
+                misBicis.add(bici);
+                ps.close();    
+            }            
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "BicicletaData Error:\n" + e);
+        }
+            
+                
+           }
+       }
+        return misBicis;  
+      }
+
 }
