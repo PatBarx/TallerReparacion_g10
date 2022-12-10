@@ -1,6 +1,7 @@
 package vistas;
 
 import datos.ClienteData;
+
 import entidades.Cliente;
 import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
@@ -10,6 +11,7 @@ import javax.swing.table.DefaultTableModel;
  */
 public class jf_BusquedaCliente extends javax.swing.JFrame {
     private Cliente cliente;
+
     private final java.awt.Frame padre;
     private DefaultTableModel tModeloCliente = new DefaultTableModel(new String[]{"Dni", "Nombre", "Domicilio", "Teléfono"}, 0);
     private ArrayList<Cliente> listaCliente;
@@ -21,6 +23,7 @@ public class jf_BusquedaCliente extends javax.swing.JFrame {
     public jf_BusquedaCliente(Jf_Reparacion2 padre, Cliente cliente) {
         initComponents();
         this.cliente = cliente;
+
         this.padre = padre;
         listaCliente = cliDa.listarCliente();
         tModeloCliente.setNumRows(0);            //Resetea la tabla a cero(Borra Filas)

@@ -142,10 +142,10 @@ public class Jf_Reparacion2 extends javax.swing.JFrame {
         ));
         jTable_Reparacion.setRowHeight(22);
         jTable_Reparacion.addInputMethodListener(new java.awt.event.InputMethodListener() {
+            public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
+            }
             public void inputMethodTextChanged(java.awt.event.InputMethodEvent evt) {
                 jTable_ReparacionInputMethodTextChanged(evt);
-            }
-            public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
             }
         });
         jScrollPane5.setViewportView(jTable_Reparacion);
@@ -182,11 +182,6 @@ public class Jf_Reparacion2 extends javax.swing.JFrame {
         btn_buscaB.setBackground(new java.awt.Color(82, 148, 202));
         btn_buscaB.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/MLupa.png"))); // NOI18N
         btn_buscaB.setBorder(null);
-        btn_buscaB.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                btn_buscaBFocusGained(evt);
-            }
-        });
         btn_buscaB.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_buscaBActionPerformed(evt);
@@ -197,11 +192,6 @@ public class Jf_Reparacion2 extends javax.swing.JFrame {
         btn_buscaC.setBackground(new java.awt.Color(82, 148, 202));
         btn_buscaC.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/MLupa.png"))); // NOI18N
         btn_buscaC.setBorder(null);
-        btn_buscaC.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                btn_buscaCFocusGained(evt);
-            }
-        });
         btn_buscaC.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_buscaCActionPerformed(evt);
@@ -464,10 +454,6 @@ public class Jf_Reparacion2 extends javax.swing.JFrame {
         cargaTablaItems();
     }//GEN-LAST:event_formWindowActivated
 
-    private void btn_buscaCFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_btn_buscaCFocusGained
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btn_buscaCFocusGained
-
     private void btn_buscaCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_buscaCActionPerformed
         jf_BusquedaCliente jfBusquedaCliente = new jf_BusquedaCliente(this, cliente);
         jfBusquedaCliente.setAlwaysOnTop(true);
@@ -475,15 +461,15 @@ public class Jf_Reparacion2 extends javax.swing.JFrame {
         jfBusquedaCliente.setVisible(true);
     }//GEN-LAST:event_btn_buscaCActionPerformed
 
-    private void btn_buscaBFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_btn_buscaBFocusGained
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btn_buscaBFocusGained
-
     private void btn_buscaBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_buscaBActionPerformed
-        jf_BusquedaBicicleta jfBusquedaBicicleta = new jf_BusquedaBicicleta(this, bicicleta);
+        if (cliente == null || cliente.getDni() == 0){
+            JOptionPane.showMessageDialog(this, "Debe seleccionar el cliente primero");
+        }else{
+        jf_BusquedaBicicleta jfBusquedaBicicleta = new jf_BusquedaBicicleta(this, bicicleta, cliente);
         jfBusquedaBicicleta.setAlwaysOnTop(true);
         jfBusquedaBicicleta.show(true);
         jfBusquedaBicicleta.setVisible(true);
+        }
     }//GEN-LAST:event_btn_buscaBActionPerformed
 
     private void btn_guardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_guardarActionPerformed

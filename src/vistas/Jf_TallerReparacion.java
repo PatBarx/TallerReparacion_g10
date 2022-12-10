@@ -1032,6 +1032,14 @@ public class Jf_TallerReparacion extends javax.swing.JFrame {
         //Jf_Reparacion jfReparacion = new Jf_Reparacion(this,reparacion);  //Ventana inicial con comboBox
         Jf_Reparacion2 jfReparacion = new Jf_Reparacion2(this, reparacion);
         jfReparacion.setAlwaysOnTop(true);
+        
+
+        if (jRadBut_Entregado.isSelected() || jRadBut_Anulado.isSelected()) {
+            //para desactivar (dejar solo lectura)
+        }
+       
+        
+        
         jfReparacion.show(true);
         jfReparacion.setVisible(true);
         refrescarTabla = true;

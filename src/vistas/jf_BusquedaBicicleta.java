@@ -2,6 +2,7 @@ package vistas;
 
 import datos.BicicletaData;
 import entidades.Bicicleta;
+import entidades.Cliente;
 import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
 
@@ -11,18 +12,25 @@ import javax.swing.table.DefaultTableModel;
  */
 public class jf_BusquedaBicicleta extends javax.swing.JFrame {
     private Bicicleta bicicleta;
+    private Cliente cliente;
     private final java.awt.Frame padre;
     private DefaultTableModel tModeloBicicleta = new DefaultTableModel(new String[]{"Serie", "Marca", "Tipo", "Color","Cliente"}, 0);
     private ArrayList<Bicicleta> listaBicicleta;
     private BicicletaData biciDa = new BicicletaData();
 
 
-    public jf_BusquedaBicicleta(Jf_Reparacion2 padre, Bicicleta bicicleta) {
+    public jf_BusquedaBicicleta(Jf_Reparacion2 padre, Bicicleta bicicleta, Cliente cliente) {
         initComponents();
         this.bicicleta = bicicleta;
+        this.cliente = cliente;
         this.padre = padre;
         tModeloBicicleta.setNumRows(0);                 //Resetea la tabla a cero(Borra Filas)
-        listaBicicleta = biciDa.listarBicicletas();     //Recorre el arreglo y Carga modelo con los datos que trae segun filtros
+        if (this.cliente.getDni() == 0 ) {
+            listaBicicleta = biciDa.listarBicicletas();
+        }else {
+            listaBicicleta = biciDa.listarBicisActClienteDni(cliente.getNombre());
+        }
+             //Recorre el arreglo y Carga modelo con los datos que trae segun filtros
         for (Bicicleta bici : listaBicicleta) {
             tModeloBicicleta.addRow(new Object[]{bici.getNroSerie(),bici.getMarca(),bici.getTipo(),bici.getColor(),bici.getCliente()});
         }
