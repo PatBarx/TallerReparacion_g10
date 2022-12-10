@@ -15,6 +15,7 @@ import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Iterator;
 import javax.swing.JOptionPane;
 import javax.swing.event.TableModelEvent;
 import javax.swing.event.TableModelListener;
@@ -293,6 +294,11 @@ public class Jf_Reparacion2 extends javax.swing.JFrame {
         btn_quitaRepu.setBackground(new java.awt.Color(82, 148, 202));
         btn_quitaRepu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/Menos.png"))); // NOI18N
         btn_quitaRepu.setBorder(null);
+        btn_quitaRepu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_quitaRepuActionPerformed(evt);
+            }
+        });
         jPanel1.add(btn_quitaRepu, new org.netbeans.lib.awtextra.AbsoluteConstraints(639, 172, 38, 38));
 
         btn_nwCliente.setBackground(new java.awt.Color(82, 148, 202));
@@ -569,6 +575,20 @@ public class Jf_Reparacion2 extends javax.swing.JFrame {
     private void jTable_ReparacionInputMethodTextChanged(java.awt.event.InputMethodEvent evt) {//GEN-FIRST:event_jTable_ReparacionInputMethodTextChanged
 
     }//GEN-LAST:event_jTable_ReparacionInputMethodTextChanged
+
+    private void btn_quitaRepuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_quitaRepuActionPerformed
+        Iterator <ItemRep> iter = listaItems.iterator();
+        while  (iter.hasNext()){
+            if (iter.next().getRepuesto().equals((Repuesto) tModeloItemRep.getValueAt(jTable_Reparacion.getSelectedRow(), 0))) {
+                if (reparacion != null){//borramos set la BD
+                    itemDat.bajaItemRep(reparacion.getId(), iter.next().getRepuesto().getSerie());
+                    //btn_guardarActionPerformed...
+                } 
+                iter.remove();  //borramos de la lista              
+            }          
+        }                
+        cargaTablaItems();      //carga la tabla con la lista actualizada
+    }//GEN-LAST:event_btn_quitaRepuActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

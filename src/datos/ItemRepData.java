@@ -47,8 +47,7 @@ public class ItemRepData {
         public void bajaItemRep(int idRepar, int idRepu){ //FISICO solo si no esta cerrada la reparacion
         //DELETE * FROM `itemrep` Left JOIN reparacion ON reparacion.id = reparacionId
         //WHERE `itemrep.reparacionId`= ? AND `itemrep.repuestoSerie`=? AND reparacion.estado = 1
-        String query= "DELETE * FROM itemrep Left JOIN reparacion ON reparacion.id = reparacionId " +
-            "WHERE itemrep.reparacionId= ? AND itemrep.repuestoSerie=? AND reparacion.estado = 1";
+        String query= "DELETE FROM itemrep WHERE reparacionId = ? AND repuestoSerie = ?";
         try {
             PreparedStatement ps = con.prepareStatement(query);
             ps.setInt(1, idRepar);
