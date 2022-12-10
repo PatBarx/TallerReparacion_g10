@@ -2,6 +2,7 @@ package vistas;
 
 import datos.ServicioData;
 import entidades.Servicio;
+import javax.swing.JOptionPane;
 
 /* @author Grupo10 */
 public class Jf_Servicio extends javax.swing.JFrame {
@@ -126,21 +127,27 @@ public class Jf_Servicio extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowClosing
 
     private void btn_guardar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_guardar1ActionPerformed
-        if (servicio == null) {
-            servicio = new Servicio();
-            servicio.setDescripcion(jTf_descrip.getText());
-            servicio.setCosto(Float.parseFloat(jTf_costo.getText()));            
-            serDa.altaServicio(servicio);            
-            jTf_codServ.setText(Integer.toString(servicio.getCodigo())); 
-            //Recupero la clave generada en el Objeto x el AltaData
+        if (jTf_descrip.getText().length() > 0 && esFloat(jTf_costo.getText())) {
+            if (servicio == null) {
+                servicio = new Servicio();
+                servicio.setDescripcion(jTf_descrip.getText());
+                servicio.setCosto(Float.parseFloat(jTf_costo.getText()));            
+                serDa.altaServicio(servicio);            
+                jTf_codServ.setText(Integer.toString(servicio.getCodigo())); 
+                //Recupero la clave generada en el Objeto x el AltaData
         } else {
-            //Estado -->Se Actualiza por METODO MODIFICAR  
-            servicio.setCodigo(Integer.parseInt(jTf_codServ.getText()));
-            servicio.setDescripcion(jTf_descrip.getText());
-            servicio.setCosto(Float.parseFloat(jTf_costo.getText()));
-            //Estado --> No seteamos, dejamos el que traia el Cliente.
-            serDa.modificarServicio(servicio);
-        }  
+                //Estado -->Se Actualiza por METODO MODIFICAR  
+                servicio.setCodigo(Integer.parseInt(jTf_codServ.getText()));
+                servicio.setDescripcion(jTf_descrip.getText());
+                servicio.setCosto(Float.parseFloat(jTf_costo.getText()));
+                //Estado --> No seteamos, dejamos el que traia el Servicio.
+                serDa.modificarServicio(servicio);
+            }    
+        } else {
+            JOptionPane.showMessageDialog(this, "Los campos deben rellenarse correctamente");
+        }
+        
+        
     }//GEN-LAST:event_btn_guardar1ActionPerformed
 
     private void btn_salirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_salirActionPerformed
@@ -159,4 +166,15 @@ public class Jf_Servicio extends javax.swing.JFrame {
     private javax.swing.JTextField jTf_costo;
     private javax.swing.JTextField jTf_descrip;
     // End of variables declaration//GEN-END:variables
+
+ public boolean esFloat(String cadena) {
+        boolean resultado;
+        try {
+            Float.parseFloat(cadena);
+            resultado = true;
+        } catch (NumberFormatException e) {
+            resultado = false;
+        }
+        return resultado;
+    }
 }

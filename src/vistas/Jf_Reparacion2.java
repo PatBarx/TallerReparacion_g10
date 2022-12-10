@@ -11,6 +11,7 @@ import entidades.Repuesto;
 import entidades.Servicio;
 import entidades.Reparacion;
 import java.sql.Date;
+import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -41,7 +42,7 @@ public class Jf_Reparacion2 extends javax.swing.JFrame {
         this.padre = padre;
         this.reparacion = reparacion;
         this.repaDa = new ReparacionData();
-
+        jCbox_Repuestos.removeAllItems();
         for (Repuesto repuesto : repuDat.listaRepuesto(1, "%", "%")) {
             jCbox_Repuestos.addItem(repuesto);
         }
@@ -140,10 +141,10 @@ public class Jf_Reparacion2 extends javax.swing.JFrame {
         ));
         jTable_Reparacion.setRowHeight(22);
         jTable_Reparacion.addInputMethodListener(new java.awt.event.InputMethodListener() {
-            public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
-            }
             public void inputMethodTextChanged(java.awt.event.InputMethodEvent evt) {
                 jTable_ReparacionInputMethodTextChanged(evt);
+            }
+            public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
             }
         });
         jScrollPane5.setViewportView(jTable_Reparacion);
@@ -446,6 +447,7 @@ public class Jf_Reparacion2 extends javax.swing.JFrame {
         if (bicicleta.getNroSerie() != 0) {
             jTf_Bicicleta.setText(bicicleta.toString());
         }
+        jCbox_Repuestos.removeAllItems();
         for (Repuesto repuesto : repuDat.listaRepuesto(1, "%", "%")) {
             jCbox_Repuestos.addItem(repuesto);
         }
@@ -603,7 +605,7 @@ public class Jf_Reparacion2 extends javax.swing.JFrame {
 
     private void cargaTablaItems() {
         cambiaPrecioItem = false;
-        tModeloItemRep.setNumRows(0);
+        tModeloItemRep.setNumRows(0);       
         float totalRepuesto = 0;
         for (ItemRep item : listaItems) {
             tModeloItemRep.addRow(new Object[]{item.getRepuesto(), item.getCantidad(), item.getCosto()});
@@ -613,11 +615,10 @@ public class Jf_Reparacion2 extends javax.swing.JFrame {
 
         jTf_totalRepue.setText(String.valueOf(totalRepuesto));
         if (servicio != null) {
-            jTf_PrecioFinal.setText(String.valueOf(totalRepuesto + servicio.getCosto()));
+           jTf_PrecioFinal.setText(String.valueOf((totalRepuesto + servicio.getCosto())*1.15f));          
         } else {
-        jTf_PrecioFinal.setText(String.valueOf(totalRepuesto));
-        }
-        
+        jTf_PrecioFinal.setText(String.valueOf(totalRepuesto*1.15f));
+        }       
         cambiaPrecioItem = true;
     }
 

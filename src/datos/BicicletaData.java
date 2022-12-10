@@ -154,7 +154,7 @@ public class BicicletaData {
             Cliente clie=new Cliente();
         Bicicleta bici = new Bicicleta();
      
-        String query =  "SELECT * FROM bicicleta WHERE estado=1 AND serie = ? ";
+        String query =  "SELECT * FROM bicicleta WHERE serie = ? ";
         
         //Try: Ps/ ps.set(id xparametro).. / rs.. /if(next) ../ Set obj / ps.Close...
         try {

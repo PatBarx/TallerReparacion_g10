@@ -33,7 +33,7 @@ public class ItemRepData {
            
             
              if (ps.executeUpdate() > 0) {
-                JOptionPane.showMessageDialog(null, "ItemData Info : itemRep guardada Correctamente");
+                 System.out.println( "ItemData Info : itemRep guardada Correctamente");
 
             } else {
                 JOptionPane.showMessageDialog(null, "itemData Error: No se pudo Agregar item ");
@@ -75,7 +75,7 @@ public class ItemRepData {
             ps.setInt(3, itR.getReparacion().getId());
             ps.setInt(4, itR.getRepuesto().getSerie());
             ps.executeUpdate();
-            JOptionPane.showMessageDialog(null, "Itemrep fue actualizado");
+            System.out.println( "Itemrep fue actualizado");
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Itemrep NO fue actualizada");
             Logger.getLogger(ReparacionData.class.getName()).log(Level.SEVERE, null, ex);
