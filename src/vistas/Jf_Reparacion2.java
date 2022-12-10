@@ -11,6 +11,8 @@ import entidades.Repuesto;
 import entidades.Servicio;
 import entidades.Reparacion;
 import java.sql.Date;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.event.TableModelEvent;
@@ -24,7 +26,7 @@ public class Jf_Reparacion2 extends javax.swing.JFrame {
 
     private final java.awt.Frame padre;
     private Reparacion reparacion;
-    private ReparacionData repaDa;
+    private ReparacionData repaDa = new ReparacionData();
     private RepuestoData repuDat = new RepuestoData();
     private ItemRepData itemDat = new ItemRepData();
     private Servicio servicio = new Servicio();
@@ -33,7 +35,7 @@ public class Jf_Reparacion2 extends javax.swing.JFrame {
     private DefaultTableModel tModeloItemRep = new DefaultTableModel(new String[]{"Repuesto", "Cantidad", "Costo"}, 0);
     private ArrayList<ItemRep> listaItems;
     private boolean cambiaPrecioItem = true;
-
+    
     public Jf_Reparacion2(java.awt.Frame padre, Reparacion reparacion) {
         initComponents();
         this.padre = padre;
@@ -43,28 +45,30 @@ public class Jf_Reparacion2 extends javax.swing.JFrame {
         for (Repuesto repuesto : repuDat.listaRepuesto(1, "%", "%")) {
             jCbox_Repuestos.addItem(repuesto);
         }
-        tModeloItemRep.addTableModelListener(new TableModelListener(){
-        @Override
-        public void tableChanged(TableModelEvent evento) {
+        tModeloItemRep.addTableModelListener(new TableModelListener() {
+            @Override
+            public void tableChanged(TableModelEvent evento) {
                 actualizaSumasItem(evento);
             }
-        } );
+        });
     }
 
-    private void actualizaSumasItem(TableModelEvent evento){
+    private void actualizaSumasItem(TableModelEvent evento) {
         if (cambiaPrecioItem) {
-            
+
             for (ItemRep item : listaItems) {
                 if (item.getRepuesto().equals(tModeloItemRep.getValueAt(jTable_Reparacion.getSelectedRow(), 0))) {
                     int cantidad = Integer.parseInt(tModeloItemRep.getValueAt(jTable_Reparacion.getSelectedRow(), 1).toString());
                     float costo = item.getRepuesto().getCosto();
-                  item.setCantidad(cantidad);
-                  item.setCosto(costo * cantidad);
+                    item.setCantidad(cantidad);
+                    item.setCosto(costo * cantidad);
                 }
             }
             cargaTablaItems();
         }
-    };
+    }
+
+    ;
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -206,11 +210,6 @@ public class Jf_Reparacion2 extends javax.swing.JFrame {
         btn_buscaS.setBackground(new java.awt.Color(82, 148, 202));
         btn_buscaS.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/MLupa.png"))); // NOI18N
         btn_buscaS.setBorder(null);
-        btn_buscaS.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                btn_buscaSFocusGained(evt);
-            }
-        });
         btn_buscaS.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_buscaSActionPerformed(evt);
@@ -368,11 +367,18 @@ public class Jf_Reparacion2 extends javax.swing.JFrame {
             jTf_NumeroRepa.setText(String.valueOf(reparacion.getId()));
             jTf_NumeroRepa.setEnabled(false);
             servicio = reparacion.getServicio();
-            jTf_Servicio.setText(servicio.toString());
             cliente = reparacion.getCliente();
-            jTf_Cliente.setText(cliente.toString());
             bicicleta = reparacion.getBici();
-            jTf_Bicicleta.setText(bicicleta.toString());
+            
+            if (servicio != null) {
+                jTf_Servicio.setText(servicio.toString());
+            }
+            if (cliente != null) {
+                jTf_Cliente.setText(cliente.toString());
+            }
+            if (bicicleta != null) {
+                jTf_Bicicleta.setText(bicicleta.toString());
+            }
             jDChooser_fecha.setDate(Date.valueOf(reparacion.getFechaEntrada()));
             jTf_PrecioFinal.setText(String.valueOf(reparacion.getCostoTotal()));
             switch (reparacion.getEstado()) {
@@ -431,17 +437,24 @@ public class Jf_Reparacion2 extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_buscaSActionPerformed
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
-        jTf_Servicio.setText(servicio.toString());
-        jTf_Cliente.setText(cliente.toString());
-        jTf_Bicicleta.setText(bicicleta.toString());
+        if (servicio.getCodigo() != 0) {
+            jTf_Servicio.setText(servicio.toString());
+        }
+        if (cliente.getDni() != 0) {
+            jTf_Cliente.setText(cliente.toString());
+        }
+        if (bicicleta.getNroSerie() != 0) {
+            jTf_Bicicleta.setText(bicicleta.toString());
+        }
         for (Repuesto repuesto : repuDat.listaRepuesto(1, "%", "%")) {
             jCbox_Repuestos.addItem(repuesto);
         }
+                if (listaItems == null) {
+            listaItems = new ArrayList();
+        }
+        
+        cargaTablaItems();
     }//GEN-LAST:event_formWindowActivated
-
-    private void btn_buscaSFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_btn_buscaSFocusGained
-
-    }//GEN-LAST:event_btn_buscaSFocusGained
 
     private void btn_buscaCFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_btn_buscaCFocusGained
         // TODO add your handling code here:
@@ -466,7 +479,57 @@ public class Jf_Reparacion2 extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_buscaBActionPerformed
 
     private void btn_guardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_guardarActionPerformed
+        if (reparacion == null) {
+            reparacion = new Reparacion();
+            reparacion.setBici(bicicleta);
+            reparacion.setCliente(cliente);
+            reparacion.setServicio(servicio);
+            reparacion.setFechaEntrada(LocalDate.parse( new SimpleDateFormat("yyyy-MM-dd").format(jDChooser_fecha.getDate())));
+            if (jRBut_Pendiiente.isSelected()) {
+                reparacion.setEstado(1);
+            }
+            if (jRBut_Entregado.isSelected()) {
+                reparacion.setEstado(2);
+            }
+            if (jRBut_Anulado.isSelected()) {
+                reparacion.setEstado(3);
+            }
+            if (jRBut_Resuelto.isSelected()) {
+                reparacion.setEstado(0);
+            }
+            reparacion.setCostoTotal(Float.parseFloat(jTf_PrecioFinal.getText()));
+            repaDa.altaReparacion(reparacion);
+        } else {
+            reparacion.setBici(bicicleta);
+            reparacion.setCliente(cliente);
+            reparacion.setServicio(servicio);
+            reparacion.setFechaEntrada(LocalDate.parse( new SimpleDateFormat("yyyy-MM-dd").format(jDChooser_fecha.getDate())));
+            if (jRBut_Pendiiente.isSelected()) {
+                reparacion.setEstado(1);
+            }
+            if (jRBut_Entregado.isSelected()) {
+                reparacion.setEstado(2);
+            }
+            if (jRBut_Anulado.isSelected()) {
+                reparacion.setEstado(3);
+            }
+            if (jRBut_Resuelto.isSelected()) {
+                reparacion.setEstado(0);
+            }
+            reparacion.setCostoTotal(Float.parseFloat(jTf_PrecioFinal.getText()));
+            repaDa.modificarReparacion(reparacion);
+        }
 
+        for (ItemRep item : listaItems) {
+            ItemRep itemaux = itemDat.buscarItemRep(reparacion, item.getRepuesto().getSerie());
+            if (itemaux == null) {
+                item.setReparacion(reparacion);
+                itemDat.altaItemRep(item);
+            } else {
+                itemDat.modificarItemRep(item);
+            }
+        }
+     
     }//GEN-LAST:event_btn_guardarActionPerformed
 
     private void btn_nwRepuestoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_nwRepuestoActionPerformed
@@ -478,6 +541,9 @@ public class Jf_Reparacion2 extends javax.swing.JFrame {
 
     private void btn_agregRepuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_agregRepuActionPerformed
         boolean existe = false;
+        if (listaItems == null) {
+            listaItems = new ArrayList();
+        }
         for (ItemRep it : listaItems) {
             if (it.getRepuesto().equals((Repuesto) jCbox_Repuestos.getSelectedItem())) {
                 existe = true;
@@ -485,21 +551,21 @@ public class Jf_Reparacion2 extends javax.swing.JFrame {
         }
         if (!existe) {
             ItemRep item = new ItemRep();
-                item.setReparacion(reparacion);
-                item.setRepuesto((Repuesto) jCbox_Repuestos.getSelectedItem());
-                item.setCantidad(1);
-                item.setCosto(item.getRepuesto().getCosto());
-                listaItems.add(item);
-                cargaTablaItems();
+            item.setReparacion(reparacion);
+            item.setRepuesto((Repuesto) jCbox_Repuestos.getSelectedItem());
+            item.setCantidad(1);
+            item.setCosto(item.getRepuesto().getCosto());
+            listaItems.add(item);
+            cargaTablaItems();
         } else {
-        JOptionPane.showMessageDialog(this, "No puede repetir un repuesto ya ingresado");
+            JOptionPane.showMessageDialog(this, "No puede repetir un repuesto ya ingresado");
         }
 
 
     }//GEN-LAST:event_btn_agregRepuActionPerformed
 
     private void jTable_ReparacionInputMethodTextChanged(java.awt.event.InputMethodEvent evt) {//GEN-FIRST:event_jTable_ReparacionInputMethodTextChanged
-        
+
     }//GEN-LAST:event_jTable_ReparacionInputMethodTextChanged
 
 
@@ -544,9 +610,15 @@ public class Jf_Reparacion2 extends javax.swing.JFrame {
             totalRepuesto += item.getCosto();
         }
         jTable_Reparacion.setModel(tModeloItemRep);
-        
+
         jTf_totalRepue.setText(String.valueOf(totalRepuesto));
-cambiaPrecioItem = true;
+        if (servicio != null) {
+            jTf_PrecioFinal.setText(String.valueOf(totalRepuesto + servicio.getCosto()));
+        } else {
+        jTf_PrecioFinal.setText(String.valueOf(totalRepuesto));
+        }
+        
+        cambiaPrecioItem = true;
     }
 
 }

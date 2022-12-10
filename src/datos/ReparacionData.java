@@ -30,7 +30,7 @@ public class ReparacionData {
 
     public void altaReparacion(Reparacion repa) {
         //Query: INSERT INTO `reparacion`(`servicioCodigo`, `clienteDni`, `bicicletaSerie`, `fecha_entrada`, `costoTotal`, `estado`) VALUES ('[value-1]','[value-2]','[value-3]','[value-4]','[value-5]','[value-6]')
-        String query = "INSERT INTO itemrep (servicioCodigo, clienteDni, bicicletaSerie, fecha_entrada, costoTotal, estado) VALUES (?,?,?,?,?,?)";
+        String query = "INSERT INTO reparacion (servicioCodigo, clienteDni, bicicletaSerie, fecha_entrada, costoTotal, estado) VALUES (?,?,?,?,?,?)";
         try {
             PreparedStatement ps = con.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
             ps.setInt(1, repa.getServicio().getCodigo());   //1,servicioCodigo
@@ -58,7 +58,7 @@ public class ReparacionData {
     }
 
     public void modificarReparacion(Reparacion rep) {
-        String query = "UPDATE reparacion SET `servicioCodigo=?,clienteDni=?,bicicletaSerie=?,fecha_entrada=?,costoTotal=?,estado=?  WHERE id=?";
+        String query = "UPDATE reparacion SET servicioCodigo = ? , clienteDni = ? , bicicletaSerie = ?, fecha_entrada = ? ,costoTotal = ? ,estado = ?  WHERE id = ?";
         PreparedStatement ps = null;
         try {
             ps = con.prepareStatement(query);
@@ -67,7 +67,8 @@ public class ReparacionData {
             ps.setInt(3, rep.getBici().getNroSerie());
             ps.setDate(4, Date.valueOf(rep.getFechaEntrada()));
             ps.setFloat(5, rep.getCostoTotal());
-            ps.setInt(6, rep.getId());
+            ps.setInt(6, rep.getEstado());
+            ps.setInt(7, rep.getId());
             ps.executeUpdate();
             JOptionPane.showMessageDialog(null, "La reparacion fue actualizada");
         } catch (SQLException ex) {
@@ -342,7 +343,7 @@ public class ReparacionData {
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
                 repa.setId(rs.getInt("id"));
-                serv = serData.buscarServicio(id);
+                serv = serData.buscarServicio(rs.getInt("servicioCodigo"));
                 repa.setServicio(serv);
                 clie = clieData.buscarCliente(rs.getInt("clienteDni"));
                 repa.setCliente(clie);
