@@ -54,9 +54,10 @@ public class ItemRepData {
             ps.setInt(2, idRepu);
             
         if (ps.executeUpdate()>0) {
-                JOptionPane.showMessageDialog(null, "ItemRepData Info:\nBaja Exitosa" );                                
+            System.out.println("ItemRepData Info:\nBaja Exitosa");
             }else {
-                JOptionPane.showMessageDialog(null, "ItemRepData Error:\nEste Item de reparacion no pudo darse de baja" ); 
+            System.out.println("ItemRepData Error:\nEste Item de reparacion no pudo darse de baja");
+                
             }
         ps.close();
         } catch (SQLException e) {
