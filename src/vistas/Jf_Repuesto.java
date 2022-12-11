@@ -151,6 +151,8 @@ public class Jf_Repuesto extends javax.swing.JFrame {
         }else{
             JOptionPane.showMessageDialog(this, "Debe completar todos los datos correctamente");
         }
+        this.padre.setEnabled(true);
+        this.dispose();
     }//GEN-LAST:event_btn_guardar1ActionPerformed
 
     private void btn_salirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_salirActionPerformed

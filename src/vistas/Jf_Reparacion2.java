@@ -397,8 +397,26 @@ public class Jf_Reparacion2 extends javax.swing.JFrame {
             // - - Repuestos - - - - - - - - - -- - - *//// / / / / 
             listaItems = itemDat.listarItemRepPorReparacion(reparacion);
             cargaTablaItems();
+            if (jRBut_Entregado.isSelected() || jRBut_Anulado.isSelected()) {
+            //para desactivar (dejar solo lectura)            
+                btn_buscaS.setEnabled(false);
+                btn_nwServicio.setEnabled(false);
+                btn_buscaC.setEnabled(false);
+                btn_nwCliente.setEnabled(false);
+                btn_buscaB.setEnabled(false);
+                btn_nwBicicleta.setEnabled(false);
+                jDChooser_fecha.setEnabled(false);
+                jRBut_Pendiiente.setEnabled(false);
+                jRBut_Resuelto.setEnabled(false);
+                jRBut_Entregado.setEnabled(false);
+                jRBut_Anulado.setEnabled(false);
 
-            //jTf_totalRepue.setText(String.valueOf(listaItems.));
+                btn_nwRepuesto.setEnabled(false);
+                btn_agregRepu.setEnabled(false);
+                btn_quitaRepu.setEnabled(false);
+                jTable_Reparacion.setEnabled(false);
+                btn_guardar.setEnabled(false);
+            }            
         }
     }//GEN-LAST:event_formWindowOpened
 
@@ -523,7 +541,8 @@ public class Jf_Reparacion2 extends javax.swing.JFrame {
                 itemDat.modificarItemRep(item);
             }
         }
-     
+//        this.padre.setEnabled(true);
+//        this.dispose();
     }//GEN-LAST:event_btn_guardarActionPerformed
 
     private void btn_nwRepuestoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_nwRepuestoActionPerformed
@@ -568,7 +587,7 @@ public class Jf_Reparacion2 extends javax.swing.JFrame {
             if (iter.next().getRepuesto().equals((Repuesto) tModeloItemRep.getValueAt(jTable_Reparacion.getSelectedRow(), 0))) {
                 if (reparacion != null){//borramos set la BD
                     itemDat.bajaItemRep(reparacion.getId(), iter.next().getRepuesto().getSerie());
-                    //btn_guardarActionPerformed...
+                    btn_guardarActionPerformed(evt);
                 } 
                 iter.remove();  //borramos de la lista              
             }          
